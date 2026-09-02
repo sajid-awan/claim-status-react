@@ -1,7 +1,8 @@
 import { ClaimLevelInfo } from "@/components/claim-status/workflow/steps/pre-claim-status/ClaimLevelInfo";
 import { PatientLevelInfo } from "@/components/claim-status/workflow/steps/pre-claim-status/PatientLevelInfo";
 import { PreClaimStatusFooter } from "@/components/claim-status/workflow/steps/pre-claim-status/PreClaimStatusFooter";
-import { InfoTimeline } from "@/components/ui/InfoTimeline";
+import { Timeline } from "@/components/ui/Timeline";
+import { WorkflowStepContent, WorkflowStepScroll, WorkflowStepShell } from "@/components/ui/WorkflowStepShell";
 import { getClaimLevelInfoRows, getPatientLevelInfoRows } from "@/data/claims";
 import type { Claim } from "@/types/claim";
 
@@ -12,16 +13,16 @@ interface PreClaimStatusProps {
 
 export function PreClaimStatus({ claim, onNext }: PreClaimStatusProps) {
   return (
-    <div className="workflow-step-shell">
-      <div className="workflow-step-scroll py-4">
-        <div className="workflow-step-content">
-          <InfoTimeline>
+    <WorkflowStepShell>
+      <WorkflowStepScroll className="py-4">
+        <WorkflowStepContent>
+          <Timeline variant="info">
             <ClaimLevelInfo rows={getClaimLevelInfoRows(claim)} />
             <PatientLevelInfo rows={getPatientLevelInfoRows(claim)} />
-          </InfoTimeline>
-        </div>
-      </div>
+          </Timeline>
+        </WorkflowStepContent>
+      </WorkflowStepScroll>
       <PreClaimStatusFooter onNext={onNext} />
-    </div>
+    </WorkflowStepShell>
   );
 }

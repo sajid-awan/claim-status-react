@@ -1,6 +1,7 @@
 import { PaperPlaneTilt } from "@/components/icons";
 
 import { ContextualSectionShell } from "@/components/claim-status/contextual/ContextualSectionShell";
+import { ContextualCard, ContextualCardMeta, ContextualCardTitle } from "@/components/ui/ContextualCard";
 import { InfoCard } from "@/components/ui/InfoCard";
 import { InfoRow } from "@/components/ui/InfoRow";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -29,17 +30,19 @@ export function Submission() {
           <SectionTitle title="Submission Attempts" />
           <ul className="flex flex-col gap-2">
             {submissionAttempts.map((attempt) => (
-              <li key={attempt.id} className="contextual-card">
-                <div className="flex items-center gap-2.5">
-                  <PaperPlaneTilt size={14} className="text-ink-muted" />
-                  <div>
-                    <p className="contextual-card__title">{attempt.method}</p>
-                    <p className="contextual-card__meta">
-                      {attempt.date} &middot; {attempt.confirmationNumber}
-                    </p>
+              <li key={attempt.id}>
+                <ContextualCard>
+                  <div className="flex items-center gap-2.5">
+                    <PaperPlaneTilt size={14} className="text-ink-muted" />
+                    <div>
+                      <ContextualCardTitle>{attempt.method}</ContextualCardTitle>
+                      <ContextualCardMeta>
+                        {attempt.date} &middot; {attempt.confirmationNumber}
+                      </ContextualCardMeta>
+                    </div>
                   </div>
-                </div>
-                <StatusBadge label={attempt.status} tone={toneForStatus(attempt.status)} />
+                  <StatusBadge label={attempt.status} tone={toneForStatus(attempt.status)} />
+                </ContextualCard>
               </li>
             ))}
           </ul>

@@ -1,31 +1,23 @@
-import type { ContextualTabId } from "@/types/workflow";
-
-import { Calls } from "@/components/claim-status/contextual/calls/Calls";
-import { ClaimAction } from "@/components/claim-status/contextual/claim-action/ClaimAction";
-import { Documents } from "@/components/claim-status/contextual/documents/Documents";
-import { Fax } from "@/components/claim-status/contextual/fax/Fax";
-import { Submission } from "@/components/claim-status/contextual/submission/Submission";
-import { Users } from "@/components/claim-status/contextual/users/Users";
+import { ClaimTimeline } from "@/components/claim-status/contextual/claim-action/ClaimTimeline";
+import { ContextualPanelContent, ContextualPanelScroll } from "@/components/ui/ContextualPanelShell";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { mockClaimActivities } from "@/data/activities";
+import type { QuickContextTabId } from "@/types/workflow";
 
 interface ContextualContentProps {
-  activeContext: ContextualTabId;
+  quickTab: QuickContextTabId;
 }
 
-export function ContextualContent({ activeContext }: ContextualContentProps) {
-  switch (activeContext) {
-    case "claim-action":
-      return <ClaimAction />;
-    case "submission":
-      return <Submission />;
-    case "fax":
-      return <Fax />;
-    case "documents":
-      return <Documents />;
-    case "users":
-      return <Users />;
-    case "calls":
-      return <Calls />;
-    default:
-      return null;
+export function ContextualContent({ quickTab }: ContextualContentProps) {
+  if (quickTab !== "claim-action") {
+    return <EmptyState />;
   }
+
+  return (
+    <ContextualPanelScroll className="max-lg:overflow-visible">
+      <ContextualPanelContent>
+        <ClaimTimeline activities={mockClaimActivities} />
+      </ContextualPanelContent>
+    </ContextualPanelScroll>
+  );
 }

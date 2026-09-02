@@ -7,7 +7,7 @@ import type { GatherInfoFormData } from "@/types/gatherInfo";
 import type { ContextualTabId, WorkflowStepId } from "@/types/workflow";
 
 export function useClaimStatus(claim: Claim) {
-  const [activeContext, setActiveContext] = useState<ContextualTabId>("claim-action");
+  const [activeContext, setActiveContext] = useState<ContextualTabId>("fax");
   const [currentStep, setCurrentStep] = useState<WorkflowStepId>("gather-info");
   const [completedSteps, setCompletedSteps] = useState<Set<WorkflowStepId>>(new Set(["pre-claim"]));
   const [gatherInfoData, setGatherInfoData] = useState<GatherInfoFormData>(defaultGatherInfoData);

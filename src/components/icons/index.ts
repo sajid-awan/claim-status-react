@@ -7,6 +7,7 @@ export {
   Books,
   Calendar,
   CaretDown,
+  CaretRight,
   CaretUp,
   Bell,
   ChatCircle,

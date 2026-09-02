@@ -10,10 +10,16 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconPosition?: "left" | "right";
 }
 
+const baseClasses =
+  "inline-flex h-[var(--height-button)] cursor-pointer items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed";
+
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "btn btn--primary",
-  secondary: "btn btn--secondary",
-  ghost: "btn btn--ghost",
+  primary:
+    "border border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 disabled:border-brand-200 disabled:bg-brand-200",
+  secondary:
+    "border border-border-tertiary bg-white text-ink hover:bg-surface-page disabled:bg-surface-page disabled:text-ink/40",
+  ghost:
+    "border border-transparent bg-transparent text-ink-muted hover:bg-surface-page disabled:text-border-secondary",
 };
 
 export function Button({
@@ -36,14 +42,14 @@ export function Button({
       disabled={disabled}
       pt={{
         root: {
-          className: `${variantClasses[variant]} ${iconLeft ? "btn--icon-left" : ""} ${className}`.trim(),
+          className: `${baseClasses} ${variantClasses[variant]} ${iconLeft ? "justify-start" : ""} ${className}`.trim(),
         },
       }}
       {...rest}
     >
-      {iconLeft ? <span className="btn__icon">{icon}</span> : null}
+      {iconLeft ? <span className="flex shrink-0 items-center">{icon}</span> : null}
       {children}
-      {iconRight ? <span className="btn__icon">{icon}</span> : null}
+      {iconRight ? <span className="flex shrink-0 items-center">{icon}</span> : null}
     </PrimeButton>
   );
 }

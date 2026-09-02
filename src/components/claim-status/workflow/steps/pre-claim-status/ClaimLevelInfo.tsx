@@ -1,6 +1,6 @@
 import { InfoCard } from "@/components/ui/InfoCard";
 import { InfoRow } from "@/components/ui/InfoRow";
-import { InfoTimelineSection } from "@/components/ui/InfoTimeline";
+import { TimelineItem } from "@/components/ui/Timeline";
 import type { InfoRowData } from "@/types/claim";
 
 interface ClaimLevelInfoProps {
@@ -11,7 +11,7 @@ interface ClaimLevelInfoProps {
 
 export function ClaimLevelInfo({ rows, loading = false, error = null }: ClaimLevelInfoProps) {
   return (
-    <InfoTimelineSection title="Claim Level Info">
+    <TimelineItem variant="info" title="Claim Level Info">
       <InfoCard>
         {loading && <p className="py-4 text-sm text-ink-muted">Loading claim level info…</p>}
         {!loading && error && <p className="py-4 text-sm text-rose-500">{error}</p>}
@@ -26,6 +26,6 @@ export function ClaimLevelInfo({ rows, loading = false, error = null }: ClaimLev
             />
           ))}
       </InfoCard>
-    </InfoTimelineSection>
+    </TimelineItem>
   );
 }

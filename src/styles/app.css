@@ -1,0 +1,315 @@
+/* Keep only styles that need pseudo-elements or PrimeReact internal selectors. */
+
+@layer components {
+  .app-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) transparent;
+  }
+
+  .app-scroll::-webkit-scrollbar {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+
+  .app-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .app-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 9999px;
+  }
+
+  .app-scroll::-webkit-scrollbar-thumb:hover,
+  .app-scroll::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-scrollbar-hover);
+  }
+
+  .activity-item {
+    --timeline-dot-size: 0.625rem;
+    --timeline-dot-offset: 10px;
+    --timeline-dot-gap: 10px;
+    --timeline-line-x: 0.4375rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  @media (min-width: 40rem) {
+    .activity-item {
+      padding-left: 2rem;
+    }
+  }
+
+  .activity-item::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--timeline-line-x) - var(--timeline-dot-size) / 2);
+    top: var(--timeline-dot-offset);
+    width: var(--timeline-dot-size);
+    height: var(--timeline-dot-size);
+    border-radius: 9999px;
+    background-color: var(--color-border-primary);
+  }
+
+  .activity-item::after {
+    content: "";
+    position: absolute;
+    left: var(--timeline-line-x);
+    top: calc(var(--timeline-dot-offset) + var(--timeline-dot-size) + var(--timeline-dot-gap));
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-border-primary);
+  }
+
+  .activity-item:last-child::after {
+    display: none;
+  }
+
+  .info-timeline {
+    position: relative;
+    padding-left: 1.3125rem;
+  }
+
+  .info-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.5625rem;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-brand-500);
+  }
+
+  .info-timeline__section {
+    position: relative;
+  }
+
+  .info-timeline__section:not(:last-child) {
+    padding-bottom: 10px;
+  }
+
+  .info-timeline__section::before {
+    content: "";
+    position: absolute;
+    left: -1.3125rem;
+    top: 0.25rem;
+    z-index: 1;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 9999px;
+    background-color: var(--color-brand-500);
+  }
+
+  .workflow-stepper__track {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    height: 1.25rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .workflow-stepper__track--line-before::before {
+    content: "";
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    z-index: -1;
+    height: 0.25rem;
+    width: 50%;
+    transform: translateY(-50%);
+  }
+
+  .workflow-stepper__track--line-after::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    height: 0.25rem;
+    width: 50%;
+    transform: translateY(-50%);
+  }
+
+  .workflow-stepper__line--active::before,
+  .workflow-stepper__line--active::after {
+    background-color: var(--color-brand-500);
+  }
+
+  .workflow-stepper__line--inactive::before,
+  .workflow-stepper__line--inactive::after {
+    background-color: var(--color-step-inactive);
+  }
+
+  .claim-status-app .form-select {
+    display: flex;
+    height: var(--form-control-height, var(--height-field));
+    width: 100%;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-tertiary);
+    background-color: var(--color-surface-white);
+    font-size: var(--form-control-font-size, var(--text-body-md));
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-ink);
+  }
+
+  .claim-status-app .form-select--filled {
+    border-color: transparent;
+    background-color: var(--color-surface-gray-100);
+  }
+
+  .claim-status-app .form-select--ghost {
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  .claim-status-app .form-control--sm {
+    --form-control-height: 2rem;
+    --form-control-font-size: var(--text-body-sm);
+  }
+
+  .claim-status-app .form-control--md {
+    --form-control-height: var(--height-field);
+    --form-control-font-size: var(--text-body-md);
+  }
+
+  .claim-status-app .form-control--lg {
+    --form-control-height: 3rem;
+    --form-control-font-size: var(--text-body-md);
+  }
+
+  .claim-status-app .form-select .p-dropdown-label {
+    display: flex;
+    height: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    align-items: center;
+    padding: 0 0.75rem;
+    font-size: inherit;
+  }
+
+  .claim-status-app .form-select .p-dropdown-label.p-placeholder {
+    color: var(--color-placeholder);
+  }
+
+  .claim-status-app .form-select .p-dropdown-trigger {
+    display: flex;
+    width: 2.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-ink-muted);
+  }
+
+  .claim-status-app .form-datepicker {
+    display: flex;
+    height: var(--form-control-height, var(--height-field));
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-tertiary);
+    background-color: var(--color-surface-white);
+    font-size: var(--form-control-font-size, var(--text-body-md));
+  }
+
+  .claim-status-app .form-datepicker--filled {
+    border-color: transparent;
+    background-color: var(--color-surface-gray-100);
+  }
+
+  .claim-status-app .form-datepicker--ghost {
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  .claim-status-app .form-datepicker .p-inputtext {
+    height: var(--form-control-height, var(--height-field));
+    min-width: 0;
+    flex: 1 1 auto;
+    border-radius: 0;
+    border: 0;
+    background-color: transparent;
+    padding: 0 0.75rem;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-ink);
+    box-shadow: none;
+  }
+
+  .claim-status-app .form-datepicker .p-datepicker-trigger {
+    height: var(--form-control-height, var(--height-field));
+    width: 2.5rem;
+    flex-shrink: 0;
+    border-radius: 0;
+    border: 0;
+    border-left: 1px solid var(--color-border-tertiary);
+    background-color: transparent;
+    color: var(--color-ink-muted);
+    box-shadow: none;
+  }
+
+  .claim-status-app .p-inputtext:enabled:hover,
+  .claim-status-app .p-dropdown:not(.p-disabled):hover,
+  .claim-status-app .p-inputtextarea:enabled:hover {
+    border-color: var(--color-brand-500);
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled):hover,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:hover),
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover),
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+    border-color: var(--color-brand-500);
+  }
+
+  .claim-status-app .p-calendar .p-inputtext:enabled:hover,
+  .claim-status-app .p-calendar .p-inputtext:enabled:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled):hover .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:hover) .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover) .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) .p-datepicker-trigger {
+    border-left-color: var(--color-brand-500);
+  }
+
+  .claim-status-app .p-inputtext:enabled:focus,
+  .claim-status-app .p-dropdown:not(.p-disabled).p-focus,
+  .claim-status-app .p-inputtextarea:enabled:focus {
+    border-color: var(--color-brand-500);
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+    border-color: var(--color-brand-500);
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .claim-status-app .p-calendar .p-inputtext:enabled:focus {
+    box-shadow: none;
+  }
+
+  .claim-status-app .p-checkbox.p-highlight .p-checkbox-box {
+    border-color: var(--color-brand-500);
+    background-color: var(--color-brand-500);
+  }
+
+  .claim-status-app .p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+    border-color: var(--color-brand-500);
+  }
+}

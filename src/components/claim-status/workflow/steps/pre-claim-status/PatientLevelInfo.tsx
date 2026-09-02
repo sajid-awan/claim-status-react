@@ -1,6 +1,6 @@
 import { InfoCard } from "@/components/ui/InfoCard";
 import { InfoRow } from "@/components/ui/InfoRow";
-import { InfoTimelineSection } from "@/components/ui/InfoTimeline";
+import { TimelineItem } from "@/components/ui/Timeline";
 import type { InfoRowData } from "@/types/claim";
 
 interface PatientLevelInfoProps {
@@ -11,7 +11,7 @@ interface PatientLevelInfoProps {
 
 export function PatientLevelInfo({ rows, loading = false, error = null }: PatientLevelInfoProps) {
   return (
-    <InfoTimelineSection title="Patient Level Info">
+    <TimelineItem variant="info" title="Patient Level Info">
       <InfoCard>
         {loading && (
           <p className="py-4 text-sm text-ink-muted">Loading patient level info…</p>
@@ -28,6 +28,6 @@ export function PatientLevelInfo({ rows, loading = false, error = null }: Patien
             />
           ))}
       </InfoCard>
-    </InfoTimelineSection>
+    </TimelineItem>
   );
 }

@@ -1,4 +1,5 @@
 import { ClaimActivityItem } from "@/components/claim-status/contextual/claim-action/ClaimActivityItem";
+import { ActivityTimeline } from "@/components/ui/Timeline";
 import type { ClaimActivity } from "@/types/claim";
 
 interface ClaimTimelineProps {
@@ -11,10 +12,10 @@ export function ClaimTimeline({ activities }: ClaimTimelineProps) {
   }
 
   return (
-    <ul className="py-3 sm:py-4">
+    <ActivityTimeline>
       {activities.map((activity) => (
         <ClaimActivityItem key={activity.id} activity={activity} />
       ))}
-    </ul>
+    </ActivityTimeline>
   );
 }

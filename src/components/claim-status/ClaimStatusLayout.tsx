@@ -10,7 +10,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
   const [isContextualOpen, setIsContextualOpen] = useState(false);
 
   return (
-    <div className="relative flex flex-col max-lg:gap-4 md:gap-0 lg:min-h-0 lg:flex-1 lg:gap-0 lg:overflow-hidden lg:flex-row">
+    <div className="relative flex flex-col max-lg:gap-4 md:gap-0 lg:min-h-0 lg:flex-1 lg:flex-row lg:gap-0 lg:overflow-hidden">
       <button
         type="button"
         onClick={() => setIsContextualOpen(true)}
@@ -30,11 +30,11 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       />
 
       <div
-        className={`order-3 min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-contextual lg:shrink-0 lg:flex-none lg:overflow-hidden lg:px-0 ${
-          isContextualOpen ? "absolute inset-0 z-40 flex flex-col" : "hidden"
+        className={`order-3 hidden min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-[var(--width-contextual)] lg:flex-none lg:overflow-hidden lg:px-0 ${
+          isContextualOpen ? "flex max-md:absolute max-md:inset-0 max-md:z-40 max-md:flex-col max-md:bg-surface-white" : ""
         }`}
       >
-        <div className="min-h-0 min-w-0 flex-1 max-lg:overflow-visible pt-10 md:pt-0 lg:overflow-hidden">
+        <div className="min-h-0 min-w-0 flex-1 pt-10 max-lg:overflow-visible md:pt-0 lg:overflow-hidden">
           {contextual}
         </div>
         <button
@@ -48,7 +48,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       </div>
 
       <div
-        className="order-4 mr-5 ml-3 hidden w-px shrink-0 self-stretch bg-surface-gray-200 lg:order-2 lg:block"
+        className="order-4 hidden w-px shrink-0 self-stretch bg-surface-gray-200 lg:order-2 lg:block"
         aria-hidden
       />
     </div>

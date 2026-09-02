@@ -1,26 +1,46 @@
-import { CloudCheck, UserCircleDashed } from "@/components/icons";
+import { ArrowsClockwise, CloudCheck, UserCircleDashed, type Icon } from "@/components/icons";
 
+import { Chip, type ChipRadius, type ChipSize, type ChipTone } from "@/components/ui/Chip";
 import type { ActivitySource } from "@/types/claim";
 
 interface ActivityBadgeProps {
   source: ActivitySource;
+  size?: ChipSize;
+  radius?: ChipRadius;
   className?: string;
 }
 
-export function ActivityBadge({ source, className = "" }: ActivityBadgeProps) {
-  if (source === "Host Sync") {
-    return (
-      <span className={`activity-badge activity-badge--host-sync ${className}`.trim()}>
-        <CloudCheck size={16} weight="regular" className="shrink-0" />
-        <span className="activity-badge__label">{source}</span>
-      </span>
-    );
-  }
+const activitySourceConfig: Record<
+  ActivitySource,
+  { tone: ChipTone; icon: Icon; iconClassName?: string }
+> = {
+  User: { tone: "green", icon: UserCircleDashed, iconClassName: "text-success" },
+  "Host Sync": { tone: "blue", icon: CloudCheck },
+  System: { tone: "gray", icon: ArrowsClockwise },
+};
+
+export function ActivityBadge({
+  source,
+  size = "md",
+  radius = "full",
+  className = "",
+}: ActivityBadgeProps) {
+  const { tone, icon: IconComponent, iconClassName = "" } = activitySourceConfig[source];
 
   return (
-    <span className={`activity-badge activity-badge--user ${className}`.trim()}>
-      <UserCircleDashed size={16} weight="regular" className="shrink-0 text-success" />
-      <span className="activity-badge__label">{source}</span>
-    </span>
+    <Chip
+      label={source}
+      tone={tone}
+      size={size}
+      radius={radius}
+      className={className}
+      icon={
+        <IconComponent
+          size={16}
+          weight="regular"
+          className={`shrink-0 ${iconClassName}`.trim()}
+        />
+      }
+    />
   );
 }

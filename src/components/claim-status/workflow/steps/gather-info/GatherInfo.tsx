@@ -1,16 +1,14 @@
 import { useRef } from "react";
-import { Dropdown } from "primereact/dropdown";
-import { InputText } from "primereact/inputtext";
-import { InputTextarea } from "primereact/inputtextarea";
 
 import { Link, UploadSimple } from "@/components/icons";
 
 import { GatherInfoFooter } from "@/components/claim-status/workflow/steps/gather-info/GatherInfoFooter";
-import {
-  FormField,
-  QuestionField,
-  RadioOption,
-} from "@/components/claim-status/workflow/steps/gather-info/GatherInfoFields";
+import { FormField, QuestionField } from "@/components/ui/FormField";
+import { Input } from "@/components/ui/Input";
+import { RadioField, RadioGroup } from "@/components/ui/Radio";
+import { Select } from "@/components/ui/Select";
+import { Textarea } from "@/components/ui/Textarea";
+import { WorkflowStepContent, WorkflowStepScroll, WorkflowStepShell } from "@/components/ui/WorkflowStepShell";
 import { gatherCityOptions, gatherTypeOptions } from "@/data/gatherInfo";
 import type { GatherInfoFormData, PayerSubmissionType, ResubmitMethod } from "@/types/gatherInfo";
 
@@ -50,33 +48,30 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
   }
 
   return (
-    <div className="workflow-step-shell">
-      <div className="workflow-step-scroll pb-5">
-        <div className="workflow-step-content space-y-6">
+    <WorkflowStepShell>
+      <WorkflowStepScroll className="pb-5">
+        <WorkflowStepContent className="space-y-6">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             <FormField label="Insurance Rep Name" required>
-              <InputText
+              <Input
                 value={data.insuranceRepName}
                 onChange={(e) => updateField("insuranceRepName", e.target.value)}
-                className="gather-field"
               />
             </FormField>
             <FormField label="Select Type">
-              <Dropdown
+              <Select
                 value={data.selectType}
                 options={gatherTypeOptions}
                 onChange={(e) => updateField("selectType", e.value)}
-                className="gather-dropdown"
               />
             </FormField>
           </div>
 
           <QuestionField label="Can you please search by patient name, date of service, and billed amount as well?">
-            <InputText
+            <Input
               value={data.patientSearch}
               onChange={(e) => updateField("patientSearch", e.target.value)}
               placeholder="Search by patient name, DOS & Billed amount"
-              className="gather-field"
             />
           </QuestionField>
 
@@ -84,8 +79,8 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             label="What is the correct payer ID or submission address to send this claim to?"
             required
           >
-            <div className="gather-radio-group">
-              <RadioOption
+            <RadioGroup gap="md">
+              <RadioField
                 inputId="payer-id"
                 name="payer-submission"
                 value="payer-id"
@@ -93,7 +88,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
                 label="Payer ID"
                 onChange={(value) => updateField("payerSubmissionType", value as PayerSubmissionType)}
               />
-              <RadioOption
+              <RadioField
                 inputId="address"
                 name="payer-submission"
                 value="address"
@@ -101,41 +96,37 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
                 label="Address"
                 onChange={(value) => updateField("payerSubmissionType", value as PayerSubmissionType)}
               />
-            </div>
+            </RadioGroup>
           </QuestionField>
 
           <FormField label="Address" required>
-            <InputText
+            <Input
               value={data.address}
               onChange={(e) => updateField("address", e.target.value)}
               placeholder="Enter address"
-              className="gather-field"
             />
           </FormField>
 
-          <div className="grid grid-cols-1 gap-4 min-[640px]:grid-cols-[2fr_1.5fr_1.5fr] min-[1400px]:gap-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[2fr_1.5fr_1.5fr] xl:gap-5">
             <FormField label="City" required>
-              <Dropdown
+              <Select
                 value={data.city}
                 options={gatherCityOptions}
                 onChange={(e) => updateField("city", e.value)}
                 placeholder=""
-                className="gather-dropdown"
               />
             </FormField>
             <FormField label="State" required>
-              <InputText
+              <Input
                 value={data.state}
                 onChange={(e) => updateField("state", e.target.value)}
-                className="gather-field"
               />
             </FormField>
             <FormField label="Zip Code" required>
-              <InputText
+              <Input
                 value={data.zipCode}
                 onChange={(e) => updateField("zipCode", e.target.value)}
                 placeholder="Zip Code"
-                className="gather-field"
               />
             </FormField>
           </div>
@@ -144,9 +135,9 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             label="Is there a preferred method to resubmit (EDI, fax, portal, mail or email)?"
             required
           >
-            <div className="gather-radio-group">
+            <RadioGroup gap="md">
               {resubmitOptions.map((option) => (
-                <RadioOption
+                <RadioField
                   key={option.id}
                   inputId={`resubmit-${option.id}`}
                   name="resubmit-method"
@@ -156,15 +147,14 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
                   onChange={(value) => updateField("resubmitMethod", value as ResubmitMethod)}
                 />
               ))}
-            </div>
+            </RadioGroup>
           </QuestionField>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             <FormField label="Fax From" required>
-              <InputText
+              <Input
                 value={data.faxFrom}
                 onChange={(e) => updateField("faxFrom", e.target.value)}
-                className="gather-field"
               />
             </FormField>
             <FormField
@@ -174,16 +164,15 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
                 <button
                   type="button"
                   onClick={addFaxRow}
-                  className="text-[14px] font-normal leading-[14px] text-brand-500 hover:text-brand-600"
+                  className="text-body-sm font-normal leading-compact text-brand-500 hover:text-brand-600"
                 >
                   Add
                 </button>
               }
             >
-              <InputText
+              <Input
                 value={data.faxTo}
                 onChange={(e) => updateField("faxTo", e.target.value)}
-                className="gather-field"
               />
             </FormField>
           </div>
@@ -191,17 +180,15 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
           {data.faxRows.map((row) => (
             <div key={row.id} className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
               <FormField label="Receiver Name" required>
-                <InputText
+                <Input
                   value={row.receiverName}
                   onChange={(e) => updateFaxRow(row.id, "receiverName", e.target.value)}
-                  className="gather-field"
                 />
               </FormField>
               <FormField label="Subject" required>
-                <InputText
+                <Input
                   value={row.subject}
                   onChange={(e) => updateFaxRow(row.id, "subject", e.target.value)}
-                  className="gather-field"
                 />
               </FormField>
             </div>
@@ -213,36 +200,39 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             action={
               <button
                 type="button"
-                className="text-[14px] font-normal leading-[14px] text-brand-500 hover:text-brand-600"
+                className="text-body-sm font-normal leading-compact text-brand-500 hover:text-brand-600"
               >
                 Generate with <span className="font-semibold">SAVI</span>
               </button>
             }
           >
-            <InputTextarea
+            <Textarea
               value={data.additionalNotes}
               onChange={(e) => updateField("additionalNotes", e.target.value)}
               rows={4}
-              className="gather-textarea"
             />
           </FormField>
 
-          <label className="upload-zone">
+          <input
+            ref={fileInputRef}
+            id="gather-info-upload"
+            type="file"
+            className="sr-only"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              updateField("files", file?.name ?? "No file attached");
+              if (fileInputRef.current) fileInputRef.current.value = "";
+            }}
+          />
+          <label
+            htmlFor="gather-info-upload"
+            className="flex h-field w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-body-md font-normal text-brand-500 transition-colors hover:border-brand-500 hover:bg-brand-50/40"
+          >
             <UploadSimple size={18} weight="bold" />
             Upload File
-            <input
-              ref={fileInputRef}
-              type="file"
-              className="sr-only"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                updateField("files", file?.name ?? "No file attached");
-                if (fileInputRef.current) fileInputRef.current.value = "";
-              }}
-            />
           </label>
           {data.files && data.files !== "No file attached" ? (
-            <p className="upload-zone__filename">{data.files}</p>
+            <p className="mt-2 truncate text-body-sm leading-body text-ink-muted">{data.files}</p>
           ) : null}
 
           <button
@@ -252,9 +242,9 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             <Link size={18} weight="bold" />
             Link Documents
           </button>
-        </div>
-      </div>
+        </WorkflowStepContent>
+      </WorkflowStepScroll>
       <GatherInfoFooter onContinue={onNext} />
-    </div>
+    </WorkflowStepShell>
   );
 }

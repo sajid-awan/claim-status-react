@@ -1,6 +1,7 @@
 import { VerifyFooter } from "@/components/claim-status/workflow/steps/verify/VerifyFooter";
 import { InfoCard } from "@/components/ui/InfoCard";
 import { InfoRow } from "@/components/ui/InfoRow";
+import { WorkflowStepContent, WorkflowStepScroll, WorkflowStepShell } from "@/components/ui/WorkflowStepShell";
 import { getVerifyRows } from "@/data/gatherInfo";
 import type { GatherInfoFormData } from "@/types/gatherInfo";
 
@@ -13,9 +14,9 @@ export function Verify({ data, onNext }: VerifyProps) {
   const rows = getVerifyRows(data);
 
   return (
-    <div className="workflow-step-shell">
-      <div className="workflow-step-scroll">
-        <div className="workflow-step-content">
+    <WorkflowStepShell>
+      <WorkflowStepScroll>
+        <WorkflowStepContent>
           <InfoCard>
             {rows.map((row, index) => (
               <InfoRow
@@ -27,9 +28,9 @@ export function Verify({ data, onNext }: VerifyProps) {
               />
             ))}
           </InfoCard>
-        </div>
-      </div>
+        </WorkflowStepContent>
+      </WorkflowStepScroll>
       <VerifyFooter onNext={onNext} />
-    </div>
+    </WorkflowStepShell>
   );
 }

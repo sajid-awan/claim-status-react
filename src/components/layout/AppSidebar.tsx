@@ -197,73 +197,73 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
             : "w-[266px] bg-[url('/assets/img.png')] bg-size-[266px_100%] bg-left-top bg-no-repeat xl:w-[266px]"
         }`}
       >
-      <div
-        className={`relative flex flex-col py-2.5 ${showExpanded ? "gap-[50px] px-3" : "items-center gap-6 px-2"}`}
-      >
         <div
-          className={`flex w-full items-center ${showExpanded ? "h-10 justify-between" : "flex-col gap-2"}`}
+          className={`relative flex flex-col py-2.5 ${showExpanded ? "gap-[50px] px-3" : "items-center gap-6 px-2"}`}
         >
-          <img
-            src={showExpanded ? "/assets/savi-logo.svg" : "/favicon.svg"}
-            alt="SAVi Technology"
-            className={
-              showExpanded
-                ? "h-10 w-20 object-contain object-left"
-                : "h-8 w-7 object-contain"
-            }
-          />
-          <button
-            type="button"
-            onClick={() => setIsCollapsed((prev) => !prev)}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-            aria-expanded={!isCollapsed}
-            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex"
+          <div
+            className={`flex w-full items-center ${showExpanded ? "h-10 justify-between" : "flex-col gap-2"}`}
           >
-            <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-[17px] w-[18px]" />
-          </button>
-        </div>
+            <img
+              src={showExpanded ? "/assets/savi-logo.svg" : "/favicon.svg"}
+              alt="SAVi Technology"
+              className={
+                showExpanded
+                  ? "h-10 w-20 object-contain object-left"
+                  : "h-8 w-7 object-contain"
+              }
+            />
+            <button
+              type="button"
+              onClick={() => setIsCollapsed((prev) => !prev)}
+              aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+              aria-expanded={!isCollapsed}
+              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex"
+            >
+              <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-[17px] w-[18px]" />
+            </button>
+          </div>
 
-        <ul className={`flex w-full flex-col ${showExpanded ? "gap-3" : "items-center gap-2"}`}>
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isExpanded = expanded === item.label;
-            const isSectionActive = item.active || item.children?.some((c) => c.active);
+          <ul className={`flex w-full flex-col ${showExpanded ? "gap-3" : "items-center gap-2"}`}>
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isExpanded = expanded === item.label;
+              const isSectionActive = item.active || item.children?.some((c) => c.active);
 
-            return (
-              <li key={item.label} className={showExpanded ? undefined : "w-full"}>
-                <button
-                  type="button"
-                  onClick={() => handleSectionClick(item)}
-                  title={showExpanded ? undefined : item.label}
-                  aria-label={item.label}
-                  className={`flex h-[34px] w-full cursor-pointer items-center rounded-lg text-sm font-medium leading-[22.5px] transition-colors ${
-                    showExpanded ? "gap-2.5 p-2 text-left" : "justify-center px-0"
-                  } ${
-                    isSectionActive ? "text-brand-500" : "text-ink-muted hover:text-ink"
-                  }`}
-                >
-                  <Icon size={18} weight="regular" className="shrink-0" />
-                  {showExpanded && (
-                    <>
-                      <span className="min-w-0 flex-1 truncate">{item.label}</span>
-                      <NavChevron expanded={Boolean(item.expandable && isExpanded)} />
-                    </>
+              return (
+                <li key={item.label} className={showExpanded ? undefined : "w-full"}>
+                  <button
+                    type="button"
+                    onClick={() => handleSectionClick(item)}
+                    title={showExpanded ? undefined : item.label}
+                    aria-label={item.label}
+                    className={`flex h-[34px] w-full cursor-pointer items-center rounded-lg text-sm font-medium leading-[22.5px] transition-colors ${
+                      showExpanded ? "gap-2.5 p-2 text-left" : "justify-center px-0"
+                    } ${
+                      isSectionActive ? "text-brand-500" : "text-ink-muted hover:text-ink"
+                    }`}
+                  >
+                    <Icon size={18} weight="regular" className="shrink-0" />
+                    {showExpanded && (
+                      <>
+                        <span className="min-w-0 flex-1 truncate">{item.label}</span>
+                        <NavChevron expanded={Boolean(item.expandable && isExpanded)} />
+                      </>
+                    )}
+                  </button>
+
+                  {showExpanded && item.expandable && isExpanded && item.children && (
+                    <NavSubTree
+                      items={item.children}
+                      expandedLeaves={expandedLeaves}
+                      onToggleLeaf={toggleLeaf}
+                    />
                   )}
-                </button>
-
-                {showExpanded && item.expandable && isExpanded && item.children && (
-                  <NavSubTree
-                    items={item.children}
-                    expandedLeaves={expandedLeaves}
-                    onToggleLeaf={toggleLeaf}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </nav>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
     </>
   );
 }

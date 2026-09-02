@@ -1,6 +1,7 @@
 import { Printer } from "@/components/icons";
 
 import { ContextualSectionShell } from "@/components/claim-status/contextual/ContextualSectionShell";
+import { ContextualNote } from "@/components/ui/ContextualCard";
 import { InfoCard } from "@/components/ui/InfoCard";
 import { InfoRow } from "@/components/ui/InfoRow";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -28,7 +29,7 @@ export function Fax() {
 
         <div>
           <SectionTitle title="Cover Note" />
-          <p className="contextual-note">{faxSummary.coverNote}</p>
+          <ContextualNote>{faxSummary.coverNote}</ContextualNote>
         </div>
 
         <SecondaryButton icon={<Printer size={18} />} iconPosition="left" className="self-start">
