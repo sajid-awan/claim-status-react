@@ -9,7 +9,7 @@
     }
 
     .app-shell__content {
-      @apply flex min-h-0 flex-1 flex-col overflow-hidden bg-surface-body px-2 pb-2 pt-2 max-lg:overflow-y-auto max-lg:px-4 sm:pb-3 sm:pt-3 lg:overflow-hidden lg:px-3;
+      @apply flex min-h-0 flex-1 flex-col overflow-hidden bg-surface-body px-2 pb-2 pt-2 max-lg:overflow-hidden max-lg:px-4 sm:pb-3 sm:pt-3 lg:px-3;
     }
 
     .app-empty-state {
@@ -25,28 +25,36 @@
     }
 
     .claim-status-page {
-      @apply flex min-h-0 flex-col lg:h-full lg:min-h-0 lg:flex-1;
+      @apply flex min-h-0 flex-1 flex-col overflow-hidden max-lg:min-h-0 lg:h-full lg:flex-1;
     }
 
     .claim-status-page__breadcrumb {
-      @apply shrink-0 pb-2 sm:pb-3;
+      @apply hidden shrink-0 pb-2 sm:block sm:pb-3;
     }
 
     .claim-status-page__card {
-      @apply flex min-h-0 flex-1 flex-col overflow-hidden lg:overflow-hidden;
+      @apply flex min-h-0 flex-1 flex-col overflow-hidden max-lg:min-h-0;
     }
 
     .claim-status-layout {
-      @apply relative flex min-h-0 flex-1 flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-0 lg:overflow-hidden;
+      @apply relative flex min-h-0 flex-1 flex-col overflow-hidden max-lg:min-h-0 lg:flex-row lg:items-stretch lg:gap-0;
     }
 
-    .claim-status-layout__open-btn {
-      @apply absolute left-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-lg border border-surface-gray-200 bg-surface-white text-ink-muted md:hidden;
+    .app-shell__content:has(.claim-status-layout__contextual--open) {
+      @apply max-lg:overflow-hidden;
     }
 
-    /* Mobile/tablet: workflow first, contextual below */
+    .claim-status-page:has(.claim-status-layout__contextual--open) {
+      @apply max-lg:overflow-hidden;
+    }
+
+    .claim-status-page:has(.claim-status-layout__contextual--open) .claim-status-page__breadcrumb {
+      @apply max-lg:hidden;
+    }
+
+    /* Below lg: workflow full width; contextual opens as overlay drawer */
     .claim-status-layout__workflow {
-      @apply order-1 flex min-h-0 min-w-0 flex-col overflow-hidden rounded-xl border border-border-subtle bg-white px-2 max-lg:flex-none lg:order-3 lg:flex-1 lg:rounded-l-none lg:border-l-0 lg:px-0;
+      @apply order-1 flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-border-subtle bg-white max-lg:min-h-0 lg:order-3 lg:flex-1 lg:rounded-l-none lg:border-l-0;
     }
 
     .claim-status-layout__divider-h {
@@ -54,19 +62,19 @@
     }
 
     .claim-status-layout__contextual {
-      @apply order-3 hidden min-h-0 min-w-0 flex-col overflow-hidden rounded-xl border border-border-subtle bg-white px-4 md:flex lg:order-1 lg:w-contextual lg:max-w-contextual lg:flex-none lg:rounded-r-none lg:border-r-0 lg:px-0;
+      @apply order-3 hidden min-h-0 min-w-0 flex-col overflow-hidden rounded-xl border border-border-subtle bg-white px-4 lg:order-1 lg:flex lg:w-contextual lg:max-w-contextual lg:flex-none lg:rounded-r-none lg:border-r-0 lg:px-0;
     }
 
     .claim-status-layout__contextual--open {
-      @apply flex max-md:absolute max-md:inset-0 max-md:z-40 max-md:min-h-0 max-md:flex-col max-md:overflow-hidden max-md:bg-surface-white;
+      @apply flex max-lg:fixed max-lg:inset-0 max-lg:z-40 max-lg:h-dvh max-lg:w-full max-lg:min-h-0 max-lg:flex-col max-lg:overflow-hidden max-lg:rounded-none max-lg:border-0 max-lg:bg-surface-white;
     }
 
     .claim-status-layout__contextual-inner {
-      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden pt-10 md:pt-0;
+      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden max-lg:pt-12 lg:pt-0;
     }
 
     .claim-status-layout__close-btn {
-      @apply absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-surface-white text-ink-muted md:hidden;
+      @apply absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-lg border border-surface-gray-200 bg-surface-white text-ink-muted lg:hidden;
     }
 
     .claim-status-layout__divider-v {
@@ -74,27 +82,27 @@
     }
 
     .contextual-panel {
-      @apply flex h-full min-h-0 w-full min-w-0 flex-1 flex-row overflow-hidden;
+      @apply flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden lg:h-full lg:flex-row;
     }
 
     .contextual-panel__body {
-      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden py-3 pl-3 lg:pr-1;
+      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden px-2 py-2 lg:py-3 lg:pl-3 lg:pr-1;
     }
 
     .contextual-panel__tabs {
-      @apply mb-2 inline-flex min-w-0 shrink-0 self-start;
+      @apply mb-2 inline-flex min-w-0 shrink-0 self-start max-lg:w-full max-lg:max-w-full;
 
       .tabs {
-        @apply inline-flex w-auto;
+        @apply inline-flex w-auto max-lg:w-full max-lg:max-w-full;
       }
     }
 
     .contextual-panel__content {
-      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden;
+      @apply flex min-h-0 min-w-0 flex-1 basis-0 flex-col overflow-hidden;
     }
 
     .workflow-panel {
-      @apply flex w-full flex-col overflow-hidden max-lg:flex-none lg:min-h-0 lg:flex-1;
+      @apply flex min-h-0 w-full flex-1 flex-col overflow-hidden max-lg:min-h-0 lg:min-h-0;
     }
 
     .section-title {
@@ -156,7 +164,7 @@
     }
 
     .workflow-content {
-      @apply flex min-h-0 flex-1 flex-col overflow-hidden max-lg:flex-none;
+      @apply flex min-h-0 flex-1 basis-0 flex-col overflow-hidden max-lg:min-h-0;
     }
 
     .contextual-section {

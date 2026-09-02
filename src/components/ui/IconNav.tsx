@@ -75,7 +75,7 @@ export function IconNav<T extends string>({
         <IconNavList
           {...props}
           buttonSize={buttonSize}
-          listClassName="icon-nav--vertical hidden lg:flex"
+          listClassName="icon-nav--vertical"
         />
       </>
     );

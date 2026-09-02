@@ -14,6 +14,7 @@ interface WorkflowPanelProps {
   onNext: () => void;
   onBack: () => void;
   onClose?: () => void;
+  onOpenContext?: () => void;
 }
 
 export function WorkflowPanel({
@@ -25,10 +26,11 @@ export function WorkflowPanel({
   onNext,
   onBack,
   onClose,
+  onOpenContext,
 }: WorkflowPanelProps) {
   return (
     <section aria-label="Claim status workflow" className="workflow-panel">
-      <WorkflowHeader title="Claim Status" onBack={onBack} onClose={onClose} />
+      <WorkflowHeader title="Claim Status" onBack={onBack} onClose={onClose} onOpenContext={onOpenContext} />
       <WorkflowProgress currentStep={currentStep} completedSteps={completedSteps} />
       <WorkflowContent
         claim={claim}

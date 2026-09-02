@@ -1,7 +1,7 @@
 @layer components {
   .claim-status-app {
     .app-sidebar {
-      @apply fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white lg:static lg:translate-x-0;
+      @apply fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white xl:static xl:translate-x-0;
       transition-property: width, transform;
       transition-duration: 200ms;
       transition-timing-function: ease-in-out;
@@ -12,15 +12,15 @@
     }
 
     .app-sidebar--closed-mobile {
-      @apply -translate-x-full lg:translate-x-0;
+      @apply -translate-x-full xl:translate-x-0;
     }
 
     .app-sidebar--collapsed {
-      @apply lg:w-sidebar-collapsed lg:bg-none;
+      @apply xl:w-sidebar-collapsed xl:bg-none;
     }
 
     .app-sidebar--expanded {
-      @apply w-sidebar lg:w-sidebar;
+      @apply w-sidebar xl:w-sidebar;
       background-image: url("/assets/img.png");
       background-size: var(--width-sidebar) 100%;
       background-position: left top;
@@ -60,7 +60,7 @@
     }
 
     .app-sidebar__toggle {
-      @apply hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x lg:flex;
+      @apply hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex;
     }
 
     .app-sidebar__toggle-icon {
@@ -124,7 +124,7 @@
     }
 
     .app-sidebar__overlay {
-      @apply fixed inset-0 z-40 bg-black/40 lg:hidden;
+      @apply fixed inset-0 z-40 bg-black/40 xl:hidden;
     }
 
     .nav-chevron {

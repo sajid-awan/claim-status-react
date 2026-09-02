@@ -20,6 +20,7 @@ export interface GatherInfoFormData {
   timelyFilingLimit: string;
   additionalNotes: string;
   files: string;
+  linkedDocuments: string[];
   faxFrom: string;
   faxTo: string;
   faxRows: FaxRow[];

@@ -1,7 +1,7 @@
 @layer components {
   .claim-status-app {
     .workflow-progress {
-      @apply flex shrink-0 px-4 py-4 sm:py-6 lg:pr-3;
+      @apply flex shrink-0 px-4 py-4 max-lg:px-3 sm:py-6 lg:pr-3;
     }
 
     .workflow-step {
@@ -58,19 +58,23 @@
     }
 
     .workflow-header {
-      @apply shrink-0 px-4;
+      @apply shrink-0 px-4 max-lg:px-3;
     }
 
     .workflow-header__bar {
-      @apply flex h-11 shrink-0 items-center justify-between gap-2 border-b border-border-tertiary px-2 py-2 pr-3 max-lg:px-2 lg:px-0 lg:pr-3;
+      @apply flex h-11 shrink-0 items-center justify-between gap-2 border-b border-border-tertiary py-2 max-lg:px-0 lg:px-0 lg:pr-3;
+    }
+
+    .workflow-header__context-btn {
+      @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-surface-gray-200 bg-surface-white text-ink-muted lg:hidden;
     }
 
     .workflow-footer {
-      @apply shrink-0 px-4;
+      @apply shrink-0 px-4 max-lg:px-3;
     }
 
     .workflow-footer__bar {
-      @apply flex shrink-0 items-center justify-end border-t border-surface-gray-200 bg-surface-white px-3 py-3 max-lg:px-3 sm:py-3.5 lg:px-0 lg:pr-3 lg:py-3.5;
+      @apply flex shrink-0 items-center justify-end border-t border-surface-gray-200 bg-surface-white py-3 max-lg:px-0 sm:py-3.5 lg:px-0 lg:pr-3 lg:py-3.5;
     }
 
     .workflow-header__leading {
@@ -86,7 +90,7 @@
     }
 
     .workflow-header__title {
-      @apply truncate text-lg font-medium leading-6 text-ink sm:text-title-sm;
+      @apply truncate text-base font-medium leading-6 text-ink sm:text-lg sm:leading-6 lg:text-title-sm;
     }
 
     .workflow-step-content--spaced {

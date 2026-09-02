@@ -40,6 +40,7 @@ export {
   Paperclip,
   PaperPlaneTilt,
   Link,
+  List,
   UploadSimple,
   PhoneCall,
   PhoneIncoming,

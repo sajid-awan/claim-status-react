@@ -1,14 +1,19 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { SidebarSimple, X } from "@/components/icons";
+import { useEffect, type ReactNode } from "react";
+import { X } from "@/components/icons";
 
 interface ClaimStatusLayoutProps {
   contextual: ReactNode;
   workflow: ReactNode;
+  isContextualOpen: boolean;
+  onContextualOpenChange: (open: boolean) => void;
 }
 
-export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutProps) {
-  const [isContextualOpen, setIsContextualOpen] = useState(false);
-
+export function ClaimStatusLayout({
+  contextual,
+  workflow,
+  isContextualOpen,
+  onContextualOpenChange,
+}: ClaimStatusLayoutProps) {
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isContextualOpen);
     return () => document.body.classList.remove("overflow-hidden");
@@ -16,15 +21,6 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
 
   return (
     <div className="claim-status-layout">
-      <button
-        type="button"
-        onClick={() => setIsContextualOpen(true)}
-        aria-label="Open claim details"
-        className="claim-status-layout__open-btn"
-      >
-        <SidebarSimple size={16} weight="regular" />
-      </button>
-
       <div
         className={`claim-status-layout__contextual ${
           isContextualOpen ? "claim-status-layout__contextual--open" : ""
@@ -33,7 +29,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
         <div className="claim-status-layout__contextual-inner">{contextual}</div>
         <button
           type="button"
-          onClick={() => setIsContextualOpen(false)}
+          onClick={() => onContextualOpenChange(false)}
           aria-label="Close claim details"
           className="claim-status-layout__close-btn"
         >

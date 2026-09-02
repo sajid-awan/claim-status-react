@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { ClaimStatusLayout } from "@/components/claim-status/ClaimStatusLayout";
 import { ContextualPanel } from "@/components/claim-status/contextual/ContextualPanel";
 import { WorkflowPanel } from "@/components/claim-status/workflow/WorkflowPanel";
@@ -22,6 +24,7 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
     goToNextStep,
     goToPreviousStep,
   } = useClaimStatus(claim);
+  const [isContextualOpen, setIsContextualOpen] = useState(false);
 
   return (
     <div className="claim-status-page">
@@ -37,6 +40,8 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
 
       <div className="claim-status-page__card">
         <ClaimStatusLayout
+          isContextualOpen={isContextualOpen}
+          onContextualOpenChange={setIsContextualOpen}
           contextual={
             <ContextualPanel activeContext={activeContext} onChangeContext={setActiveContext} />
           }
@@ -50,6 +55,7 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
               onNext={goToNextStep}
               onBack={isFirstStep ? () => onClose?.() : goToPreviousStep}
               onClose={onClose}
+              onOpenContext={() => setIsContextualOpen(true)}
             />
           }
         />

@@ -25,6 +25,7 @@ export const defaultGatherInfoData: GatherInfoFormData = {
   timelyFilingLimit: "12",
   additionalNotes: "Test",
   files: "No file attached",
+  linkedDocuments: [],
   faxFrom: "(478) 675-6688",
   faxTo: "(321) 558-9668",
   faxRows: [
@@ -65,6 +66,13 @@ export function getVerifyRows(data: GatherInfoFormData): InfoRowData[] {
     },
     { label: "What is the timely filing limit?", value: data.timelyFilingLimit || "—" },
     { label: "Additional Claim Status Notes", value: data.additionalNotes || "—" },
-    { label: "Files", value: data.files || "No file attached" },
+    { label: "Files", value: formatGatherFiles(data) },
   ];
+}
+
+function formatGatherFiles(data: GatherInfoFormData): string {
+  const parts: string[] = [];
+  if (data.files && data.files !== "No file attached") parts.push(data.files);
+  parts.push(...data.linkedDocuments);
+  return parts.length > 0 ? parts.join(", ") : "No file attached";
 }

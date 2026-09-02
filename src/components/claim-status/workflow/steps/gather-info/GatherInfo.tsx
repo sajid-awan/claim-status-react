@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Link, UploadSimple } from "@/components/icons";
 
@@ -26,11 +26,77 @@ const resubmitOptions = [
   { id: "email", label: "Email" },
 ] as const;
 
+const MAX_FILE_SIZE_MB = 10;
+const ACCEPTED_FILE_TYPES = ".pdf,.doc,.docx,.jpg,.jpeg,.png,.tif,.tiff";
+
+function validateFile(file: File): string | null {
+  if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+    return `"${file.name}" exceeds ${MAX_FILE_SIZE_MB} MB.`;
+  }
+  return null;
+}
+
 export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const linkInputRef = useRef<HTMLInputElement>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   function updateField<K extends keyof GatherInfoFormData>(field: K, value: GatherInfoFormData[K]) {
     onChange({ ...data, [field]: value });
+  }
+
+  function handleUploadChange(file: File | undefined) {
+    if (!file) return;
+
+    const error = validateFile(file);
+    if (error) {
+      setUploadError(error);
+      return;
+    }
+
+    setUploadError(null);
+    updateField("files", file.name);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
+  function handleLinkDocumentsChange(fileList: FileList | null) {
+    if (!fileList?.length) return;
+
+    const nextLinked = [...data.linkedDocuments];
+    let error: string | null = null;
+
+    for (const file of Array.from(fileList)) {
+      const validationError = validateFile(file);
+      if (validationError) {
+        error = validationError;
+        break;
+      }
+      if (!nextLinked.includes(file.name)) {
+        nextLinked.push(file.name);
+      }
+    }
+
+    if (error) {
+      setUploadError(error);
+    } else {
+      setUploadError(null);
+      updateField("linkedDocuments", nextLinked);
+    }
+
+    if (linkInputRef.current) linkInputRef.current.value = "";
+  }
+
+  function removeLinkedDocument(name: string) {
+    updateField(
+      "linkedDocuments",
+      data.linkedDocuments.filter((doc) => doc !== name),
+    );
+  }
+
+  function clearUpload() {
+    setUploadError(null);
+    updateField("files", "No file attached");
+    if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
   function addFaxRow() {
@@ -46,6 +112,8 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
       faxRows: data.faxRows.map((row) => (row.id === id ? { ...row, [field]: value } : row)),
     });
   }
+
+  const hasUploadedFile = data.files !== "No file attached";
 
   return (
     <WorkflowStepShell>
@@ -206,29 +274,66 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             />
           </FormField>
 
-          <input
-            ref={fileInputRef}
-            id="gather-info-upload"
-            type="file"
-            className="sr-only"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              updateField("files", file?.name ?? "No file attached");
-              if (fileInputRef.current) fileInputRef.current.value = "";
-            }}
-          />
-          <label htmlFor="gather-info-upload" className="upload-zone">
-            <UploadSimple size={18} weight="bold" />
-            Upload File
-          </label>
-          {data.files && data.files !== "No file attached" ? (
-            <p className="upload-filename">{data.files}</p>
-          ) : null}
+          <FormField label="Attachments">
+            <div className="upload-stack">
+              <input
+                ref={fileInputRef}
+                id="gather-info-upload"
+                type="file"
+                accept={ACCEPTED_FILE_TYPES}
+                className="sr-only"
+                onChange={(e) => handleUploadChange(e.target.files?.[0])}
+              />
+              <label htmlFor="gather-info-upload" className="upload-zone">
+                <UploadSimple size={18} weight="bold" />
+                Upload File
+              </label>
 
-          <button type="button" className="upload-zone upload-zone--link">
-            <Link size={18} weight="bold" />
-            Link Documents
-          </button>
+              <input
+                ref={linkInputRef}
+                id="gather-info-link"
+                type="file"
+                accept={ACCEPTED_FILE_TYPES}
+                multiple
+                className="sr-only"
+                onChange={(e) => handleLinkDocumentsChange(e.target.files)}
+              />
+              <label htmlFor="gather-info-link" className="upload-zone upload-zone--link">
+                <Link size={18} weight="bold" />
+                Link Documents
+              </label>
+            </div>
+
+            {uploadError ? <p className="upload-error">{uploadError}</p> : null}
+
+            {hasUploadedFile ? (
+              <ul className="upload-list">
+                <li className="upload-list__item">
+                  <span className="upload-list__name">{data.files}</span>
+                  <button type="button" onClick={clearUpload} className="upload-list__remove">
+                    Remove
+                  </button>
+                </li>
+              </ul>
+            ) : null}
+
+            {data.linkedDocuments.length > 0 ? (
+              <ul className="upload-list">
+                {data.linkedDocuments.map((name) => (
+                  <li key={name} className="upload-list__item">
+                    <span className="upload-list__name">{name}</span>
+                    <button
+                      type="button"
+                      onClick={() => removeLinkedDocument(name)}
+                      className="upload-list__remove"
+                    >
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </FormField>
         </WorkflowStepContent>
       </WorkflowStepScroll>
       <GatherInfoFooter onContinue={onNext} />
