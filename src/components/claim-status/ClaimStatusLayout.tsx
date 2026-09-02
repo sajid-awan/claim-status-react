@@ -15,7 +15,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
         type="button"
         onClick={() => setIsContextualOpen(true)}
         aria-label="Open claim details"
-        className="absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-lg border border-surface-gray-200 bg-white text-ink-muted md:hidden"
+        className="absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-lg border border-surface-gray-200 bg-surface-white text-ink-muted md:hidden"
       >
         <SidebarSimple size={16} weight="regular" />
       </button>
@@ -30,7 +30,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       />
 
       <div
-        className={`order-3 min-w-0 max-lg:overflow-visible max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-[598px] lg:shrink-0 lg:flex-none lg:overflow-hidden lg:px-0 ${
+        className={`order-3 min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-contextual lg:shrink-0 lg:flex-none lg:overflow-hidden lg:px-0 ${
           isContextualOpen ? "absolute inset-0 z-40 flex flex-col" : "hidden"
         }`}
       >
@@ -41,7 +41,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
           type="button"
           onClick={() => setIsContextualOpen(false)}
           aria-label="Close claim details"
-          className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-white text-ink-muted md:hidden"
+          className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-surface-white text-ink-muted md:hidden"
         >
           <X size={16} />
         </button>

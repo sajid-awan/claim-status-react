@@ -7,7 +7,7 @@ interface ClaimTimelineProps {
 
 export function ClaimTimeline({ activities }: ClaimTimelineProps) {
   if (activities.length === 0) {
-    return <p className="px-4 py-6 text-sm text-gray-400">No activity recorded for this claim yet.</p>;
+    return <p className="px-4 py-6 text-body-sm text-ink-muted">No activity recorded for this claim yet.</p>;
   }
 
   return (

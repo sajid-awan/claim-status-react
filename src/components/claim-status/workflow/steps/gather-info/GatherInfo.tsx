@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
@@ -28,6 +29,8 @@ const resubmitOptions = [
 ] as const;
 
 export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   function updateField<K extends keyof GatherInfoFormData>(field: K, value: GatherInfoFormData[K]) {
     onChange({ ...data, [field]: value });
   }
@@ -224,22 +227,27 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             />
           </FormField>
 
-          <label className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-[15px] font-normal text-brand-500 transition-colors hover:border-brand-500 hover:bg-brand-50/40">
+          <label className="upload-zone">
             <UploadSimple size={18} weight="bold" />
             Upload File
             <input
+              ref={fileInputRef}
               type="file"
               className="sr-only"
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 updateField("files", file?.name ?? "No file attached");
+                if (fileInputRef.current) fileInputRef.current.value = "";
               }}
             />
           </label>
+          {data.files && data.files !== "No file attached" ? (
+            <p className="upload-zone__filename">{data.files}</p>
+          ) : null}
 
           <button
             type="button"
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-[15px] font-normal text-link transition-colors hover:border-link hover:bg-link-bg/40"
+            className="flex h-field w-full items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-body-md font-normal text-link transition-colors hover:border-link hover:bg-link-bg/40"
           >
             <Link size={18} weight="bold" />
             Link Documents

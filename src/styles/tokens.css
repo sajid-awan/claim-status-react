@@ -1,0 +1,100 @@
+@theme {
+  /* Brand */
+  --color-brand-50: #fff4e8;
+  --color-brand-100: #fff4e8;
+  --color-brand-200: #ffd9b3;
+  --color-brand-300: #ffbc80;
+  --color-brand-400: #ffa04d;
+  --color-brand-500: #ff851f;
+  --color-brand-600: #e67412;
+  --color-brand-700: #c25f0c;
+  --color-brand-800: #9e4b0a;
+  --color-brand-900: #7a3a08;
+
+  /* Ink & text */
+  --color-ink: #231f20;
+  --color-ink-muted: #726f6d;
+  --color-ink-subtle: rgba(35, 31, 32, 0.56);
+  --color-placeholder: #b6b4b5;
+
+  /* Surfaces */
+  --color-surface-page: #f9f9f9;
+  --color-surface-body: #fafafa;
+  --color-surface-cream: #fffaf5;
+  --color-surface-gray-100: #f3f6fa;
+  --color-surface-gray-200: #e9eaeb;
+  --color-surface-white: #ffffff;
+
+  /* Borders */
+  --color-border-secondary: #cac9c9;
+  --color-border-tertiary: #d5d7da;
+  --color-border-primary: #a7a5a6;
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Semantic */
+  --color-success: #2db084;
+  --color-success-light: #effaf5;
+  --color-link: #2463eb;
+  --color-link-bg: #dbeafe;
+  --color-step-inactive: #d3d2d2;
+  --color-scrollbar: #d4d6db;
+  --color-scrollbar-hover: #b7bac2;
+
+  /* Tab track */
+  --color-tab-track-border: rgba(35, 31, 32, 0.03);
+  --color-tab-track-bg: rgba(35, 31, 32, 0.02);
+
+  /* Typography sizes */
+  --text-body-sm: 0.875rem;
+  --text-body-md: 0.9375rem;
+  --text-title-sm: 1.25rem;
+
+  /* Line heights */
+  --leading-compact: 0.875rem;
+  --leading-tight: 1.0625rem;
+  --leading-body: 1.3125rem;
+  --leading-nav: 1.40625rem;
+
+  /* Spacing tokens */
+  --spacing-chip-x: 0.5625rem;
+  --spacing-chip-y: 0.4375rem;
+  --spacing-tab-x: 0.5625rem;
+  --spacing-tab-y: 0.3125rem;
+  --spacing-dot: 0.21875rem;
+
+  /* Layout */
+  --width-contextual: 598px;
+  --width-sidebar: 266px;
+  --height-nav: 2.125rem;
+  --height-field: 2.75rem;
+  --height-button: 2.5rem;
+  --radius-card: 1.125rem;
+  --radius-panel: 0.75rem;
+
+  /* Shadow */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --primary-color: var(--color-brand-500);
+  --primary-color-text: #ffffff;
+  --primary-50: var(--color-brand-50);
+  --primary-100: var(--color-brand-100);
+  --primary-200: var(--color-brand-200);
+  --primary-300: var(--color-brand-300);
+  --primary-400: var(--color-brand-400);
+  --primary-500: var(--color-brand-500);
+  --primary-600: var(--color-brand-600);
+  --primary-700: var(--color-brand-700);
+  --primary-800: var(--color-brand-800);
+  --primary-900: var(--color-brand-900);
+  --focus-ring: 0 0 0 0.2rem var(--color-brand-200);
+  --highlight-bg: var(--color-brand-50);
+  --highlight-text-color: var(--color-brand-700);
+  --surface-ground: var(--color-surface-page);
+  --text-color: var(--color-ink);
+  --text-color-secondary: var(--color-ink-muted);
+  --surface-border: var(--color-surface-gray-200);
+}

@@ -217,7 +217,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
             onClick={() => setIsCollapsed((prev) => !prev)}
             aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
             aria-expanded={!isCollapsed}
-            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#fafafa] bg-[#fafafa] p-[9px] xl:flex"
+            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex"
           >
             <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-[17px] w-[18px]" />
           </button>

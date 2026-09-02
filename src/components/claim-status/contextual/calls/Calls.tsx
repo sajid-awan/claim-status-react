@@ -11,20 +11,20 @@ export function Calls() {
         <SectionTitle title="Call Log" />
         <ul className="flex flex-col gap-2">
           {callLog.map((call) => (
-            <li key={call.id} className="rounded-md border border-gray-100 bg-white p-3 shadow-sm">
+            <li key={call.id} className="contextual-note">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   {call.direction === "Inbound" ? (
-                    <PhoneIncoming size={14} className="text-emerald-500" />
+                    <PhoneIncoming size={14} className="text-success" />
                   ) : (
                     <PhoneOutgoing size={14} className="text-brand-500" />
                   )}
-                  <span className="text-sm font-medium text-gray-800">{call.caller}</span>
+                  <span className="contextual-card__title">{call.caller}</span>
                 </div>
-                <span className="text-xs text-gray-400">{call.duration}</span>
+                <span className="contextual-card__meta">{call.duration}</span>
               </div>
-              <p className="mt-1 text-xs text-gray-400">{call.date}</p>
-              <p className="mt-1.5 text-sm text-gray-600">{call.notes}</p>
+              <p className="mt-1 contextual-card__meta">{call.date}</p>
+              <p className="mt-1.5 text-body-sm text-ink-muted">{call.notes}</p>
             </li>
           ))}
         </ul>

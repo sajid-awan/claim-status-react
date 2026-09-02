@@ -28,12 +28,10 @@ export function Fax() {
 
         <div>
           <SectionTitle title="Cover Note" />
-          <p className="rounded-md border border-gray-100 bg-white p-3 text-sm text-gray-600 shadow-sm">
-            {faxSummary.coverNote}
-          </p>
+          <p className="contextual-note">{faxSummary.coverNote}</p>
         </div>
 
-        <SecondaryButton icon={<Printer size={15} />} className="self-start">
+        <SecondaryButton icon={<Printer size={18} />} iconPosition="left" className="self-start">
           Resend Fax
         </SecondaryButton>
       </div>

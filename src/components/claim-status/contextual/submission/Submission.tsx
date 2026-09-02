@@ -29,15 +29,12 @@ export function Submission() {
           <SectionTitle title="Submission Attempts" />
           <ul className="flex flex-col gap-2">
             {submissionAttempts.map((attempt) => (
-              <li
-                key={attempt.id}
-                className="flex items-center justify-between rounded-md border border-gray-100 bg-white px-3 py-2.5 shadow-sm"
-              >
+              <li key={attempt.id} className="contextual-card">
                 <div className="flex items-center gap-2.5">
-                  <PaperPlaneTilt size={14} className="text-gray-400" />
+                  <PaperPlaneTilt size={14} className="text-ink-muted" />
                   <div>
-                    <p className="text-sm font-medium text-gray-800">{attempt.method}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="contextual-card__title">{attempt.method}</p>
+                    <p className="contextual-card__meta">
                       {attempt.date} &middot; {attempt.confirmationNumber}
                     </p>
                   </div>

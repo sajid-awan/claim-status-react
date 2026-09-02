@@ -11,12 +11,9 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-brand-500 text-white border border-brand-500 hover:bg-brand-600 hover:border-brand-600 disabled:bg-brand-200 disabled:border-brand-200",
-  secondary:
-    "bg-white text-ink border border-border-tertiary hover:bg-surface-page disabled:text-ink/40 disabled:bg-surface-page",
-  ghost:
-    "bg-transparent text-ink-muted border border-transparent hover:bg-surface-page disabled:text-border-secondary",
+  primary: "btn btn--primary",
+  secondary: "btn btn--secondary",
+  ghost: "btn btn--ghost",
 };
 
 export function Button({
@@ -29,6 +26,9 @@ export function Button({
   type = "button",
   ...rest
 }: BaseButtonProps) {
+  const iconLeft = icon && iconPosition === "left";
+  const iconRight = icon && iconPosition === "right";
+
   return (
     <PrimeButton
       unstyled
@@ -36,14 +36,14 @@ export function Button({
       disabled={disabled}
       pt={{
         root: {
-          className: `inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed ${variantClasses[variant]} ${className}`,
+          className: `${variantClasses[variant]} ${iconLeft ? "btn--icon-left" : ""} ${className}`.trim(),
         },
       }}
       {...rest}
     >
-      {icon && iconPosition === "left" && <span className="flex items-center">{icon}</span>}
+      {iconLeft ? <span className="btn__icon">{icon}</span> : null}
       {children}
-      {icon && iconPosition === "right" && <span className="flex items-center">{icon}</span>}
+      {iconRight ? <span className="btn__icon">{icon}</span> : null}
     </PrimeButton>
   );
 }

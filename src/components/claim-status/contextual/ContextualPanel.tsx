@@ -1,7 +1,6 @@
-import { useState } from "react";
-
 import { ContextualNavigation } from "@/components/claim-status/contextual/ContextualNavigation";
 import { ContextualContent } from "@/components/claim-status/contextual/ContextualContent";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Tabs } from "@/components/ui/Tabs";
 import type { ContextualTabId, QuickContextTabId } from "@/types/workflow";
 
@@ -16,8 +15,19 @@ const quickTabs: { id: QuickContextTabId; label: string }[] = [
   { id: "fax", label: "Fax" },
 ];
 
+const sectionTitles: Partial<Record<ContextualTabId, string>> = {
+  documents: "Documents",
+  users: "Users",
+  calls: "Calls",
+};
+
+function isQuickTab(id: ContextualTabId): id is QuickContextTabId {
+  return id === "claim-action" || id === "submission" || id === "fax";
+}
+
 export function ContextualPanel({ activeContext, onChangeContext }: ContextualPanelProps) {
-  const [quickTab, setQuickTab] = useState<QuickContextTabId>("claim-action");
+  const showQuickTabs = isQuickTab(activeContext);
+  const sectionTitle = sectionTitles[activeContext];
 
   return (
     <section
@@ -26,12 +36,20 @@ export function ContextualPanel({ activeContext, onChangeContext }: ContextualPa
     >
       <ContextualNavigation activeContext={activeContext} onChange={onChangeContext} />
 
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col max-lg:overflow-visible md:border-l md:border-surface-gray-200 md:py-3 md:pl-3 lg:overflow-hidden">
-        <div className="mb-2 shrink-0 overflow-x-auto pt-2 max-lg:px-0 md:pt-0">
-          <Tabs items={quickTabs} activeId={quickTab} onChange={setQuickTab} />
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:border-l md:border-surface-gray-200 md:py-3 md:pl-3">
+        <div className="mb-2 shrink-0 pt-2 md:pt-0">
+          {showQuickTabs ? (
+            <Tabs
+              items={quickTabs}
+              activeId={activeContext}
+              onChange={(id) => onChangeContext(id)}
+            />
+          ) : sectionTitle ? (
+            <SectionTitle title={sectionTitle} className="mb-0 px-1" />
+          ) : null}
         </div>
 
-        <ContextualContent quickTab={quickTab} />
+        <ContextualContent activeContext={activeContext} />
       </div>
     </section>
   );

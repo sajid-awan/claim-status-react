@@ -12,7 +12,7 @@ function App() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-surface-page md:h-auto md:overflow-y-auto lg:h-screen lg:overflow-hidden">
+    <div className="claim-status-app flex h-screen overflow-hidden bg-surface-page md:h-auto md:overflow-y-auto lg:h-screen lg:overflow-hidden">
       <AppSidebar
         mobileOpen={isMobileSidebarOpen}
         onMobileClose={() => setIsMobileSidebarOpen(false)}

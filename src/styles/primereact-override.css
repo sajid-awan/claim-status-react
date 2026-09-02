@@ -1,0 +1,133 @@
+@layer components {
+  .claim-status-app .gather-field {
+    @apply h-field w-full rounded-lg px-3 text-body-md font-normal leading-normal text-ink;
+  }
+
+  .claim-status-app .gather-field::placeholder {
+    @apply text-placeholder;
+  }
+
+  .claim-status-app .gather-textarea {
+    @apply w-full rounded-lg px-3 py-2.5 text-body-md font-normal leading-normal text-ink;
+  }
+
+  .claim-status-app .gather-textarea::placeholder {
+    @apply text-placeholder;
+  }
+
+  .claim-status-app .gather-dropdown {
+    @apply flex h-field w-full items-center rounded-lg border border-border-tertiary bg-surface-white text-body-md font-normal leading-normal text-ink;
+  }
+
+  .claim-status-app .gather-dropdown .p-dropdown-label {
+    @apply flex h-full min-w-0 flex-1 items-center px-3 text-body-md;
+  }
+
+  .claim-status-app .gather-dropdown .p-dropdown-label.p-placeholder {
+    @apply text-placeholder;
+  }
+
+  .claim-status-app .gather-dropdown .p-dropdown-trigger {
+    @apply flex w-10 shrink-0 items-center justify-center text-ink-muted;
+  }
+
+  .claim-status-app .gather-radio-group {
+    @apply flex flex-wrap items-center gap-3 sm:gap-5;
+  }
+
+  .claim-status-app .gather-radio {
+    @apply inline-flex size-4 shrink-0 items-center justify-center align-middle;
+  }
+
+  .claim-status-app .gather-radio .p-radiobutton-box,
+  .claim-status-app .gather-radio .p-radiobutton-input {
+    @apply size-4;
+  }
+
+  .claim-status-app .gather-radio .p-radiobutton-icon {
+    @apply size-2;
+  }
+
+  .claim-status-app .gather-checkbox .p-checkbox-box {
+    @apply size-4 rounded border-border-tertiary;
+  }
+
+  .claim-status-app .gather-checkbox.p-highlight .p-checkbox-box {
+    @apply border-brand-500 bg-brand-500;
+  }
+
+  .claim-status-app .gather-calendar {
+    @apply flex h-field w-full max-w-full items-stretch overflow-hidden rounded-lg border border-border-tertiary bg-surface-white text-body-md;
+  }
+
+  .claim-status-app .gather-calendar .p-inputtext {
+    @apply h-field min-w-0 flex-1 rounded-none border-0 bg-transparent px-3 text-body-md font-normal leading-normal text-ink shadow-none;
+  }
+
+  .claim-status-app .gather-calendar .p-datepicker-trigger {
+    @apply h-field w-10 shrink-0 rounded-none border-0 border-l border-border-tertiary bg-transparent text-ink-muted shadow-none;
+  }
+
+  /* Hover states */
+  .claim-status-app .p-inputtext:enabled:hover,
+  .claim-status-app .p-dropdown:not(.p-disabled):hover,
+  .claim-status-app .p-inputtextarea:enabled:hover {
+    @apply border-brand-500;
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled):hover,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:hover),
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover),
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+    @apply border-brand-500;
+  }
+
+  .claim-status-app .p-calendar .p-inputtext:enabled:hover,
+  .claim-status-app .p-calendar .p-inputtext:enabled:focus {
+    @apply border-transparent shadow-none;
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled):hover .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:hover) .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover) .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus .p-datepicker-trigger,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) .p-datepicker-trigger {
+    @apply border-l-brand-500;
+  }
+
+  /* Focus states */
+  .claim-status-app .p-inputtext:enabled:focus,
+  .claim-status-app .p-dropdown:not(.p-disabled).p-focus,
+  .claim-status-app .p-inputtextarea:enabled:focus {
+    @apply border-brand-500 outline-none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .claim-status-app .p-calendar:not(.p-disabled).p-focus,
+  .claim-status-app .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+    @apply border-brand-500 outline-none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .claim-status-app .p-calendar .p-inputtext:enabled:focus {
+    @apply shadow-none;
+  }
+
+  /* Radio & checkbox highlight */
+  .claim-status-app .p-radiobutton.p-highlight .p-radiobutton-box {
+    @apply border-brand-500 bg-brand-500;
+  }
+
+  .claim-status-app .p-radiobutton:not(.p-disabled):has(.p-radiobutton-input:hover) .p-radiobutton-box {
+    @apply border-brand-500;
+  }
+
+  .claim-status-app .p-checkbox.p-highlight .p-checkbox-box {
+    @apply border-brand-500 bg-brand-500;
+  }
+
+  .claim-status-app .p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+    @apply border-brand-500;
+  }
+}

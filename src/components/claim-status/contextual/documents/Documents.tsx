@@ -11,15 +11,12 @@ export function Documents() {
         <SectionTitle title={`Attached Documents (${claimDocuments.length})`} />
         <ul className="flex flex-col gap-2">
           {claimDocuments.map((doc) => (
-            <li
-              key={doc.id}
-              className="flex items-center justify-between rounded-md border border-gray-100 bg-white px-3 py-2.5 shadow-sm"
-            >
+            <li key={doc.id} className="contextual-card">
               <div className="flex min-w-0 items-center gap-2.5">
                 <FileText size={16} className="shrink-0 text-brand-500" />
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-gray-800">{doc.name}</p>
-                  <p className="text-xs text-gray-400">
+                  <p className="contextual-card__title">{doc.name}</p>
+                  <p className="contextual-card__meta">
                     {doc.size} &middot; Uploaded {doc.uploadedOn} by {doc.uploadedBy}
                   </p>
                 </div>
@@ -27,7 +24,7 @@ export function Documents() {
               <button
                 type="button"
                 aria-label={`Download ${doc.name}`}
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                className="contextual-card__icon-btn"
               >
                 <Download size={15} />
               </button>
