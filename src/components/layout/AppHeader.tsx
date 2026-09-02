@@ -8,7 +8,7 @@ interface AppHeaderProps {
 
 export function AppHeader({ onOpenSidebar }: AppHeaderProps) {
   return (
-    <header className="flex h-[var(--height-header)] w-full min-w-0 shrink-0 items-center gap-2 overflow-hidden border-b border-[var(--color-border-hairline)] bg-white px-3 sm:gap-3 sm:px-5">
+    <header className="flex h-header w-full min-w-0 shrink-0 items-center gap-2 overflow-hidden border-b border-border-hairline bg-white px-3 sm:gap-3 sm:px-5">
       <div className="flex min-w-0 items-center gap-2 xl:hidden">
         <button
           type="button"

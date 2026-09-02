@@ -24,7 +24,7 @@ export interface ChipProps {
 
 const sizeClasses: Record<ChipSize, string> = {
   sm: "gap-1 px-2.5 py-1 text-xs",
-  md: "min-h-7 gap-1 px-[var(--spacing-chip-x)] py-[var(--spacing-chip-y)] text-body-sm leading-compact",
+  md: "min-h-7 gap-1 px-[var(--spacing-chip-x)] py-[var(--spacing-chip-y)] text-body-sm leading-snug",
 };
 
 const radiusClasses: Record<ChipRadius, string> = {
@@ -59,7 +59,7 @@ export function Chip({
 
   return (
     <span
-      className={`inline-flex w-fit max-w-full items-center whitespace-nowrap ${sizeClasses[size]} ${radiusClasses[radius]} ${highlightClass} ${className}`.trim()}
+      className={`inline-flex w-fit max-w-full items-center overflow-visible whitespace-nowrap ${sizeClasses[size]} ${radiusClasses[radius]} ${highlightClass} ${className}`.trim()}
     >
       {icon}
       <span>{label}</span>

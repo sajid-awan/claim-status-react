@@ -84,7 +84,7 @@ function TreeGuide({ isLast }: { isLast: boolean }) {
       src={isLast ? "/assets/icons/tree-l.svg" : "/assets/icons/tree-full.svg"}
       alt=""
       aria-hidden
-      className="block h-[34px] w-[17px] shrink-0"
+      className="block h-nav w-[17px] shrink-0"
     />
   );
 }
@@ -122,14 +122,14 @@ function NavSubTree({
         const isLast = index === flatItems.length - 1;
 
         return (
-          <li key={child.label} className="flex h-[34px] items-center">
+          <li key={child.label} className="flex h-nav items-center">
             <TreeGuide isLast={isLast} />
             <button
               type="button"
               onClick={() =>
                 (child.expandable || child.children?.length) && onToggleLeaf(child.label)
               }
-              className={`flex h-[34px] min-w-0 flex-1 cursor-pointer items-center truncate rounded px-2 text-left text-sm font-medium leading-[22.5px] transition-colors ${
+              className={`flex h-nav min-w-0 flex-1 cursor-pointer items-center truncate rounded px-2 text-left text-sm font-medium leading-nav transition-colors ${
                 child.active ? "text-brand-500" : "text-ink-muted hover:text-ink"
               }`}
             >
@@ -190,12 +190,12 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
 
       <nav
         aria-label="Application navigation"
-        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-black/[0.04] bg-white ${appScrollClassName} transition-[width,transform] duration-200 ease-in-out xl:static xl:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white ${appScrollClassName} transition-[width,transform] duration-200 ease-in-out xl:static xl:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         } xl:block ${
           isCollapsed
             ? "xl:w-[72px] xl:bg-none"
-            : "w-[266px] bg-[url('/assets/img.png')] bg-size-[266px_100%] bg-left-top bg-no-repeat xl:w-[266px]"
+            : "w-sidebar bg-[url('/assets/img.png')] bg-size-[length:var(--width-sidebar)_100%] bg-left-top bg-no-repeat xl:w-sidebar"
         }`}
       >
         <div
@@ -237,7 +237,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
                     onClick={() => handleSectionClick(item)}
                     title={showExpanded ? undefined : item.label}
                     aria-label={item.label}
-                    className={`flex h-[34px] w-full cursor-pointer items-center rounded-lg text-sm font-medium leading-[22.5px] transition-colors ${
+                    className={`flex h-nav w-full cursor-pointer items-center rounded-lg text-sm font-medium leading-nav transition-colors ${
                       showExpanded ? "gap-2.5 p-2 text-left" : "justify-center px-0"
                     } ${
                       isSectionActive ? "text-brand-500" : "text-ink-muted hover:text-ink"

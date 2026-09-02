@@ -24,7 +24,7 @@ function StepCircle({ status }: { status: WorkflowStepStatus }) {
   if (status === "completed") {
     return (
       <span className={`${baseClass} bg-brand-500`} aria-hidden="true">
-        <Check size={12} weight="bold" className="text-white" />
+        <Check size={14} weight="bold" className="text-white" />
       </span>
     );
   }
@@ -74,7 +74,7 @@ function StepTrack({
 
 export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgressProps) {
   return (
-    <ol className="flex shrink-0 px-1 py-4 sm:px-2 sm:py-6 lg:pl-0 lg:pr-3">
+    <ol className="flex shrink-0 px-4 py-4 sm:py-6 lg:pr-3">
       {workflowSteps.map((step, index) => {
         const status = statusFor(step.id, currentStep, completedSteps);
         const isFirst = index === 0;

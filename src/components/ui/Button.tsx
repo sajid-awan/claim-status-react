@@ -11,7 +11,9 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-  "inline-flex h-[var(--height-button)] cursor-pointer items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed";
+  "inline-flex h-[var(--height-button)] cursor-pointer items-center justify-center gap-2.5 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed";
+
+const iconWrapperClass = "flex size-5 shrink-0 items-center justify-center";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -42,14 +44,14 @@ export function Button({
       disabled={disabled}
       pt={{
         root: {
-          className: `${baseClasses} ${variantClasses[variant]} ${iconLeft ? "justify-start" : ""} ${className}`.trim(),
+          className: `${baseClasses} ${variantClasses[variant]} ${iconLeft ? "justify-start pl-3" : ""} ${className}`.trim(),
         },
       }}
       {...rest}
     >
-      {iconLeft ? <span className="flex shrink-0 items-center">{icon}</span> : null}
+      {iconLeft ? <span className={iconWrapperClass}>{icon}</span> : null}
       {children}
-      {iconRight ? <span className="flex shrink-0 items-center">{icon}</span> : null}
+      {iconRight ? <span className={iconWrapperClass}>{icon}</span> : null}
     </PrimeButton>
   );
 }

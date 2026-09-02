@@ -44,11 +44,11 @@ export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityIte
   return (
     <TimelineItem variant="activity" isLast={isLast}>
       <div className="flex items-center justify-between gap-2">
-        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-dot gap-y-1">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-dot gap-y-1.5">
           <span className="text-body-sm font-medium leading-compact text-ink">{activity.user}</span>
-          <span className="size-1 shrink-0 rounded-full bg-ink-subtle" aria-hidden="true" />
-          <span className="text-xs font-normal leading-3 text-ink-subtle">{activity.timestamp}</span>
-          <ActivityBadge source={activity.source} className="ml-0 md:ml-2.5" />
+          <span className="size-1 shrink-0 self-center rounded-full bg-ink-subtle" aria-hidden="true" />
+          <span className="self-center text-xs font-normal leading-3 text-ink-subtle">{activity.timestamp}</span>
+          <ActivityBadge source={activity.source} className="basis-full md:ml-2.5 md:basis-auto" />
         </div>
         <button
           type="button"

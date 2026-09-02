@@ -170,10 +170,6 @@ src/
 │   │   │   │
 │   │   │   ├── claim-action/
 │   │   │   │   ├── ClaimAction.tsx
-│   │   │   │   ├── ClaimActionTabs.tsx
-│   │   │   │   ├── ActivityTab.tsx
-│   │   │   │   ├── DetailsTab.tsx
-│   │   │   │   ├── HistoryTab.tsx
 │   │   │   │   ├── ClaimTimeline.tsx
 │   │   │   │   └── ClaimActivityItem.tsx
 │   │   │   │
@@ -209,7 +205,6 @@ src/
 │   │           │
 │   │           ├── gather-info/
 │   │           │   ├── GatherInfo.tsx
-│   │           │   ├── GatherInfoFields.tsx
 │   │           │   └── GatherInfoFooter.tsx
 │   │           │
 │   │           ├── verify/
@@ -227,9 +222,23 @@ src/
 │   └── ui/
 │       ├── Button.tsx
 │       ├── Tabs.tsx
+│       ├── Chip.tsx
+│       ├── Breadcrumb.tsx
+│       ├── Timeline.tsx
+│       ├── IconNav.tsx
+│       ├── IconButton.tsx
+│       ├── FormField.tsx
+│       ├── Input.tsx
+│       ├── Select.tsx
+│       ├── Radio.tsx
+│       ├── Textarea.tsx
+│       ├── DatePicker.tsx
 │       ├── InfoCard.tsx
 │       ├── InfoRow.tsx
 │       ├── StatusBadge.tsx
+│       ├── ContextualCard.tsx
+│       ├── ContextualPanelShell.tsx
+│       ├── WorkflowStepShell.tsx
 │       └── ...
 │
 ├── data/
@@ -247,7 +256,14 @@ src/
 │   ├── gatherInfo.ts
 │   └── workflow.ts
 │
-└── index.css
+├── styles/
+│   ├── main.css                 # Tailwind entry (@theme, tokens, base)
+│   ├── main.scss                # PrimeReact override sidecar
+│   ├── abstracts/tokens.css
+│   ├── base/global.css
+│   └── primereact-override.scss
+│
+└── main.tsx
 ```
 
 ---
@@ -293,18 +309,19 @@ PrimeReact components are wrapped or customized where necessary to maintain the 
 
 ### Custom Components
 
-Domain-specific UI remains custom React + Tailwind components.
+Domain-specific UI remains custom React + Tailwind components. Shared UI primitives live in `src/components/ui/`.
 
-Examples:
+**Shared UI primitives**
 
-* `InfoCard`
-* `InfoRow`
-* `StatusBadge`
-* `ClaimTimeline`
-* `ClaimActivityItem`
-* `ContextualNavigation`
-* `ContextualSectionShell`
-* `WorkflowProgress`
+* `Button`, `Tabs`, `Chip`, `Breadcrumb`, `Timeline`, `IconNav`, `IconButton`
+* Form controls: `FormField`, `Input`, `Select`, `Radio`, `Textarea`, `DatePicker`
+* Layout shells: `ContextualPanelShell`, `WorkflowStepShell`, `ContextualCard`
+* Data display: `InfoCard`, `InfoRow`, `StatusBadge`, `SectionTitle`
+
+**Claim-status domain**
+
+* `ClaimTimeline`, `ClaimActivityItem`, `ClaimAction`
+* `ContextualNavigation`, `ContextualSectionShell`, `WorkflowProgress`
 
 This avoids making the application look like a default PrimeReact application.
 
@@ -312,18 +329,22 @@ This avoids making the application look like a default PrimeReact application.
 
 ## Design Tokens
 
-The main design tokens are defined in `src/index.css`.
+Design tokens live in [`src/styles/abstracts/tokens.css`](src/styles/abstracts/tokens.css) and are imported through the Tailwind entry [`src/styles/main.css`](src/styles/main.css). PrimeReact overrides are in [`src/styles/primereact-override.scss`](src/styles/primereact-override.scss).
 
-| Token        | Value     | Usage                             |
-| ------------ | --------- | --------------------------------- |
-| Brand Orange | `#ff851f` | Primary actions and active states |
-| Ink          | `#231F20` | Primary text                      |
-| Ink Muted    | `#726F6D` | Secondary text                    |
-| Placeholder  | `#B6B4B5` | Input placeholders                |
-| Field Height | `44px`    | Inputs and dropdowns              |
-| Card Radius  | `18px`    | Cards and information panels      |
+| Token | CSS variable | Usage |
+| ----- | ------------ | ----- |
+| Brand Orange | `--color-brand-500` | Primary actions and active states |
+| Ink | `--color-ink` | Primary text |
+| Ink Muted | `--color-ink-muted` | Secondary text |
+| Placeholder | `--color-placeholder` | Input placeholders |
+| Field Height | `--height-field` (44px) | Inputs and dropdowns |
+| Card Radius | `--radius-card` (18px) | Cards and information panels |
+| Nav Row Height | `--height-nav` (34px) | Sidebar navigation rows |
+| Contextual Width | `--width-contextual` (598px) | Contextual panel width at `lg+` |
 
-The PrimeReact CSS variables are mapped to the application's design tokens where required.
+Tailwind utilities such as `text-ink-muted`, `bg-brand-500`, `h-nav`, and `rounded-card` map to these tokens via `@theme static`.
+
+The PrimeReact CSS variables in `:root` are bridged to the application design tokens where required.
 
 ---
 

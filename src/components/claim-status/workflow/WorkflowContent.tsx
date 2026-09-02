@@ -46,7 +46,7 @@ export function WorkflowContent({
   onClose,
 }: WorkflowContentProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col max-lg:flex-none max-lg:overflow-visible lg:overflow-hidden">
+    <div className="flex min-h-0 flex-1 flex-col overflow-x-hidden lg:overflow-hidden">
       {renderStep(currentStep, claim, gatherInfoData, onGatherInfoChange, onNext, onClose)}
     </div>
   );

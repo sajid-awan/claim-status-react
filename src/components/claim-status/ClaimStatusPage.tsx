@@ -35,7 +35,7 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
         />
       </div>
 
-      <div className="flex flex-col overflow-visible rounded-xl border border-black/[0.06] bg-white px-2  md:flex-none md:overflow-visible lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0">
+      <div className="flex min-h-0 flex-col overflow-x-hidden rounded-xl border border-border-subtle bg-white px-2 md:flex-none lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0">
         <ClaimStatusLayout
           contextual={
             <ContextualPanel activeContext={activeContext} onChangeContext={setActiveContext} />

@@ -20,7 +20,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
         <SidebarSimple size={16} weight="regular" />
       </button>
 
-      <div className="order-1 flex min-w-0 flex-col max-lg:overflow-visible max-lg:px-2 lg:order-3 lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0">
+      <div className="order-1 flex min-w-0 flex-col max-lg:px-2 lg:order-3 lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0">
         {workflow}
       </div>
 
@@ -34,7 +34,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
           isContextualOpen ? "flex max-md:absolute max-md:inset-0 max-md:z-40 max-md:flex-col max-md:bg-surface-white" : ""
         }`}
       >
-        <div className="min-h-0 min-w-0 flex-1 pt-10 max-lg:overflow-visible md:pt-0 lg:overflow-hidden">
+        <div className="min-h-0 min-w-0 flex-1 overflow-x-hidden pt-10 md:pt-0 lg:overflow-hidden">
           {contextual}
         </div>
         <button

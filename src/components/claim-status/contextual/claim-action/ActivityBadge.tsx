@@ -33,7 +33,7 @@ export function ActivityBadge({
       tone={tone}
       size={size}
       radius={radius}
-      className={className}
+      className={`shrink-0 ${className}`.trim()}
       icon={
         <IconComponent
           size={16}

@@ -1,16 +1,10 @@
-import { ContextualPanelContent, ContextualPanelScroll } from "@/components/ui/ContextualPanelShell";
 import type { ReactNode } from "react";
 
 interface ContextualSectionShellProps {
   children: ReactNode;
 }
 
+/** Content wrapper — scroll is handled by ContextualContent. */
 export function ContextualSectionShell({ children }: ContextualSectionShellProps) {
-  return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-      <ContextualPanelScroll>
-        <ContextualPanelContent>{children}</ContextualPanelContent>
-      </ContextualPanelScroll>
-    </div>
-  );
+  return <div className="box-border">{children}</div>;
 }
