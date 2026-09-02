@@ -1,0 +1,63 @@
+@layer components {
+  .claim-status-app {
+    .activity-item__header {
+      @apply flex items-center justify-between gap-2;
+    }
+
+    .activity-item__meta {
+      @apply flex min-w-0 flex-1 flex-wrap items-center gap-x-dot gap-y-1.5;
+    }
+
+    .activity-item__user {
+      @apply text-body-sm font-medium leading-compact text-ink;
+    }
+
+    .activity-item__dot {
+      @apply size-1 shrink-0 self-center rounded-full bg-ink-subtle;
+    }
+
+    .activity-item__timestamp {
+      @apply self-center text-xs font-normal leading-3 text-ink-subtle;
+    }
+
+    .activity-item__badge {
+      @apply shrink-0 basis-full md:ml-2.5 md:basis-auto;
+    }
+
+    .activity-item__action {
+      @apply inline-flex shrink-0 items-center gap-1 text-body-md font-medium leading-tight text-brand-500 hover:text-brand-600;
+    }
+
+    .activity-item__section-label {
+      @apply mt-2 text-xs font-normal leading-tight text-ink-subtle;
+    }
+
+    .activity-item__status-block {
+      @apply flex flex-col;
+    }
+
+    .activity-item__status-row {
+      @apply pt-dot;
+    }
+
+    .activity-item__detail-card {
+      @apply mt-2.5 rounded-xl border border-border-subtle bg-white p-3.5;
+    }
+
+    .activity-detail-row {
+      @apply mb-2 flex min-h-row-sm flex-col gap-0.5 border-b border-border-subtle py-1 last:mb-0 last:border-b-0 sm:h-row-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0;
+    }
+
+    .activity-detail-row__label {
+      @apply shrink-0 text-body-sm font-normal leading-body text-ink-subtle;
+    }
+
+    .activity-detail-row__value {
+      @apply min-w-0 text-body-sm font-normal leading-body text-ink sm:text-right;
+    }
+
+    .activity-item__hidden {
+      @apply flex items-center justify-between rounded-md border border-dashed border-surface-gray-200 px-3 py-2 text-body-sm text-ink-muted;
+    }
+  }
+}

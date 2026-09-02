@@ -12,10 +12,10 @@ interface FormFieldProps {
 export function FormField({ label, required, children, action, htmlFor, className = "" }: FormFieldProps) {
   return (
     <div className={className}>
-      <div className={`mb-2 flex items-center gap-2 ${action ? "justify-between" : ""}`}>
-        <label htmlFor={htmlFor} className="text-body-sm font-normal leading-compact text-ink-muted">
+      <div className={`form-field__header ${action ? "form-field__header--action" : ""}`.trim()}>
+        <label htmlFor={htmlFor} className="form-field__label">
           {label}
-          {required && <span className="text-brand-500">*</span>}
+          {required ? <span className="form-field__required">*</span> : null}
         </label>
         {action}
       </div>
@@ -34,9 +34,9 @@ interface QuestionFieldProps {
 export function QuestionField({ label, required, children, className = "" }: QuestionFieldProps) {
   return (
     <div className={className}>
-      <p className="mb-2 text-body-sm font-normal leading-compact text-ink-muted">
+      <p className="form-field__label mb-2">
         {label}
-        {required && <span className="text-brand-500">*</span>}
+        {required ? <span className="form-field__required">*</span> : null}
       </p>
       {children}
     </div>

@@ -24,15 +24,12 @@ export function ContextualPanel({ activeContext, onChangeContext }: ContextualPa
   const showQuickTabs = isQuickTabContext(activeContext);
 
   return (
-    <section
-      aria-label="Claim contextual information"
-      className="flex h-full w-full min-w-0 flex-col max-lg:h-auto md:flex-1 md:flex-row lg:h-full lg:overflow-hidden"
-    >
+    <section aria-label="Claim contextual information" className="contextual-panel">
       <ContextualNavigation activeContext={activeContext} onChange={onChangeContext} />
 
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:border-l md:border-surface-gray-200 md:py-3 md:pl-3">
+      <div className="contextual-panel__body">
         {showQuickTabs ? (
-          <div className="mb-2 shrink-0 overflow-x-auto overflow-y-hidden pt-2 md:pt-0">
+          <div className="contextual-panel__tabs">
             <Tabs
               items={quickTabs}
               activeId={activeContext}

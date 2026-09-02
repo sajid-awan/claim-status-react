@@ -6,5 +6,5 @@ interface ContextualSectionShellProps {
 
 /** Content wrapper — scroll is handled by ContextualContent. */
 export function ContextualSectionShell({ children }: ContextualSectionShellProps) {
-  return <div className="box-border">{children}</div>;
+  return <div className="panel-content">{children}</div>;
 }

@@ -27,10 +27,7 @@ export function WorkflowPanel({
   onClose,
 }: WorkflowPanelProps) {
   return (
-    <section
-      aria-label="Claim status workflow"
-      className="flex h-full w-full flex-col max-lg:h-auto lg:h-full lg:overflow-hidden"
-    >
+    <section aria-label="Claim status workflow" className="workflow-panel">
       <WorkflowHeader title="Claim Status" onBack={onBack} onClose={onClose} />
       <WorkflowProgress currentStep={currentStep} completedSteps={completedSteps} />
       <WorkflowContent

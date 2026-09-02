@@ -15,22 +15,14 @@ export function InfoRow({
 
   return (
     <div
-      className={`min-h-row-sm py-2 ${
-        isWide ? "grid grid-cols-12 gap-x-5" : "flex items-start"
-      } ${isLast ? "" : "border-b border-border-subtle"}`}
+      className={`info-row ${isLast ? "info-row--last" : "info-row--bordered"} ${
+        isWide ? "info-row--wide" : "info-row--half"
+      }`.trim()}
     >
-      <span
-        className={`pt-px text-left text-body-sm font-medium leading-body text-ink-muted ${
-          isWide ? "col-span-8" : "w-1/2"
-        }`}
-      >
+      <span className={`info-row__label ${isWide ? "info-row__label--wide" : "info-row__label--half"}`}>
         {label}
       </span>
-      <span
-        className={`whitespace-pre-line text-left text-body-sm font-medium leading-body text-ink ${
-          isWide ? "col-span-4" : "w-1/2"
-        }`}
-      >
+      <span className={`info-row__value ${isWide ? "info-row__value--wide" : "info-row__value--half"}`}>
         {value}
       </span>
     </div>

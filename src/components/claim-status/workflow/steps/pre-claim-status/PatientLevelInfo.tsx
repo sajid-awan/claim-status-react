@@ -13,10 +13,8 @@ export function PatientLevelInfo({ rows, loading = false, error = null }: Patien
   return (
     <TimelineItem variant="info" title="Patient Level Info">
       <InfoCard>
-        {loading && (
-          <p className="py-4 text-sm text-ink-muted">Loading patient level info…</p>
-        )}
-        {!loading && error && <p className="py-4 text-sm text-rose-500">{error}</p>}
+        {loading && <p className="info-card__loading">Loading patient level info…</p>}
+        {!loading && error && <p className="info-card__error">{error}</p>}
         {!loading &&
           !error &&
           rows.map((row, index) => (

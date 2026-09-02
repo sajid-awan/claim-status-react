@@ -13,9 +13,9 @@ import { faxSummary } from "@/data/contextual";
 export function Fax() {
   return (
     <ContextualSectionShell>
-      <div className="flex flex-col gap-5 px-4 py-4">
+      <div className="contextual-section">
         <div>
-          <div className="mb-2.5 flex items-center justify-between">
+          <div className="contextual-section__header">
             <SectionTitle title="Fax Details" className="mb-0" />
             <StatusBadge label={faxSummary.status} tone={toneForStatus(faxSummary.status)} />
           </div>
@@ -32,7 +32,7 @@ export function Fax() {
           <ContextualNote>{faxSummary.coverNote}</ContextualNote>
         </div>
 
-        <SecondaryButton icon={<Printer size={18} />} iconPosition="left" className="self-start">
+        <SecondaryButton icon={<Printer size={18} />} iconPosition="left" className="btn--self-start">
           Resend Fax
         </SecondaryButton>
       </div>

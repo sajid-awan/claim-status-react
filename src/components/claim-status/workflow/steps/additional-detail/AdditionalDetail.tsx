@@ -33,16 +33,16 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
   return (
     <WorkflowStepShell>
       <Toast ref={toastRef} />
-      <WorkflowStepScroll className="flex items-center justify-center">
-        <WorkflowStepContent className="flex w-full max-w-content-narrow flex-col items-center px-5 py-8 text-center">
-          <img src="/assets/claim.svg" alt="" className="mb-6 h-20 w-20" aria-hidden />
+      <WorkflowStepScroll className="workflow-step-scroll--center">
+        <WorkflowStepContent className="empty-state">
+          <img src="/assets/claim.svg" alt="" className="empty-state__image" aria-hidden />
 
-          <h3 className="text-xl font-semibold leading-tight text-ink">Claim is Not On File</h3>
-          <p className="mt-2 text-body-sm font-normal leading-body text-ink-muted">
+          <h3 className="empty-state__title">Claim is Not On File</h3>
+          <p className="empty-state__description">
             A resubmission is required based on the result of this claim status.
           </p>
 
-          <div className="mt-8 w-full text-left">
+          <div className="empty-state__form">
             <FormField label="Next Follow Up Date?" required>
               <DatePicker
                 value={followUpDate}
@@ -53,9 +53,9 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
             </FormField>
           </div>
 
-          <div className="mt-4 flex w-full items-start gap-2.5 rounded-lg bg-surface-gray-100 px-3 py-3 text-left">
-            <Info size={18} className="mt-0.5 shrink-0 text-ink-muted" weight="fill" />
-            <p className="text-body-sm font-normal leading-body text-ink-muted">
+          <div className="empty-state__info">
+            <Info size={18} className="empty-state__info-icon" weight="fill" />
+            <p className="empty-state__info-text">
               Claim will be assigned to &apos;No Claim On File&apos; Module.
             </p>
           </div>

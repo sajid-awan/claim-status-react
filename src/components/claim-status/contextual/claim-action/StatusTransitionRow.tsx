@@ -20,27 +20,21 @@ export function StatusTransitionRow({
   radius = "full",
 }: StatusTransitionRowProps) {
   return (
-    <div className="flex flex-wrap items-center gap-x-dot gap-y-1.5">
+    <div className="status-transition">
       <Chip
         label={from}
         tone="from"
         size={size}
         radius={radius}
-        icon={
-          fromIcon ?? <span className="size-2 shrink-0 rounded-full bg-ink" aria-hidden="true" />
-        }
+        icon={fromIcon ?? <span className="status-dot--from" aria-hidden="true" />}
       />
-      <span className="text-body-sm font-normal leading-body text-ink/40">to</span>
+      <span className="status-transition__separator">to</span>
       <Chip
         label={to}
         tone="to"
         size={size}
         radius={radius}
-        icon={
-          toIcon ?? (
-            <span className="size-2 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
-          )
-        }
+        icon={toIcon ?? <span className="status-dot--to" aria-hidden="true" />}
       />
     </div>
   );

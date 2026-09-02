@@ -20,39 +20,20 @@ export interface BreadcrumbProps {
   ariaLabel?: string;
 }
 
-const sizeClasses: Record<
-  BreadcrumbSize,
-  { label: string; separator: string; iconSize: number }
-> = {
-  sm: {
-    label: "truncate text-xs font-medium leading-tight",
-    separator: "size-3 shrink-0 text-ink-subtle",
-    iconSize: 12,
-  },
-  md: {
-    label: "truncate text-sm font-medium leading-tight",
-    separator: "size-3.5 shrink-0 text-ink-subtle",
-    iconSize: 14,
-  },
+const sizeLabelClass: Record<BreadcrumbSize, string> = {
+  sm: "breadcrumb__label--sm",
+  md: "breadcrumb__label--md",
 };
 
-const variantClasses: Record<
-  BreadcrumbVariant,
-  { active: string; inactive: string; mobile: string }
-> = {
-  brand: {
-    active: "text-brand-500",
-    inactive: "text-ink/40 hover:text-ink",
-    mobile: "text-brand-500",
-  },
-  neutral: {
-    active: "text-ink",
-    inactive: "text-ink-muted hover:text-ink",
-    mobile: "text-ink",
-  },
+const separatorSizeClass: Record<BreadcrumbSize, string> = {
+  sm: "breadcrumb__separator--sm",
+  md: "breadcrumb__separator--md",
 };
 
-const linkReset = "border-0 bg-transparent p-0 cursor-pointer text-left transition-colors";
+const iconSize: Record<BreadcrumbSize, number> = {
+  sm: 12,
+  md: 14,
+};
 
 function resolveActiveIndex(items: BreadcrumbItem[]) {
   const explicitIndex = items.findIndex((item) => item.active);
@@ -71,25 +52,24 @@ export function Breadcrumb({
 
   const activeIndex = resolveActiveIndex(items);
   const activeItem = items[activeIndex];
-  const colors = variantClasses[variant];
-  const sizing = sizeClasses[size];
-
-  const labelClassName = sizing.label;
-  const inactiveClassName = colors.inactive;
-  const activeClassName = `${labelClassName} ${colors.active}`;
+  const labelSizeClass = sizeLabelClass[size];
+  const separatorClass = separatorSizeClass[size];
 
   const listClassName =
     collapse === "none"
-      ? "flex min-w-0 list-none items-center gap-1 overflow-hidden p-0"
-      : "hidden min-w-0 list-none items-center gap-1 overflow-hidden p-0 sm:flex";
+      ? "breadcrumb__list breadcrumb__list--visible"
+      : "breadcrumb__list breadcrumb__list--responsive";
 
   const mobileClassName =
     collapse === "none"
       ? "hidden"
-      : `min-w-0 truncate sm:hidden ${labelClassName} ${colors.mobile}`;
+      : `breadcrumb__mobile breadcrumb__label ${labelSizeClass}`.trim();
 
   return (
-    <nav aria-label={ariaLabel} className={`flex min-w-0 items-center overflow-hidden ${className}`.trim()}>
+    <nav
+      aria-label={ariaLabel}
+      className={`breadcrumb breadcrumb--${variant} ${className}`.trim()}
+    >
       {activeItem ? <span className={mobileClassName}>{activeItem.label}</span> : null}
 
       <ol className={listClassName}>
@@ -99,32 +79,39 @@ export function Breadcrumb({
           return (
             <li
               key={`${item.label}-${index}`}
-              className="flex min-w-0 items-center gap-1"
+              className="breadcrumb__item"
               aria-current={isActive ? "page" : undefined}
             >
               {index > 0 ? (
                 <CaretRight
-                  size={sizing.iconSize}
+                  size={iconSize[size]}
                   weight="regular"
-                  className={sizing.separator}
+                  className={`breadcrumb__separator ${separatorClass}`}
                   aria-hidden
                 />
               ) : null}
 
               {!isActive && item.href ? (
-                <a href={item.href} className={`${labelClassName} ${inactiveClassName} ${linkReset}`}>
+                <a
+                  href={item.href}
+                  className={`breadcrumb__link breadcrumb__label ${labelSizeClass} breadcrumb__label--inactive`}
+                >
                   {item.label}
                 </a>
               ) : !isActive && item.onClick ? (
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className={`${labelClassName} ${inactiveClassName} ${linkReset}`}
+                  className={`breadcrumb__link breadcrumb__label ${labelSizeClass} breadcrumb__label--inactive`}
                 >
                   {item.label}
                 </button>
               ) : (
-                <span className={isActive ? activeClassName : `${labelClassName} ${inactiveClassName}`}>
+                <span
+                  className={`breadcrumb__label ${labelSizeClass} ${
+                    isActive ? "breadcrumb__label--active" : "breadcrumb__label--inactive"
+                  }`.trim()}
+                >
                   {item.label}
                 </span>
               )}

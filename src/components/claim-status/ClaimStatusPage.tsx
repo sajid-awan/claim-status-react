@@ -24,8 +24,8 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
   } = useClaimStatus(claim);
 
   return (
-    <div className="flex flex-col md:flex-none lg:h-full lg:min-h-0 lg:flex-1">
-      <div className="shrink-0 pb-2 sm:pb-3">
+    <div className="claim-status-page">
+      <div className="claim-status-page__breadcrumb">
         <Breadcrumb
           items={[
             { label: "Claim Management" },
@@ -35,7 +35,7 @@ export function ClaimStatusPage({ claim, onClose }: ClaimStatusPageProps) {
         />
       </div>
 
-      <div className="flex min-h-0 flex-col overflow-x-hidden rounded-xl border border-border-subtle bg-white px-2 md:flex-none lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0">
+      <div className="claim-status-page__card">
         <ClaimStatusLayout
           contextual={
             <ContextualPanel activeContext={activeContext} onChangeContext={setActiveContext} />

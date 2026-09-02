@@ -8,26 +8,21 @@ interface WorkflowHeaderProps {
 
 export function WorkflowHeader({ title, onBack, onClose }: WorkflowHeaderProps) {
   return (
-    <header className="px-4">
-      <div className="flex h-11 shrink-0 items-center justify-between gap-2 border-b border-border-tertiary px-2 py-2 pr-3 max-lg:px-2 lg:px-0 lg:pr-3">
-        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-          <button
-            type="button"
-            aria-label="Go back"
-            onClick={onBack}
-            className="flex size-6 shrink-0 items-center justify-center text-ink-muted hover:text-ink"
-          >
-            <ArrowLeft size={24} weight="regular" className="size-6 shrink-0" />
+    <header className="workflow-header">
+      <div className="workflow-header__bar">
+        <div className="workflow-header__leading">
+          <button type="button" aria-label="Go back" onClick={onBack} className="workflow-header__icon-btn">
+            <ArrowLeft size={24} weight="regular" className="workflow-header__icon" />
           </button>
-          <h2 className="truncate text-lg font-medium leading-6 text-ink sm:text-title-sm">{title}</h2>
+          <h2 className="workflow-header__title">{title}</h2>
         </div>
         <button
           type="button"
           aria-label="Close claim status"
           onClick={onClose}
-          className="flex size-6 shrink-0 items-center justify-center text-ink-muted hover:text-ink"
+          className="workflow-header__icon-btn"
         >
-          <X size={24} weight="regular" className="size-6 shrink-0" />
+          <X size={24} weight="regular" className="workflow-header__icon" />
         </button>
       </div>
     </header>

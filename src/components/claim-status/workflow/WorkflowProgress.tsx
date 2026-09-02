@@ -19,21 +19,18 @@ function statusFor(
 }
 
 function StepCircle({ status }: { status: WorkflowStepStatus }) {
-  const baseClass = "relative z-step flex size-5 shrink-0 items-center justify-center rounded-full";
+  const modifier =
+    status === "pending" ? "workflow-step__circle--pending" : "workflow-step__circle--active";
 
   if (status === "completed") {
     return (
-      <span className={`${baseClass} bg-brand-500`} aria-hidden="true">
+      <span className={`workflow-step__circle workflow-step__circle--completed`} aria-hidden="true">
         <Check size={14} weight="bold" className="text-white" />
       </span>
     );
   }
 
-  if (status === "active") {
-    return <span className={`${baseClass} bg-brand-500`} aria-hidden="true" />;
-  }
-
-  return <span className={`${baseClass} bg-step-inactive`} aria-hidden="true" />;
+  return <span className={`workflow-step__circle ${modifier}`} aria-hidden="true" />;
 }
 
 function StepTrack({
@@ -50,20 +47,20 @@ function StepTrack({
   status: WorkflowStepStatus;
 }) {
   return (
-    <div className="relative isolate flex h-5 w-full items-center justify-center">
+    <div className="workflow-step__track">
       {showLineBefore ? (
         <span
           aria-hidden
-          className={`absolute right-1/2 top-1/2 -z-step-behind h-1 w-1/2 -translate-y-1/2 ${
-            lineBeforeOrange ? "bg-brand-500" : "bg-step-inactive"
+          className={`workflow-step__connector workflow-step__connector--before ${
+            lineBeforeOrange ? "workflow-step__connector--active" : "workflow-step__connector--inactive"
           }`}
         />
       ) : null}
       {showLineAfter ? (
         <span
           aria-hidden
-          className={`absolute left-1/2 top-1/2 -z-step-behind h-1 w-1/2 -translate-y-1/2 ${
-            lineAfterOrange ? "bg-brand-500" : "bg-step-inactive"
+          className={`workflow-step__connector workflow-step__connector--after ${
+            lineAfterOrange ? "workflow-step__connector--active" : "workflow-step__connector--inactive"
           }`}
         />
       ) : null}
@@ -74,7 +71,7 @@ function StepTrack({
 
 export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgressProps) {
   return (
-    <ol className="flex shrink-0 px-4 py-4 sm:py-6 lg:pr-3">
+    <ol className="workflow-progress">
       {workflowSteps.map((step, index) => {
         const status = statusFor(step.id, currentStep, completedSteps);
         const isFirst = index === 0;
@@ -85,7 +82,7 @@ export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgre
         const lineAfterOrange = !isLast && isCompleted;
 
         return (
-          <li key={step.id} className="flex min-w-0 flex-1 flex-col items-center">
+          <li key={step.id} className="workflow-step">
             <StepTrack
               status={status}
               showLineBefore={!isFirst}
@@ -94,9 +91,9 @@ export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgre
               lineAfterOrange={lineAfterOrange}
             />
             <span
-              className={`mt-2 w-full px-0.5 text-center text-xs font-normal leading-4 sm:mt-3 sm:text-body-sm sm:leading-tight ${
-                status === "active" ? "text-brand-500" : "text-ink"
-              }`}
+              className={`workflow-step__label ${
+                status === "active" ? "workflow-step__label--active" : "workflow-step__label--idle"
+              }`.trim()}
             >
               {step.label}
             </span>

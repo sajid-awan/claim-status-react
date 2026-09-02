@@ -1,0 +1,96 @@
+@layer components {
+  .claim-status-app {
+    .workflow-progress {
+      @apply flex shrink-0 px-4 py-4 sm:py-6 lg:pr-3;
+    }
+
+    .workflow-step {
+      @apply flex min-w-0 flex-1 flex-col items-center;
+    }
+
+    .workflow-step__track {
+      @apply relative isolate flex h-5 w-full items-center justify-center;
+    }
+
+    .workflow-step__circle {
+      @apply relative z-step flex size-5 shrink-0 items-center justify-center rounded-full;
+    }
+
+    .workflow-step__circle--completed,
+    .workflow-step__circle--active {
+      @apply bg-brand-500;
+    }
+
+    .workflow-step__circle--pending {
+      @apply bg-step-inactive;
+    }
+
+    .workflow-step__connector {
+      @apply absolute top-1/2 h-1 w-1/2 -translate-y-1/2;
+    }
+
+    .workflow-step__connector--before {
+      @apply right-1/2 -z-step-behind;
+    }
+
+    .workflow-step__connector--after {
+      @apply left-1/2 -z-step-behind;
+    }
+
+    .workflow-step__connector--active {
+      @apply bg-brand-500;
+    }
+
+    .workflow-step__connector--inactive {
+      @apply bg-step-inactive;
+    }
+
+    .workflow-step__label {
+      @apply mt-2 w-full px-0.5 text-center text-xs font-normal leading-4 sm:mt-3 sm:text-body-sm sm:leading-tight;
+    }
+
+    .workflow-step__label--active {
+      @apply text-brand-500;
+    }
+
+    .workflow-step__label--idle {
+      @apply text-ink;
+    }
+
+    .workflow-header {
+      @apply px-4;
+    }
+
+    .workflow-header__bar {
+      @apply flex h-11 shrink-0 items-center justify-between gap-2 border-b border-border-tertiary px-2 py-2 pr-3 max-lg:px-2 lg:px-0 lg:pr-3;
+    }
+
+    .workflow-footer {
+      @apply px-4;
+    }
+
+    .workflow-footer__bar {
+      @apply flex shrink-0 items-center justify-end border-t border-surface-gray-200 bg-surface-white px-3 py-3 max-lg:px-3 sm:py-3.5 lg:px-0 lg:pr-3 lg:py-3.5;
+    }
+
+    .workflow-header__leading {
+      @apply flex min-w-0 items-center gap-2 sm:gap-3;
+    }
+
+    .workflow-header__icon-btn {
+      @apply flex size-6 shrink-0 items-center justify-center text-ink-muted hover:text-ink;
+    }
+
+    .workflow-header__icon {
+      @apply size-6 shrink-0;
+    }
+
+    .workflow-header__title {
+      @apply truncate text-lg font-medium leading-6 text-ink sm:text-title-sm;
+    }
+
+    .workflow-step-content--spaced {
+      @apply space-y-6;
+    }
+  }
+}

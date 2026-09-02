@@ -3,16 +3,16 @@ import { InputText, type InputTextProps } from "primereact/inputtext";
 type FieldSize = "sm" | "md" | "lg";
 type FieldVariant = "outline" | "filled" | "ghost";
 
-const sizeClasses: Record<FieldSize, string> = {
-  sm: "h-8 px-2.5 text-body-sm",
-  md: "h-field px-3 text-body-md",
-  lg: "h-12 px-4 text-body-md",
+const sizeClass: Record<FieldSize, string> = {
+  sm: "form-input--sm",
+  md: "form-input--md",
+  lg: "form-input--lg",
 };
 
-const variantClasses: Record<FieldVariant, string> = {
-  outline: "border border-border-tertiary bg-surface-white",
-  filled: "border border-transparent bg-surface-gray-100",
-  ghost: "border border-transparent bg-transparent",
+const variantClass: Record<FieldVariant, string> = {
+  outline: "form-input--outline",
+  filled: "form-input--filled",
+  ghost: "form-input--ghost",
 };
 
 export interface InputProps extends Omit<InputTextProps, "size" | "variant"> {
@@ -23,7 +23,7 @@ export interface InputProps extends Omit<InputTextProps, "size" | "variant"> {
 export function Input({ fieldSize = "md", variant = "outline", className = "", ...rest }: InputProps) {
   return (
     <InputText
-      className={`w-full rounded-lg font-normal leading-normal text-ink placeholder:text-placeholder ${sizeClasses[fieldSize]} ${variantClasses[variant]} ${className}`.trim()}
+      className={`form-input ${sizeClass[fieldSize]} ${variantClass[variant]} ${className}`.trim()}
       {...rest}
     />
   );

@@ -1,0 +1,112 @@
+@layer components {
+  .claim-status-app {
+    .app-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-scrollbar) transparent;
+    }
+
+    .app-scroll::-webkit-scrollbar {
+      width: var(--size-scrollbar);
+      height: var(--size-scrollbar);
+    }
+
+    .app-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .app-scroll::-webkit-scrollbar-thumb {
+      border-radius: 9999px;
+      background-color: var(--color-scrollbar);
+    }
+
+    .app-scroll::-webkit-scrollbar-thumb:hover,
+    .app-scroll::-webkit-scrollbar-thumb:active {
+      background-color: var(--color-scrollbar-hover);
+    }
+
+    .bg-sidebar-pattern {
+      background-image: url("/assets/img.png");
+      background-size: var(--width-sidebar) 100%;
+      background-position: left top;
+      background-repeat: no-repeat;
+    }
+
+    .grid-cols-gather-address {
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+    }
+
+    .transition-sidebar {
+      transition-property: width, transform;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+    }
+
+    .panel-scroll {
+      @apply min-h-0 flex-1 overflow-y-auto overflow-x-hidden lg:box-border lg:pr-4;
+    }
+
+    .workflow-step-shell {
+      @apply flex min-h-0 flex-1 flex-col max-lg:flex-none lg:overflow-hidden;
+    }
+
+    .workflow-step-scroll {
+      @apply min-h-0 flex-1 max-lg:flex-none max-lg:overflow-y-auto lg:box-border lg:overflow-y-auto lg:px-4;
+    }
+
+    .workflow-step-content {
+      @apply box-border;
+    }
+
+    .panel-content {
+      @apply box-border;
+    }
+
+    .icon-nav--horizontal {
+      @apply flex shrink-0 items-center gap-1 overflow-x-auto border-b border-surface-gray-200 px-2 py-1.5;
+    }
+
+    .icon-nav--vertical {
+      @apply flex w-12 shrink-0 flex-col items-center gap-2 self-stretch px-1 py-1;
+    }
+
+    .app-header {
+      @apply flex h-header w-full min-w-0 shrink-0 items-center gap-2 overflow-hidden border-b border-border-hairline bg-white px-3 sm:gap-3 sm:px-5;
+    }
+
+    .app-header__logo {
+      @apply h-7 max-w-logo-mobile shrink object-contain object-left sm:h-8 sm:max-w-logo-mobile-sm;
+    }
+
+    .app-header__user-block {
+      @apply hidden min-w-0 flex-col gap-chip-y sm:flex md:w-header-user;
+    }
+
+    .app-header__user-name {
+      @apply truncate text-base leading-4 text-ink;
+    }
+
+    .app-header__user-role {
+      @apply truncate text-body-sm leading-compact text-ink/40;
+    }
+
+    .app-header__avatar {
+      @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500 text-body-sm leading-6 text-white sm:h-10 sm:w-10 sm:text-base;
+    }
+
+    .app-header__leading {
+      @apply flex min-w-0 items-center gap-2 xl:hidden;
+    }
+
+    .app-header__actions {
+      @apply ml-auto flex shrink-0 items-center gap-2 sm:gap-3 md:gap-5;
+    }
+
+    .app-header__toggle-icon {
+      @apply h-toggle-icon w-toggle-icon;
+    }
+
+    .app-header__action-icon {
+      @apply text-ink;
+    }
+  }
+}

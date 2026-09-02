@@ -11,17 +11,22 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   radius?: IconButtonRadius;
 }
 
-const sizeClasses: Record<IconButtonSize, { button: string; icon: string }> = {
-  sm: { button: "h-9 w-9 p-1", icon: "h-5 w-5 [&>svg]:h-5 [&>svg]:w-5" },
-  md: { button: "h-10 w-10 p-1", icon: "h-6 w-6 [&>svg]:h-6 [&>svg]:w-6" },
+const sizeClass: Record<IconButtonSize, string> = {
+  sm: "icon-btn--sm",
+  md: "icon-btn--md",
 };
 
-const radiusClasses: Record<IconButtonRadius, string> = {
-  none: "rounded-none",
-  sm: "rounded-md",
-  md: "rounded-lg",
-  lg: "rounded-xl",
-  full: "rounded-full",
+const radiusClass: Record<IconButtonRadius, string> = {
+  none: "icon-btn--radius-none",
+  sm: "icon-btn--radius-sm",
+  md: "icon-btn--radius-md",
+  lg: "icon-btn--radius-lg",
+  full: "icon-btn--radius-full",
+};
+
+const glyphClass: Record<IconButtonSize, string> = {
+  sm: "icon-btn__glyph--sm",
+  md: "icon-btn__glyph--md",
 };
 
 export function IconButton({
@@ -33,21 +38,15 @@ export function IconButton({
   className = "",
   ...rest
 }: IconButtonProps) {
-  const sizing = sizeClasses[size];
-
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
-      className={`flex shrink-0 cursor-pointer items-center justify-center border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${radiusClasses[radius]} ${sizing.button} ${
-        active
-          ? "border-brand-500 bg-brand-500 text-white hover:bg-brand-600 [&_svg]:text-white"
-          : "border-transparent bg-surface-page text-ink-muted hover:bg-surface-page hover:text-ink"
-      } ${className}`.trim()}
+      className={`icon-btn ${sizeClass[size]} ${radiusClass[radius]} ${active ? "icon-btn--active" : "icon-btn--idle"} ${className}`.trim()}
       {...rest}
     >
-      <span className={`flex items-center justify-center ${sizing.icon}`}>{icon}</span>
+      <span className={`icon-btn__glyph ${glyphClass[size]}`}>{icon}</span>
     </button>
   );
 }

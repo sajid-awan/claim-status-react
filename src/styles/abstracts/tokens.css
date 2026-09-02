@@ -73,10 +73,14 @@
   /* Tabs */
   --width-tab-min: 5.5rem;
   --width-tab-min-md: 6.25rem;
+  --min-width-tab-min: 5.5rem;
+  --min-width-tab-min-md: 6.25rem;
 
   /* Header */
   --width-logo-mobile-max: 4.5rem;
   --width-logo-mobile-max-sm: 5rem;
+  --max-width-logo-mobile: 4.5rem;
+  --max-width-logo-mobile-sm: 5rem;
   --width-header-user: 6.4375rem;
 
   /* Timeline */
@@ -99,11 +103,13 @@
   --width-sidebar: 266px;
   --width-sidebar-collapsed: 4.5rem;
   --width-content-narrow: 26.25rem;
+  --max-width-content-narrow: 26.25rem;
   --height-nav: 2.125rem;
   --height-header: 3.75rem;
   --height-field: 2.75rem;
   --height-button: 2.5rem;
   --height-row-sm: 1.875rem;
+  --min-height-row-sm: 1.875rem;
   --height-empty-state: 12.5rem;
   --width-toggle-icon: 1.125rem;
   --height-toggle-icon: 1.0625rem;

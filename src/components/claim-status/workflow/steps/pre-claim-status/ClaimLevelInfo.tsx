@@ -13,8 +13,8 @@ export function ClaimLevelInfo({ rows, loading = false, error = null }: ClaimLev
   return (
     <TimelineItem variant="info" title="Claim Level Info">
       <InfoCard>
-        {loading && <p className="py-4 text-sm text-ink-muted">Loading claim level info…</p>}
-        {!loading && error && <p className="py-4 text-sm text-rose-500">{error}</p>}
+        {loading && <p className="info-card__loading">Loading claim level info…</p>}
+        {!loading && error && <p className="info-card__error">{error}</p>}
         {!loading &&
           !error &&
           rows.map((row, index) => (

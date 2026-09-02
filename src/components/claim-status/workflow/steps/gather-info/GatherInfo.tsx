@@ -50,8 +50,8 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
   return (
     <WorkflowStepShell>
       <WorkflowStepScroll className="pb-5">
-        <WorkflowStepContent className="space-y-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+        <WorkflowStepContent className="workflow-step-content--spaced">
+          <div className="form-grid form-grid--2">
             <FormField label="Insurance Rep Name" required>
               <Input
                 value={data.insuranceRepName}
@@ -107,7 +107,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             />
           </FormField>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-gather-address xl:gap-5">
+          <div className="form-grid form-grid--address">
             <FormField label="City" required>
               <Select
                 value={data.city}
@@ -150,7 +150,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             </RadioGroup>
           </QuestionField>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+          <div className="form-grid form-grid--2">
             <FormField label="Fax From" required>
               <Input
                 value={data.faxFrom}
@@ -161,11 +161,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
               label="Fax To"
               required
               action={
-                <button
-                  type="button"
-                  onClick={addFaxRow}
-                  className="text-body-sm font-normal leading-compact text-brand-500 hover:text-brand-600"
-                >
+                <button type="button" onClick={addFaxRow} className="form-field__action">
                   Add
                 </button>
               }
@@ -178,7 +174,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
           </div>
 
           {data.faxRows.map((row) => (
-            <div key={row.id} className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+            <div key={row.id} className="form-grid form-grid--2">
               <FormField label="Receiver Name" required>
                 <Input
                   value={row.receiverName}
@@ -198,10 +194,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             label="Additional Claim Status Notes"
             required
             action={
-              <button
-                type="button"
-                className="text-body-sm font-normal leading-compact text-brand-500 hover:text-brand-600"
-              >
+              <button type="button" className="form-field__action">
                 Generate with <span className="font-semibold">SAVI</span>
               </button>
             }
@@ -224,21 +217,15 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
               if (fileInputRef.current) fileInputRef.current.value = "";
             }}
           />
-          <label
-            htmlFor="gather-info-upload"
-            className="flex h-field w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-body-md font-normal text-brand-500 transition-colors hover:border-brand-500 hover:bg-brand-50/40"
-          >
+          <label htmlFor="gather-info-upload" className="upload-zone">
             <UploadSimple size={18} weight="bold" />
             Upload File
           </label>
           {data.files && data.files !== "No file attached" ? (
-            <p className="mt-2 truncate text-body-sm leading-body text-ink-muted">{data.files}</p>
+            <p className="upload-filename">{data.files}</p>
           ) : null}
 
-          <button
-            type="button"
-            className="flex h-field w-full items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-body-md font-normal text-link transition-colors hover:border-link hover:bg-link-bg/40"
-          >
+          <button type="button" className="upload-zone upload-zone--link">
             <Link size={18} weight="bold" />
             Link Documents
           </button>

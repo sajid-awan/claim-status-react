@@ -257,10 +257,20 @@ src/
 │   └── workflow.ts
 │
 ├── styles/
-│   ├── main.css                 # Tailwind entry (@theme, tokens, base)
+│   ├── main.css                 # Tailwind entry (@theme, tokens, base, components)
 │   ├── main.scss                # PrimeReact override sidecar
-│   ├── abstracts/tokens.css
-│   ├── base/global.css
+│   ├── abstracts/tokens.css     # Design tokens (@theme static + :root bridge)
+│   ├── base/global.css          # Base resets only
+│   ├── components/              # CSS-first semantic classes (@layer components)
+│   │   ├── index.css
+│   │   ├── ui.css               # btn, chip, tabs, form-field, radio, breadcrumb
+│   │   ├── cards.css            # contextual-card, info-card, info-row
+│   │   ├── layout.css           # app-scroll, app-header, icon-nav, shells
+│   │   ├── navigation.css       # app-sidebar
+│   │   ├── workflow.css         # workflow progress, header/footer
+│   │   ├── timeline.css
+│   │   ├── activity.css
+│   │   └── claim-status.css     # page/layout shells
 │   └── primereact-override.scss
 │
 └── main.tsx
@@ -275,7 +285,7 @@ src/
 | **React 19**          | UI framework                      |
 | **TypeScript**        | Type safety                       |
 | **Vite**              | Development server and build tool |
-| **Tailwind CSS v4**   | Styling and layout                |
+| **Tailwind CSS v4**   | Token utilities via `@apply` in component CSS |
 | **PrimeReact 10.9.2** | UI components                     |
 | **Phosphor Icons**    | Interface icons                   |
 | **Oxlint**            | Linting                           |
@@ -309,7 +319,7 @@ PrimeReact components are wrapped or customized where necessary to maintain the 
 
 ### Custom Components
 
-Domain-specific UI remains custom React + Tailwind components. Shared UI primitives live in `src/components/ui/`.
+Domain-specific UI uses semantic CSS classes scoped under `.claim-status-app`. Shared UI primitives live in `src/components/ui/` and reference classes from `src/styles/components/`.
 
 **Shared UI primitives**
 
@@ -329,7 +339,9 @@ This avoids making the application look like a default PrimeReact application.
 
 ## Design Tokens
 
-Design tokens live in [`src/styles/abstracts/tokens.css`](src/styles/abstracts/tokens.css) and are imported through the Tailwind entry [`src/styles/main.css`](src/styles/main.css). PrimeReact overrides are in [`src/styles/primereact-override.scss`](src/styles/primereact-override.scss).
+Design tokens live in [`src/styles/abstracts/tokens.css`](src/styles/abstracts/tokens.css) and are imported through the Tailwind entry [`src/styles/main.css`](src/styles/main.css). Semantic component styles live in [`src/styles/components/`](src/styles/components/) and use `@layer components` with `@apply` for token-backed utilities. PrimeReact overrides are in [`src/styles/primereact-override.scss`](src/styles/primereact-override.scss).
+
+**Styling architecture:** CSS/SCSS-first — components reference BEM-style classes (e.g. `btn`, `app-sidebar__item-btn`, `activity-item__header`); Tailwind is used inside the stylesheet layer via `@apply`, not inline in TSX.
 
 | Token | CSS variable | Usage |
 | ----- | ------------ | ----- |

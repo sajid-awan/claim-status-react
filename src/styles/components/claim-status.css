@@ -1,0 +1,286 @@
+@layer components {
+  .claim-status-app {
+    .app-shell {
+      @apply flex h-screen overflow-hidden bg-surface-page md:h-auto md:overflow-y-auto lg:h-screen lg:overflow-hidden;
+    }
+
+    .app-shell__main {
+      @apply flex min-h-0 min-w-0 flex-1 flex-col bg-surface-body md:min-h-0 lg:min-h-0;
+    }
+
+    .app-shell__content {
+      @apply flex min-h-0 flex-1 flex-col overflow-hidden bg-surface-body px-2 pb-2 pt-2 max-lg:overflow-y-auto max-lg:px-4 sm:pb-3 sm:pt-3 lg:overflow-hidden lg:px-3;
+    }
+
+    .app-empty-state {
+      @apply flex h-full flex-col items-center justify-center gap-3 text-ink-muted;
+    }
+
+    .app-empty-state__icon {
+      @apply text-border-secondary;
+    }
+
+    .app-empty-state__text {
+      @apply text-sm;
+    }
+
+    .claim-status-page {
+      @apply flex flex-col md:flex-none lg:h-full lg:min-h-0 lg:flex-1;
+    }
+
+    .claim-status-page__breadcrumb {
+      @apply shrink-0 pb-2 sm:pb-3;
+    }
+
+    .claim-status-page__card {
+      @apply flex min-h-0 flex-col overflow-x-hidden rounded-xl border border-border-subtle bg-white px-2 md:flex-none lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0;
+    }
+
+    .claim-status-layout {
+      @apply relative flex flex-col max-lg:gap-4 md:gap-0 lg:min-h-0 lg:flex-1 lg:flex-row lg:gap-0 lg:overflow-hidden;
+    }
+
+    .claim-status-layout__open-btn {
+      @apply absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-lg border border-surface-gray-200 bg-surface-white text-ink-muted md:hidden;
+    }
+
+    .claim-status-layout__workflow {
+      @apply order-1 flex min-w-0 flex-col max-lg:px-2 lg:order-3 lg:min-h-0 lg:flex-1 lg:overflow-hidden lg:px-0;
+    }
+
+    .claim-status-layout__divider-h {
+      @apply order-2 mx-4 hidden h-px shrink-0 bg-surface-gray-200 md:block lg:hidden;
+    }
+
+    .claim-status-layout__contextual {
+      @apply order-3 hidden min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-contextual lg:flex-none lg:overflow-hidden lg:px-0;
+    }
+
+    .claim-status-layout__contextual--open {
+      @apply flex max-md:absolute max-md:inset-0 max-md:z-40 max-md:flex-col max-md:bg-surface-white;
+    }
+
+    .claim-status-layout__contextual-inner {
+      @apply min-h-0 min-w-0 flex-1 overflow-x-hidden pt-10 md:pt-0 lg:overflow-hidden;
+    }
+
+    .claim-status-layout__close-btn {
+      @apply absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-surface-white text-ink-muted md:hidden;
+    }
+
+    .claim-status-layout__divider-v {
+      @apply order-4 hidden w-px shrink-0 self-stretch bg-surface-gray-200 lg:order-2 lg:block;
+    }
+
+    .contextual-panel {
+      @apply flex h-full w-full min-w-0 flex-col max-lg:h-auto md:flex-1 md:flex-row lg:h-full lg:overflow-hidden;
+    }
+
+    .contextual-panel__body {
+      @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:border-l md:border-surface-gray-200 md:py-3 md:pl-3;
+    }
+
+    .contextual-panel__tabs {
+      @apply mb-2 shrink-0 overflow-x-auto overflow-y-hidden pt-2 md:pt-0;
+    }
+
+    .workflow-panel {
+      @apply flex h-full w-full flex-col max-lg:h-auto lg:h-full lg:overflow-hidden;
+    }
+
+    .section-title {
+      @apply mb-2.5 flex items-center gap-2;
+    }
+
+    .section-title__dot {
+      @apply h-1.5 w-1.5 rounded-full bg-brand-500;
+    }
+
+    .section-title__text {
+      @apply text-sm font-semibold text-brand-500;
+    }
+
+    .form-grid {
+      @apply grid grid-cols-1 gap-4;
+    }
+
+    .form-grid--2 {
+      @apply sm:grid-cols-2 sm:gap-5;
+    }
+
+    .form-grid--address {
+      @apply xl:gap-5;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid--address {
+        grid-template-columns: 2fr 1.5fr 1.5fr;
+      }
+    }
+
+    .form-field__action {
+      @apply text-body-sm font-normal leading-compact text-brand-500 hover:text-brand-600;
+    }
+
+    .status-transition {
+      @apply flex flex-wrap items-center gap-x-dot gap-y-1.5;
+    }
+
+    .status-transition__separator {
+      @apply text-body-sm font-normal leading-body text-ink/40;
+    }
+
+    .status-icon--active {
+      @apply shrink-0 text-brand-500;
+    }
+
+    .status-icon--idle {
+      @apply shrink-0 text-ink;
+    }
+
+    .status-dot--from {
+      @apply size-2 shrink-0 rounded-full bg-ink;
+    }
+
+    .status-dot--to {
+      @apply size-2 shrink-0 rounded-full bg-brand-500;
+    }
+
+    .workflow-content {
+      @apply flex min-h-0 flex-1 flex-col overflow-x-hidden lg:overflow-hidden;
+    }
+
+    .contextual-section {
+      @apply flex flex-col gap-5 px-4 py-4;
+    }
+
+    .contextual-section--stack {
+      @apply px-4 py-4;
+    }
+
+    .contextual-section__header {
+      @apply mb-2.5 flex items-center justify-between;
+    }
+
+    .contextual-list {
+      @apply flex flex-col gap-2;
+    }
+
+    .contextual-card-row {
+      @apply flex items-center gap-2.5;
+    }
+
+    .contextual-card-row--start {
+      @apply flex min-w-0 items-center gap-2.5;
+    }
+
+    .contextual-card-body {
+      @apply min-w-0 flex-1;
+    }
+
+    .contextual-card--spaced {
+      @apply gap-3;
+    }
+
+    .user-avatar {
+      @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-semibold text-brand-600;
+    }
+
+    .user-email-link {
+      @apply flex items-center gap-1 text-xs text-ink-muted hover:text-brand-600;
+    }
+
+    .user-email-text {
+      @apply hidden sm:inline;
+    }
+
+    .doc-icon {
+      @apply shrink-0 text-brand-500;
+    }
+
+    .submission-icon {
+      @apply text-ink-muted;
+    }
+
+    .call-note-header {
+      @apply flex items-center justify-between;
+    }
+
+    .call-note-leading {
+      @apply flex items-center gap-2;
+    }
+
+    .call-note-icon--inbound {
+      @apply text-success;
+    }
+
+    .call-note-icon--outbound {
+      @apply text-brand-500;
+    }
+
+    .call-note-date {
+      @apply mt-1;
+    }
+
+    .call-note-body {
+      @apply mt-1.5 text-body-sm text-ink-muted;
+    }
+
+    .info-card__loading,
+    .info-card__error {
+      @apply py-4 text-sm;
+    }
+
+    .info-card__loading {
+      @apply text-ink-muted;
+    }
+
+    .info-card__error {
+      @apply text-rose-500;
+    }
+
+    .empty-state {
+      @apply flex w-full max-w-content-narrow flex-col items-center px-5 py-8 text-center;
+    }
+
+    .empty-state__image {
+      @apply mb-6 h-20 w-20;
+    }
+
+    .empty-state__title {
+      @apply text-xl font-semibold leading-tight text-ink;
+    }
+
+    .empty-state__description {
+      @apply mt-2 text-body-sm font-normal leading-body text-ink-muted;
+    }
+
+    .empty-state__form {
+      @apply mt-8 w-full text-left;
+    }
+
+    .empty-state__info {
+      @apply mt-4 flex w-full items-start gap-2.5 rounded-lg bg-surface-gray-100 px-3 py-3 text-left;
+    }
+
+    .empty-state__info-icon {
+      @apply mt-0.5 shrink-0 text-ink-muted;
+    }
+
+    .empty-state__info-text {
+      @apply text-body-sm font-normal leading-body text-ink-muted;
+    }
+
+    .workflow-step-scroll--center {
+      @apply flex items-center justify-center;
+    }
+
+    .btn--self-start {
+      @apply self-start;
+    }
+
+    .timeline-empty {
+      @apply px-4 py-6 text-body-sm text-ink-muted;
+    }
+  }
+}

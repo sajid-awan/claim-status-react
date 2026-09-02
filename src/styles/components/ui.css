@@ -1,0 +1,434 @@
+@layer components {
+  .claim-status-app {
+    /* Buttons */
+    .btn {
+      @apply inline-flex h-button cursor-pointer items-center justify-center gap-2.5 rounded-lg border px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed;
+    }
+
+    .btn--primary {
+      @apply border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 disabled:border-brand-200 disabled:bg-brand-200;
+    }
+
+    .btn--secondary {
+      @apply border-border-tertiary bg-white text-ink hover:bg-surface-page disabled:bg-surface-page disabled:text-ink/40;
+    }
+
+    .btn--ghost {
+      @apply border-transparent bg-transparent text-ink-muted hover:bg-surface-page disabled:text-border-secondary;
+    }
+
+    .btn--icon-left {
+      @apply justify-start pl-3;
+    }
+
+    .btn__icon {
+      @apply flex size-5 shrink-0 items-center justify-center;
+    }
+
+    /* Icon buttons */
+    .icon-btn {
+      @apply flex shrink-0 cursor-pointer items-center justify-center border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500;
+    }
+
+    .icon-btn--sm {
+      @apply h-9 w-9 p-1;
+    }
+
+    .icon-btn--md {
+      @apply h-10 w-10 p-1;
+    }
+
+    .icon-btn--radius-none {
+      @apply rounded-none;
+    }
+
+    .icon-btn--radius-sm {
+      @apply rounded-md;
+    }
+
+    .icon-btn--radius-md {
+      @apply rounded-lg;
+    }
+
+    .icon-btn--radius-lg {
+      @apply rounded-xl;
+    }
+
+    .icon-btn--radius-full {
+      @apply rounded-full;
+    }
+
+    .icon-btn--active {
+      @apply border-brand-500 bg-brand-500 text-white hover:bg-brand-600;
+    }
+
+    .icon-btn--active .icon-btn__glyph svg {
+      @apply text-white;
+    }
+
+    .icon-btn--idle {
+      @apply border-transparent bg-surface-page text-ink-muted hover:bg-surface-page hover:text-ink;
+    }
+
+    .icon-btn__glyph {
+      @apply flex items-center justify-center;
+    }
+
+    .icon-btn__glyph--sm {
+      @apply h-5 w-5;
+    }
+
+    .icon-btn__glyph--sm svg {
+      @apply h-5 w-5;
+    }
+
+    .icon-btn__glyph--md {
+      @apply h-6 w-6;
+    }
+
+    .icon-btn__glyph--md svg {
+      @apply h-6 w-6;
+    }
+
+    .header-icon-btn {
+      @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body;
+    }
+
+    /* Chips */
+    .chip {
+      @apply inline-flex w-fit max-w-full items-center overflow-visible whitespace-nowrap;
+    }
+
+    .chip--sm {
+      @apply gap-1 px-2.5 py-1 text-xs;
+    }
+
+    .chip--md {
+      @apply min-h-7 gap-1 px-chip-x py-chip-y text-body-sm leading-snug;
+    }
+
+    .chip--radius-md {
+      @apply rounded-md;
+    }
+
+    .chip--radius-lg {
+      @apply rounded-lg;
+    }
+
+    .chip--radius-full {
+      @apply rounded-full;
+    }
+
+    .chip--gray {
+      @apply border border-transparent bg-surface-gray-100 font-medium text-ink-muted;
+    }
+
+    .chip--orange {
+      @apply border border-transparent bg-brand-50 font-medium text-brand-500;
+    }
+
+    .chip--orange-highlight {
+      @apply border border-brand-500 bg-brand-50 text-brand-500;
+    }
+
+    .chip--green {
+      @apply border border-success-light bg-success-light font-normal text-success;
+    }
+
+    .chip--blue {
+      @apply border border-link-bg bg-link-bg font-medium text-link;
+    }
+
+    .chip--red {
+      @apply border border-transparent bg-rose-50 font-medium text-rose-600;
+    }
+
+    .chip--from {
+      @apply border border-surface-gray-100 bg-surface-gray-100 font-medium text-ink;
+    }
+
+    .chip--to {
+      @apply border border-surface-cream bg-surface-cream font-medium text-brand-500;
+    }
+
+    /* Tabs */
+    .tabs {
+      @apply inline-flex h-10 max-w-full items-center gap-0.5 overflow-x-auto overflow-y-hidden rounded-lg border border-tab-track-border bg-tab-track-bg px-tab-x py-tab-y;
+    }
+
+    .tabs__button {
+      @apply flex h-row-sm min-w-tab-min shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent px-2.5 text-sm font-normal leading-compact text-ink-muted transition-colors hover:text-ink sm:min-w-tab-min-md sm:px-3;
+    }
+
+    .tabs__button--active {
+      @apply bg-brand-500 font-medium text-white;
+    }
+
+    /* Form fields */
+    .form-field__header {
+      @apply mb-2 flex items-center gap-2;
+    }
+
+    .form-field__header--action {
+      @apply justify-between;
+    }
+
+    .form-field__label {
+      @apply text-body-sm font-normal leading-compact text-ink-muted;
+    }
+
+    .form-field__required {
+      @apply text-brand-500;
+    }
+
+    .form-input {
+      @apply w-full rounded-lg font-normal leading-normal text-ink placeholder:text-placeholder;
+    }
+
+    .form-input--sm {
+      @apply h-8 px-2.5 text-body-sm;
+    }
+
+    .form-input--md {
+      @apply h-field px-3 text-body-md;
+    }
+
+    .form-input--lg {
+      @apply h-12 px-4 text-body-md;
+    }
+
+    .form-input--outline {
+      @apply border border-border-tertiary bg-surface-white;
+    }
+
+    .form-input--filled {
+      @apply border border-transparent bg-surface-gray-100;
+    }
+
+    .form-input--ghost {
+      @apply border border-transparent bg-transparent;
+    }
+
+    .form-textarea--sm {
+      @apply px-2.5 py-2;
+    }
+
+    .form-textarea--md {
+      @apply px-3 py-2.5;
+    }
+
+    .form-textarea--lg {
+      @apply px-4 py-3;
+    }
+
+    .upload-zone {
+      @apply flex h-field w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-border-tertiary text-body-md font-normal text-brand-500 transition-colors hover:border-brand-500 hover:bg-brand-50/40;
+    }
+
+    .upload-zone--link {
+      @apply text-link hover:border-link hover:bg-link-bg/40;
+    }
+
+    .upload-filename {
+      @apply mt-2 truncate text-body-sm leading-body text-ink-muted;
+    }
+
+    /* Radio */
+    .radio {
+      @apply relative inline-flex shrink-0;
+    }
+
+    .radio__circle {
+      @apply flex items-center justify-center rounded-full border bg-white transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2;
+    }
+
+    .radio__circle--sm {
+      @apply size-4;
+    }
+
+    .radio__circle--md {
+      @apply size-5;
+    }
+
+    .radio__circle--lg {
+      @apply size-6;
+    }
+
+    .radio__circle--primary {
+      @apply border-border-tertiary peer-checked:border-2 peer-checked:border-brand-500 peer-focus-visible:ring-brand-200;
+    }
+
+    .radio__circle--secondary {
+      @apply border-border-secondary peer-checked:border-2 peer-checked:border-ink-muted peer-focus-visible:ring-surface-gray-200;
+    }
+
+    .radio__circle--success {
+      @apply border-border-tertiary peer-checked:border-2 peer-checked:border-success peer-focus-visible:ring-success-light;
+    }
+
+    .radio__dot {
+      @apply pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity peer-checked:opacity-100;
+    }
+
+    .radio__dot--sm {
+      @apply size-1.5;
+    }
+
+    .radio__dot--md {
+      @apply size-2;
+    }
+
+    .radio__dot--lg {
+      @apply size-2.5;
+    }
+
+    .radio__dot--primary {
+      @apply bg-brand-500;
+    }
+
+    .radio__dot--secondary {
+      @apply bg-ink-muted;
+    }
+
+    .radio__dot--success {
+      @apply bg-success;
+    }
+
+    .radio-field {
+      @apply inline-flex cursor-pointer items-center;
+    }
+
+    .radio-field--sm {
+      @apply gap-1.5;
+    }
+
+    .radio-field--md {
+      @apply gap-2;
+    }
+
+    .radio-field--lg {
+      @apply gap-2.5;
+    }
+
+    .radio-field--disabled {
+      @apply cursor-not-allowed opacity-50;
+    }
+
+    .radio-field__label {
+      @apply font-normal text-ink;
+    }
+
+    .radio-field__label--sm {
+      @apply text-xs leading-4;
+    }
+
+    .radio-field__label--md {
+      @apply text-body-sm leading-compact;
+    }
+
+    .radio-field__label--lg {
+      @apply text-body-md leading-body;
+    }
+
+    .radio-group {
+      @apply flex;
+    }
+
+    .radio-group--horizontal {
+      @apply flex-wrap items-center;
+    }
+
+    .radio-group--vertical {
+      @apply flex-col items-start;
+    }
+
+    .radio-group--gap-sm {
+      @apply gap-3;
+    }
+
+    .radio-group--gap-md {
+      @apply gap-5;
+    }
+
+    .radio-group--gap-lg {
+      @apply gap-6;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      @apply flex min-w-0 items-center overflow-hidden;
+    }
+
+    .breadcrumb__mobile {
+      @apply min-w-0 truncate sm:hidden;
+    }
+
+    .breadcrumb__list {
+      @apply min-w-0 list-none items-center gap-1 overflow-hidden p-0;
+    }
+
+    .breadcrumb__list--visible {
+      @apply flex;
+    }
+
+    .breadcrumb__list--responsive {
+      @apply hidden sm:flex;
+    }
+
+    .breadcrumb__item {
+      @apply flex min-w-0 items-center gap-1;
+    }
+
+    .breadcrumb__label {
+      @apply truncate font-medium leading-tight;
+    }
+
+    .breadcrumb__label--sm {
+      @apply text-xs;
+    }
+
+    .breadcrumb__label--md {
+      @apply text-sm;
+    }
+
+    .breadcrumb__separator {
+      @apply shrink-0 text-ink-subtle;
+    }
+
+    .breadcrumb__separator--sm {
+      @apply size-3;
+    }
+
+    .breadcrumb__separator--md {
+      @apply size-3.5;
+    }
+
+    .breadcrumb__link {
+      @apply cursor-pointer border-0 bg-transparent p-0 text-left transition-colors;
+    }
+
+    .breadcrumb--brand .breadcrumb__label--active {
+      @apply text-brand-500;
+    }
+
+    .breadcrumb--brand .breadcrumb__label--inactive {
+      @apply text-ink/40 hover:text-ink;
+    }
+
+    .breadcrumb--brand .breadcrumb__mobile {
+      @apply text-brand-500;
+    }
+
+    .breadcrumb--neutral .breadcrumb__label--active {
+      @apply text-ink;
+    }
+
+    .breadcrumb--neutral .breadcrumb__label--inactive {
+      @apply text-ink-muted hover:text-ink;
+    }
+
+    .breadcrumb--neutral .breadcrumb__mobile {
+      @apply text-ink;
+    }
+  }
+}

@@ -8,25 +8,25 @@ import { callLog } from "@/data/contextual";
 export function Calls() {
   return (
     <ContextualSectionShell>
-      <div className="px-4 py-4">
+      <div className="contextual-section--stack">
         <SectionTitle title="Call Log" />
-        <ul className="flex flex-col gap-2">
+        <ul className="contextual-list">
           {callLog.map((call) => (
             <li key={call.id}>
               <ContextualNote>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                <div className="call-note-header">
+                  <div className="call-note-leading">
                     {call.direction === "Inbound" ? (
-                      <PhoneIncoming size={14} className="text-success" />
+                      <PhoneIncoming size={14} className="call-note-icon--inbound" />
                     ) : (
-                      <PhoneOutgoing size={14} className="text-brand-500" />
+                      <PhoneOutgoing size={14} className="call-note-icon--outbound" />
                     )}
                     <ContextualCardTitle>{call.caller}</ContextualCardTitle>
                   </div>
                   <ContextualCardMeta>{call.duration}</ContextualCardMeta>
                 </div>
-                <ContextualCardMeta className="mt-1">{call.date}</ContextualCardMeta>
-                <p className="mt-1.5 text-body-sm text-ink-muted">{call.notes}</p>
+                <ContextualCardMeta className="call-note-date">{call.date}</ContextualCardMeta>
+                <p className="call-note-body">{call.notes}</p>
               </ContextualNote>
             </li>
           ))}

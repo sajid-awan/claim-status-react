@@ -16,7 +16,6 @@ import {
   UserRectangle,
   type Icon,
 } from "@/components/icons";
-import { appScrollClassName } from "@/components/ui/appScrollClassName";
 
 interface NavLeaf {
   label: string;
@@ -73,7 +72,7 @@ function NavChevron({ expanded }: { expanded: boolean }) {
       size={18}
       weight="regular"
       aria-hidden
-      className={`ml-auto shrink-0 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+      className={`nav-chevron ${expanded ? "nav-chevron--expanded" : ""}`.trim()}
     />
   );
 }
@@ -84,7 +83,7 @@ function TreeGuide({ isLast }: { isLast: boolean }) {
       src={isLast ? "/assets/icons/tree-l.svg" : "/assets/icons/tree-full.svg"}
       alt=""
       aria-hidden
-      className="block h-nav w-tree-guide shrink-0"
+      className="app-sidebar__tree-guide"
     />
   );
 }
@@ -117,21 +116,21 @@ function NavSubTree({
   const flatItems = flattenNavLeaves(items, expandedLeaves);
 
   return (
-    <ul className="flex flex-col pl-2">
+    <ul className="app-sidebar__subtree">
       {flatItems.map((child, index) => {
         const isLast = index === flatItems.length - 1;
 
         return (
-          <li key={child.label} className="flex h-nav items-center">
+          <li key={child.label} className="app-sidebar__subtree-item">
             <TreeGuide isLast={isLast} />
             <button
               type="button"
               onClick={() =>
                 (child.expandable || child.children?.length) && onToggleLeaf(child.label)
               }
-              className={`flex h-nav min-w-0 flex-1 cursor-pointer items-center truncate rounded px-2 text-left text-sm font-medium leading-nav transition-colors ${
-                child.active ? "text-brand-500" : "text-ink-muted hover:text-ink"
-              }`}
+              className={`app-sidebar__leaf-btn ${
+                child.active ? "app-sidebar__leaf-btn--active" : "app-sidebar__leaf-btn--idle"
+              }`.trim()}
             >
               <span className="truncate">{child.label}</span>
               {child.expandable && (
@@ -184,33 +183,33 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
           type="button"
           aria-label="Close navigation"
           onClick={onMobileClose}
-          className="fixed inset-0 z-40 bg-black/40 xl:hidden"
+          className="app-sidebar__overlay"
         />
       )}
 
       <nav
         aria-label="Application navigation"
-        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white ${appScrollClassName} transition-sidebar xl:static xl:translate-x-0 ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full"
+        className={`app-scroll app-sidebar ${
+          mobileOpen ? "app-sidebar--open" : "app-sidebar--closed-mobile"
         } xl:block ${
-          isCollapsed
-            ? "xl:w-sidebar-collapsed xl:bg-none"
-            : "w-sidebar bg-sidebar-pattern xl:w-sidebar"
-        }`}
+          isCollapsed ? "app-sidebar--collapsed" : "app-sidebar--expanded"
+        }`.trim()}
       >
         <div
-          className={`relative flex flex-col py-2.5 ${showExpanded ? "gap-sidebar-brand px-3" : "items-center gap-6 px-2"}`}
+          className={`app-sidebar__inner ${
+            showExpanded ? "app-sidebar__inner--expanded" : "app-sidebar__inner--collapsed"
+          }`.trim()}
         >
           <div
-            className={`flex w-full items-center ${showExpanded ? "h-10 justify-between" : "flex-col gap-2"}`}
+            className={`app-sidebar__brand-row ${
+              showExpanded ? "app-sidebar__brand-row--expanded" : "app-sidebar__brand-row--collapsed"
+            }`.trim()}
           >
             <img
               src={showExpanded ? "/assets/savi-logo.svg" : "/favicon.svg"}
               alt="SAVi Technology"
               className={
-                showExpanded
-                  ? "h-10 w-20 object-contain object-left"
-                  : "h-8 w-7 object-contain"
+                showExpanded ? "app-sidebar__logo--expanded" : "app-sidebar__logo--collapsed"
               }
             />
             <button
@@ -218,13 +217,17 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
               onClick={() => setIsCollapsed((prev) => !prev)}
               aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
               aria-expanded={!isCollapsed}
-              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex"
+              className="app-sidebar__toggle"
             >
-              <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-toggle-icon w-toggle-icon" />
+              <img src="/assets/icons/sidebar-toggle.svg" alt="" className="app-sidebar__toggle-icon" />
             </button>
           </div>
 
-          <ul className={`flex w-full flex-col ${showExpanded ? "gap-3" : "items-center gap-2"}`}>
+          <ul
+            className={`app-sidebar__list ${
+              showExpanded ? "app-sidebar__list--expanded" : "app-sidebar__list--collapsed"
+            }`.trim()}
+          >
             {navItems.map((item) => {
               const Icon = item.icon;
               const isExpanded = expanded === item.label;
@@ -237,11 +240,11 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
                     onClick={() => handleSectionClick(item)}
                     title={showExpanded ? undefined : item.label}
                     aria-label={item.label}
-                    className={`flex h-nav w-full cursor-pointer items-center rounded-lg text-sm font-medium leading-nav transition-colors ${
-                      showExpanded ? "gap-2.5 p-2 text-left" : "justify-center px-0"
+                    className={`app-sidebar__item-btn ${
+                      showExpanded ? "app-sidebar__item-btn--expanded" : "app-sidebar__item-btn--collapsed"
                     } ${
-                      isSectionActive ? "text-brand-500" : "text-ink-muted hover:text-ink"
-                    }`}
+                      isSectionActive ? "app-sidebar__item-btn--active" : "app-sidebar__item-btn--idle"
+                    }`.trim()}
                   >
                     <Icon size={18} weight="regular" className="shrink-0" />
                     {showExpanded && (

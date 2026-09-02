@@ -12,9 +12,9 @@ import { submissionAttempts, submissionSummary } from "@/data/contextual";
 export function Submission() {
   return (
     <ContextualSectionShell>
-      <div className="flex flex-col gap-5 px-4 py-4">
+      <div className="contextual-section">
         <div>
-          <div className="mb-2.5 flex items-center justify-between">
+          <div className="contextual-section__header">
             <SectionTitle title="Submission Summary" className="mb-0" />
             <StatusBadge label={submissionSummary.status} tone={toneForStatus(submissionSummary.status)} />
           </div>
@@ -28,12 +28,12 @@ export function Submission() {
 
         <div>
           <SectionTitle title="Submission Attempts" />
-          <ul className="flex flex-col gap-2">
+          <ul className="contextual-list">
             {submissionAttempts.map((attempt) => (
               <li key={attempt.id}>
                 <ContextualCard>
-                  <div className="flex items-center gap-2.5">
-                    <PaperPlaneTilt size={14} className="text-ink-muted" />
+                  <div className="contextual-card-row">
+                    <PaperPlaneTilt size={14} className="submission-icon" />
                     <div>
                       <ContextualCardTitle>{attempt.method}</ContextualCardTitle>
                       <ContextualCardMeta>

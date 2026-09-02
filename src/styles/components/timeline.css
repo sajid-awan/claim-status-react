@@ -1,0 +1,39 @@
+@layer components {
+  .claim-status-app {
+    .timeline--info {
+      @apply relative pl-timeline-indent;
+    }
+
+    .timeline--info-line {
+      @apply absolute bottom-0 left-1 top-timeline-line-top w-px bg-brand-500;
+    }
+
+    .timeline--activity {
+      @apply py-3 sm:py-4;
+    }
+
+    .timeline-item--info {
+      @apply relative pb-2.5 last:pb-0;
+    }
+
+    .timeline-item--info-dot {
+      @apply absolute -left-timeline-indent top-1 z-step size-2.5 rounded-full bg-brand-500;
+    }
+
+    .timeline-item--info-title {
+      @apply mb-2 text-base font-medium leading-snug text-brand-500;
+    }
+
+    .timeline-item--activity {
+      @apply relative pb-6 pl-6 sm:pl-8;
+    }
+
+    .timeline-item--activity-dot {
+      @apply absolute left-timeline-dot-offset top-timeline-dot-top size-2.5 rounded-full bg-border-primary;
+    }
+
+    .timeline-item--activity-connector {
+      @apply absolute bottom-0 left-timeline-dot-x top-timeline-connector-top w-px bg-border-primary;
+    }
+  }
+}

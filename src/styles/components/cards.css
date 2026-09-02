@@ -1,0 +1,71 @@
+@layer components {
+  .claim-status-app {
+    .contextual-card {
+      @apply flex items-center justify-between rounded-md border border-surface-gray-200 bg-surface-white px-3 py-2.5 shadow-card;
+    }
+
+    .contextual-card__title {
+      @apply truncate text-body-sm font-medium text-ink;
+    }
+
+    .contextual-card__meta {
+      @apply text-xs text-ink-muted;
+    }
+
+    .contextual-card__icon-btn {
+      @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-ink-muted hover:bg-surface-gray-100 hover:text-ink;
+    }
+
+    .contextual-note {
+      @apply rounded-md border border-surface-gray-200 bg-surface-white p-3 text-body-sm text-ink-muted shadow-card;
+    }
+
+    .info-card {
+      @apply overflow-hidden rounded-card border border-border-tertiary bg-white px-4 py-3;
+    }
+
+    .info-row {
+      @apply min-h-row-sm py-2;
+    }
+
+    .info-row--bordered {
+      @apply border-b border-border-subtle;
+    }
+
+    .info-row--last {
+      @apply border-b-0;
+    }
+
+    .info-row__label {
+      @apply pt-px text-left text-body-sm font-medium leading-body text-ink-muted;
+    }
+
+    .info-row__value {
+      @apply whitespace-pre-line text-left text-body-sm font-medium leading-body text-ink;
+    }
+
+    .info-row--half {
+      @apply flex items-start;
+    }
+
+    .info-row--wide {
+      @apply grid grid-cols-12 gap-x-5;
+    }
+
+    .info-row__label--half {
+      @apply w-1/2;
+    }
+
+    .info-row__label--wide {
+      @apply col-span-8;
+    }
+
+    .info-row__value--half {
+      @apply w-1/2;
+    }
+
+    .info-row__value--wide {
+      @apply col-span-4;
+    }
+  }
+}

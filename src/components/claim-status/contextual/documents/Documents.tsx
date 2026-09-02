@@ -13,14 +13,14 @@ import { claimDocuments } from "@/data/contextual";
 export function Documents() {
   return (
     <ContextualSectionShell>
-      <div className="px-4 py-4">
+      <div className="contextual-section--stack">
         <SectionTitle title={`Attached Documents (${claimDocuments.length})`} />
-        <ul className="flex flex-col gap-2">
+        <ul className="contextual-list">
           {claimDocuments.map((doc) => (
             <li key={doc.id}>
               <ContextualCard>
-                <div className="flex min-w-0 items-center gap-2.5">
-                  <FileText size={16} className="shrink-0 text-brand-500" />
+                <div className="contextual-card-row--start">
+                  <FileText size={16} className="doc-icon" />
                   <div className="min-w-0">
                     <ContextualCardTitle>{doc.name}</ContextualCardTitle>
                     <ContextualCardMeta>

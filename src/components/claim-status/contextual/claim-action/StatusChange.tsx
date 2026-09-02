@@ -8,7 +8,7 @@ interface StatusChangeProps {
 }
 
 function statusIcon(status: ClaimStatusValue, active = false) {
-  const className = active ? "shrink-0 text-brand-500" : "shrink-0 text-ink";
+  const className = active ? "status-icon--active" : "status-icon--idle";
 
   switch (status) {
     case "Pending":
