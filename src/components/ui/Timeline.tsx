@@ -38,7 +38,7 @@ export function TimelineItem({
 }: TimelineItemProps) {
   if (variant === "info") {
     return (
-      <section className={`timeline-item--info ${className}`.trim()}>
+      <section className={`timeline-item--info mb-3 ${className}`.trim()}>
         <span aria-hidden className="timeline-item--info-dot" />
         {title ? <h3 className="timeline-item--info-title">{title}:</h3> : null}
         {children}
