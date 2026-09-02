@@ -1,5 +1,7 @@
 import { SelectButton } from "primereact/selectbutton";
 
+import { appScrollClassName } from "@/components/ui/appScrollClassName";
+
 interface TabItem<T extends string> {
   id: T;
   label: string;
@@ -13,7 +15,7 @@ interface TabsProps<T extends string> {
 }
 
 const tabTrackClasses =
-  "app-scroll inline-flex h-10 max-w-full items-center overflow-x-auto overflow-y-hidden rounded-lg border border-[var(--color-tab-track-border)] bg-[var(--color-tab-track-bg)] px-[var(--spacing-tab-x)] py-[var(--spacing-tab-y)]";
+  `${appScrollClassName} inline-flex h-10 max-w-full items-center overflow-x-auto overflow-y-hidden rounded-lg border border-[var(--color-tab-track-border)] bg-[var(--color-tab-track-bg)] px-[var(--spacing-tab-x)] py-[var(--spacing-tab-y)]`;
 
 const tabButtonBaseClasses =
   "flex h-[var(--height-row-sm)] min-w-[5.5rem] shrink-0 items-center justify-center rounded-md border-0 px-2.5 text-sm leading-compact transition-colors sm:min-w-[6.25rem] sm:px-3";

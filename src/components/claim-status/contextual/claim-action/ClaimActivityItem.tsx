@@ -9,6 +9,7 @@ import type { ClaimActivity } from "@/types/claim";
 
 interface ClaimActivityItemProps {
   activity: ClaimActivity;
+  isLast?: boolean;
 }
 
 function DetailRow({ label, value }: { label: string; value: string }) {
@@ -20,12 +21,12 @@ function DetailRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function ClaimActivityItem({ activity }: ClaimActivityItemProps) {
+export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityItemProps) {
   const [visible, setVisible] = useState(true);
 
   if (!visible) {
     return (
-      <TimelineItem variant="activity" className="pb-4">
+      <TimelineItem variant="activity" className="pb-4" isLast={isLast}>
         <div className="flex items-center justify-between rounded-md border border-dashed border-surface-gray-200 px-3 py-2 text-body-sm text-ink-muted">
           <span>Activity hidden</span>
           <button
@@ -41,7 +42,7 @@ export function ClaimActivityItem({ activity }: ClaimActivityItemProps) {
   }
 
   return (
-    <TimelineItem variant="activity">
+    <TimelineItem variant="activity" isLast={isLast}>
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-dot gap-y-1">
           <span className="text-body-sm font-medium leading-compact text-ink">{activity.user}</span>

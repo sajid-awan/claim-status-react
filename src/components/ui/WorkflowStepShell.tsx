@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { appScrollClassName } from "@/components/ui/appScrollClassName";
+
 export function WorkflowStepShell({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div className={`flex min-h-0 flex-1 flex-col max-lg:flex-none lg:overflow-hidden ${className}`.trim()}>
@@ -11,7 +13,7 @@ export function WorkflowStepShell({ children, className = "" }: { children: Reac
 export function WorkflowStepScroll({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`app-scroll min-h-0 flex-1 max-lg:flex-none max-lg:overflow-y-auto lg:box-border lg:overflow-y-auto lg:px-4 ${className}`.trim()}
+      className={`${appScrollClassName} min-h-0 flex-1 max-lg:flex-none max-lg:overflow-y-auto lg:box-border lg:overflow-y-auto lg:px-4 ${className}`.trim()}
     >
       {children}
     </div>

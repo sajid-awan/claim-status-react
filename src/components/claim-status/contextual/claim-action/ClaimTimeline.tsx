@@ -13,8 +13,12 @@ export function ClaimTimeline({ activities }: ClaimTimelineProps) {
 
   return (
     <ActivityTimeline>
-      {activities.map((activity) => (
-        <ClaimActivityItem key={activity.id} activity={activity} />
+      {activities.map((activity, index) => (
+        <ClaimActivityItem
+          key={activity.id}
+          activity={activity}
+          isLast={index === activities.length - 1}
+        />
       ))}
     </ActivityTimeline>
   );

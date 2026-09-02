@@ -1,0 +1,173 @@
+/* PrimeReact internal selectors and shared form control shells. */
+
+@layer components {
+  .claim-status-app {
+    .form-control--sm {
+      --form-control-height: 2rem;
+      --form-control-font-size: var(--text-body-sm);
+    }
+
+    .form-control--md {
+      --form-control-height: var(--height-field);
+      --form-control-font-size: var(--text-body-md);
+    }
+
+    .form-control--lg {
+      --form-control-height: 3rem;
+      --form-control-font-size: var(--text-body-md);
+    }
+
+    .form-select {
+      display: flex;
+      height: var(--form-control-height, var(--height-field));
+      width: 100%;
+      align-items: center;
+      border-radius: 0.5rem;
+      border: 1px solid var(--color-border-tertiary);
+      background-color: var(--color-surface-white);
+      font-size: var(--form-control-font-size, var(--text-body-md));
+      font-weight: 400;
+      line-height: normal;
+      color: var(--color-ink);
+    }
+
+    .form-select--filled {
+      border-color: transparent;
+      background-color: var(--color-surface-gray-100);
+    }
+
+    .form-select--ghost {
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    .form-select .p-dropdown-label {
+      display: flex;
+      height: 100%;
+      min-width: 0;
+      flex: 1 1 auto;
+      align-items: center;
+      padding: 0 0.75rem;
+      font-size: inherit;
+    }
+
+    .form-select .p-dropdown-label.p-placeholder {
+      color: var(--color-placeholder);
+    }
+
+    .form-select .p-dropdown-trigger {
+      display: flex;
+      width: 2.5rem;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-ink-muted);
+    }
+
+    .form-datepicker {
+      display: flex;
+      height: var(--form-control-height, var(--height-field));
+      width: 100%;
+      max-width: 100%;
+      align-items: stretch;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      border: 1px solid var(--color-border-tertiary);
+      background-color: var(--color-surface-white);
+      font-size: var(--form-control-font-size, var(--text-body-md));
+    }
+
+    .form-datepicker--filled {
+      border-color: transparent;
+      background-color: var(--color-surface-gray-100);
+    }
+
+    .form-datepicker--ghost {
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    .form-datepicker .p-inputtext {
+      height: var(--form-control-height, var(--height-field));
+      min-width: 0;
+      flex: 1 1 auto;
+      border-radius: 0;
+      border: 0;
+      background-color: transparent;
+      padding: 0 0.75rem;
+      font-size: inherit;
+      font-weight: 400;
+      line-height: normal;
+      color: var(--color-ink);
+      box-shadow: none;
+    }
+
+    .form-datepicker .p-datepicker-trigger {
+      height: var(--form-control-height, var(--height-field));
+      width: 2.5rem;
+      flex-shrink: 0;
+      border-radius: 0;
+      border: 0;
+      border-left: 1px solid var(--color-border-tertiary);
+      background-color: transparent;
+      color: var(--color-ink-muted);
+      box-shadow: none;
+    }
+
+    .p-inputtext:enabled:hover,
+    .p-dropdown:not(.p-disabled):hover,
+    .p-inputtextarea:enabled:hover {
+      border-color: var(--color-brand-500);
+    }
+
+    .p-calendar:not(.p-disabled):hover,
+    .p-calendar:not(.p-disabled):has(.p-inputtext:hover),
+    .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover),
+    .p-calendar:not(.p-disabled).p-focus,
+    .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+      border-color: var(--color-brand-500);
+    }
+
+    .p-calendar .p-inputtext:enabled:hover,
+    .p-calendar .p-inputtext:enabled:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .p-calendar:not(.p-disabled):hover .p-datepicker-trigger,
+    .p-calendar:not(.p-disabled):has(.p-inputtext:hover) .p-datepicker-trigger,
+    .p-calendar:not(.p-disabled):has(.p-datepicker-trigger:hover) .p-datepicker-trigger,
+    .p-calendar:not(.p-disabled).p-focus .p-datepicker-trigger,
+    .p-calendar:not(.p-disabled):has(.p-inputtext:focus) .p-datepicker-trigger {
+      border-left-color: var(--color-brand-500);
+    }
+
+    .p-inputtext:enabled:focus,
+    .p-dropdown:not(.p-disabled).p-focus,
+    .p-inputtextarea:enabled:focus {
+      border-color: var(--color-brand-500);
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    .p-calendar:not(.p-disabled).p-focus,
+    .p-calendar:not(.p-disabled):has(.p-inputtext:focus) {
+      border-color: var(--color-brand-500);
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    .p-calendar .p-inputtext:enabled:focus {
+      box-shadow: none;
+    }
+
+    .p-checkbox.p-highlight .p-checkbox-box {
+      border-color: var(--color-brand-500);
+      background-color: var(--color-brand-500);
+    }
+
+    .p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+      border-color: var(--color-brand-500);
+    }
+  }
+}

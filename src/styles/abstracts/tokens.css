@@ -1,17 +1,5 @@
-/* ============================================================================= */
-/* Design tokens — single source of truth for color, type, spacing, and layout. */
-/* Exposed as CSS custom properties inside @theme so Tailwind v4 generates */
-/* matching utilities (e.g. --color-ink -> text-ink, --width-sidebar -> w-sidebar). */
-/* ============================================================================= */
+/* Design tokens — Tailwind @theme must live in the CSS entry graph. */
 
-/*
- * `static` keeps every one of these custom properties emitted as a real
- * runtime :root variable, not just inlined into the utilities Tailwind
- * generates from them. That's required here: the SCSS component layer
- * (src/styles/components/**, compiled separately via main.scss) reads these
- * tokens with var(--x), and Tailwind can't see that usage since it only
- * scans this file's own @import graph.
- */
 @theme static {
   /* Brand */
   --color-brand-50: #fff4e8;
@@ -60,52 +48,37 @@
   --color-tab-track-bg: rgba(35, 31, 32, 0.02);
 
   /* Typography sizes */
-  --text-body-sm: 0.875rem; /* 14px */
-  --text-body-md: 0.9375rem; /* 15px */
-  --text-title-sm: 1.25rem; /* 20px */
+  --text-body-sm: 0.875rem;
+  --text-body-md: 0.9375rem;
+  --text-title-sm: 1.25rem;
 
   /* Line heights */
-  /* NOTE: leading-compact previously equalled text-body-sm 1:1 (14px font / */
-  /* 14px line-height). A 1:1 ratio leaves no room for descenders ('y', 'g', */
-  /* 'p') and was the root cause of the clipped "Host Sync" label and a 1px */
-  /* vertical overflow on .contextual-tabs (which surfaced as a phantom */
-  /* scrollbar). Bumped to give ~14% headroom, matching how leading-tight */
-  /* and leading-body already relate to their font sizes. */
-  --leading-compact: 1rem; /* 16px (was 0.875rem) */
-  --leading-snug: 1.1875rem; /* 19px */
-  --leading-tight: 1.0625rem; /* 17px */
-  --leading-body: 1.3125rem; /* 21px */
-  --leading-nav: 1.40625rem; /* 22.5px */
+  --leading-compact: 1rem;
+  --leading-snug: 1.1875rem;
+  --leading-tight: 1.0625rem;
+  --leading-body: 1.3125rem;
+  --leading-nav: 1.40625rem;
 
   /* Spacing tokens */
   --spacing-chip-x: 0.5625rem;
   --spacing-chip-y: 0.4375rem;
   --spacing-tab-x: 0.5625rem;
-  /*
-   * 0.25rem (4px), not 0.3125rem: .contextual-tabs is a fixed 2.5rem (h-10)
-   * tall container with a 1px border, holding fixed-height 1.875rem (30px)
-   * buttons. 2.5rem - 2px border - 1.875rem button = 8px left over for
-   * top+bottom padding combined, i.e. 4px per side. The previous 5px/side
-   * value left the buttons 2px taller than the available box, which is what
-   * caused the 1px scrollHeight/clientHeight mismatch (phantom scrollbar) on
-   * this element — a box-model mismatch, not a line-height issue.
-   */
   --spacing-tab-y: 0.25rem;
   --spacing-dot: 0.21875rem;
 
   /* Layout */
   --width-contextual: 598px;
   --width-sidebar: 266px;
-  --width-sidebar-collapsed: 4.5rem; /* 72px */
-  --width-content-narrow: 26.25rem; /* 420px */
-  --height-nav: 2.125rem; /* 34px */
-  --height-header: 3.75rem; /* 60px */
+  --width-sidebar-collapsed: 4.5rem;
+  --width-content-narrow: 26.25rem;
+  --height-nav: 2.125rem;
+  --height-header: 3.75rem;
   --height-field: 2.75rem;
   --height-button: 2.5rem;
-  --height-row-sm: 1.875rem; /* 30px */
-  --height-empty-state: 12.5rem; /* 200px */
-  --width-toggle-icon: 1.125rem; /* 18px */
-  --height-toggle-icon: 1.0625rem; /* 17px */
+  --height-row-sm: 1.875rem;
+  --height-empty-state: 12.5rem;
+  --width-toggle-icon: 1.125rem;
+  --height-toggle-icon: 1.0625rem;
   --radius-card: 1.125rem;
   --radius-panel: 0.75rem;
 

@@ -1,4 +1,5 @@
 import type { Icon } from "@/components/icons";
+import { appScrollClassName } from "@/components/ui/appScrollClassName";
 import { IconButton, type IconButtonRadius, type IconButtonSize } from "@/components/ui/IconButton";
 
 export type IconNavLayout = "horizontal" | "vertical" | "responsive";
@@ -62,7 +63,7 @@ function IconNavList<T extends string>({
 }
 
 const horizontalNavClassName =
-  "flex shrink-0 items-center gap-1 overflow-x-auto border-b border-surface-gray-200 px-2 py-1.5 app-scroll";
+  `flex shrink-0 items-center gap-1 overflow-x-auto border-b border-surface-gray-200 px-2 py-1.5 ${appScrollClassName}`;
 
 const verticalNavClassName =
   "flex w-12 shrink-0 flex-col items-center gap-2 self-stretch px-1 py-1";

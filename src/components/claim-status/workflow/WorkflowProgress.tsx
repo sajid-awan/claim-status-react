@@ -36,6 +36,42 @@ function StepCircle({ status }: { status: WorkflowStepStatus }) {
   return <span className={`${baseClass} bg-step-inactive`} aria-hidden="true" />;
 }
 
+function StepTrack({
+  lineBeforeOrange,
+  lineAfterOrange,
+  showLineBefore,
+  showLineAfter,
+  status,
+}: {
+  lineBeforeOrange: boolean;
+  lineAfterOrange: boolean;
+  showLineBefore: boolean;
+  showLineAfter: boolean;
+  status: WorkflowStepStatus;
+}) {
+  return (
+    <div className="relative isolate flex h-5 w-full items-center justify-center">
+      {showLineBefore ? (
+        <span
+          aria-hidden
+          className={`absolute right-1/2 top-1/2 z-[-1] h-1 w-1/2 -translate-y-1/2 ${
+            lineBeforeOrange ? "bg-brand-500" : "bg-step-inactive"
+          }`}
+        />
+      ) : null}
+      {showLineAfter ? (
+        <span
+          aria-hidden
+          className={`absolute left-1/2 top-1/2 z-[-1] h-1 w-1/2 -translate-y-1/2 ${
+            lineAfterOrange ? "bg-brand-500" : "bg-step-inactive"
+          }`}
+        />
+      ) : null}
+      <StepCircle status={status} />
+    </div>
+  );
+}
+
 export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgressProps) {
   return (
     <ol className="flex shrink-0 px-1 py-4 sm:px-2 sm:py-6 lg:pl-0 lg:pr-3">
@@ -48,23 +84,15 @@ export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgre
         const lineBeforeOrange = !isFirst && Boolean(prevStepId && completedSteps.has(prevStepId));
         const lineAfterOrange = !isLast && isCompleted;
 
-        const trackClasses = [
-          "workflow-stepper__track",
-          !isFirst
-            ? `workflow-stepper__track--line-before ${lineBeforeOrange ? "workflow-stepper__line--active" : "workflow-stepper__line--inactive"}`
-            : "",
-          !isLast
-            ? `workflow-stepper__track--line-after ${lineAfterOrange ? "workflow-stepper__line--active" : "workflow-stepper__line--inactive"}`
-            : "",
-        ]
-          .filter(Boolean)
-          .join(" ");
-
         return (
           <li key={step.id} className="flex min-w-0 flex-1 flex-col items-center">
-            <div className={trackClasses}>
-              <StepCircle status={status} />
-            </div>
+            <StepTrack
+              status={status}
+              showLineBefore={!isFirst}
+              showLineAfter={!isLast}
+              lineBeforeOrange={lineBeforeOrange}
+              lineAfterOrange={lineAfterOrange}
+            />
             <span
               className={`mt-2 w-full px-0.5 text-center text-xs font-normal leading-4 sm:mt-3 sm:text-body-sm sm:leading-tight ${
                 status === "active" ? "text-brand-500" : "text-ink"
