@@ -14,7 +14,7 @@ interface ClaimActivityItemProps {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="mb-2 flex min-h-[var(--height-row-sm)] flex-col gap-0.5 border-b border-border-subtle py-1 last:mb-0 last:border-b-0 sm:h-[var(--height-row-sm)] sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0">
+    <div className="mb-2 flex min-h-row-sm flex-col gap-0.5 border-b border-border-subtle py-1 last:mb-0 last:border-b-0 sm:h-row-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0">
       <span className="shrink-0 text-body-sm font-normal leading-body text-ink-subtle">{label}:</span>
       <span className="min-w-0 text-body-sm font-normal leading-body text-ink sm:text-right">{value || "\u00A0"}</span>
     </div>
@@ -63,14 +63,14 @@ export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityIte
 
       <div className="flex flex-col">
         {activity.claimStatusChange && (
-          <div className="pt-[3.5px]">
+          <div className="pt-dot">
             <StatusTransitionRow
               from={activity.claimStatusChange.from}
               to={activity.claimStatusChange.to}
             />
           </div>
         )}
-        <div className="pt-[3.5px]">
+        <div className="pt-dot">
           <StatusChange change={activity.statusChange} />
         </div>
       </div>

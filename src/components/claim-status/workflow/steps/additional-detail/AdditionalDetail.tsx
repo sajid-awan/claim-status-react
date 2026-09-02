@@ -34,7 +34,7 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
     <WorkflowStepShell>
       <Toast ref={toastRef} />
       <WorkflowStepScroll className="flex items-center justify-center">
-        <WorkflowStepContent className="flex w-full max-w-[var(--width-content-narrow)] flex-col items-center px-5 py-8 text-center">
+        <WorkflowStepContent className="flex w-full max-w-content-narrow flex-col items-center px-5 py-8 text-center">
           <img src="/assets/claim.svg" alt="" className="mb-6 h-20 w-20" aria-hidden />
 
           <h3 className="text-xl font-semibold leading-tight text-ink">Claim is Not On File</h3>

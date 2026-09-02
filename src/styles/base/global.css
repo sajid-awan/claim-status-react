@@ -27,3 +27,46 @@
     @apply cursor-not-allowed;
   }
 }
+
+@layer components {
+  .app-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) transparent;
+  }
+
+  .app-scroll::-webkit-scrollbar {
+    width: var(--size-scrollbar);
+    height: var(--size-scrollbar);
+  }
+
+  .app-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .app-scroll::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: var(--color-scrollbar);
+  }
+
+  .app-scroll::-webkit-scrollbar-thumb:hover,
+  .app-scroll::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-scrollbar-hover);
+  }
+
+  .bg-sidebar-pattern {
+    background-image: url("/assets/img.png");
+    background-size: var(--width-sidebar) 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+  }
+
+  .grid-cols-gather-address {
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+  }
+
+  .transition-sidebar {
+    transition-property: width, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+}

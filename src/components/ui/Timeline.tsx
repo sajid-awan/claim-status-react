@@ -19,10 +19,10 @@ export interface TimelineItemProps {
 export function Timeline({ variant, children, className = "" }: TimelineProps) {
   if (variant === "info") {
     return (
-      <div className={`relative pl-[1.3125rem] ${className}`.trim()}>
+      <div className={`relative pl-timeline-indent ${className}`.trim()}>
         <span
           aria-hidden
-          className="absolute bottom-0 left-1 top-[0.5625rem] w-px bg-brand-500"
+          className="absolute bottom-0 left-1 top-timeline-line-top w-px bg-brand-500"
         />
         {children}
       </div>
@@ -44,7 +44,7 @@ export function TimelineItem({
       <section className={`relative pb-2.5 last:pb-0 ${className}`.trim()}>
         <span
           aria-hidden
-          className="absolute -left-[1.3125rem] top-1 z-[1] size-2.5 rounded-full bg-brand-500"
+          className="absolute -left-timeline-indent top-1 z-step size-2.5 rounded-full bg-brand-500"
         />
         {title ? (
           <h3 className="mb-2 text-base font-medium leading-snug text-brand-500">{title}:</h3>
@@ -58,12 +58,12 @@ export function TimelineItem({
     <li className={`relative pb-6 pl-6 sm:pl-8 ${className}`.trim()}>
       <span
         aria-hidden
-        className="absolute left-[calc(0.4375rem-0.3125rem)] top-[10px] size-2.5 rounded-full bg-border-primary"
+        className="absolute left-timeline-dot-offset top-timeline-dot size-2.5 rounded-full bg-border-primary"
       />
       {!isLast ? (
         <span
           aria-hidden
-          className="absolute bottom-0 left-[0.4375rem] top-[calc(10px+0.625rem+10px)] w-px bg-border-primary"
+          className="absolute bottom-0 left-timeline-dot-x top-timeline-connector-top w-px bg-border-primary"
         />
       ) : null}
       {children}

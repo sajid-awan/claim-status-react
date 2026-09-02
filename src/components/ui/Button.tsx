@@ -11,7 +11,7 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-  "inline-flex h-[var(--height-button)] cursor-pointer items-center justify-center gap-2.5 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed";
+  "inline-flex h-button cursor-pointer items-center justify-center gap-2.5 rounded-lg px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed";
 
 const iconWrapperClass = "flex size-5 shrink-0 items-center justify-center";
 

@@ -107,7 +107,7 @@ export function GatherInfo({ data, onChange, onNext }: GatherInfoProps) {
             />
           </FormField>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[2fr_1.5fr_1.5fr] xl:gap-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-gather-address xl:gap-5">
             <FormField label="City" required>
               <Select
                 value={data.city}

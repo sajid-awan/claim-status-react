@@ -8,7 +8,7 @@ interface ContextualCardProps {
 export function ContextualCard({ children, className = "" }: ContextualCardProps) {
   return (
     <div
-      className={`flex items-center justify-between rounded-md border border-surface-gray-200 bg-surface-white px-3 py-2.5 shadow-[var(--shadow-card)] ${className}`.trim()}
+      className={`flex items-center justify-between rounded-md border border-surface-gray-200 bg-surface-white px-3 py-2.5 shadow-card ${className}`.trim()}
     >
       {children}
     </div>
@@ -44,7 +44,7 @@ export function ContextualCardIconButton({
 export function ContextualNote({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-md border border-surface-gray-200 bg-surface-white p-3 text-body-sm text-ink-muted shadow-[var(--shadow-card)] ${className}`.trim()}
+      className={`rounded-md border border-surface-gray-200 bg-surface-white p-3 text-body-sm text-ink-muted shadow-card ${className}`.trim()}
     >
       {children}
     </div>

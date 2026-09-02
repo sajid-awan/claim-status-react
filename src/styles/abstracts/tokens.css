@@ -66,6 +66,34 @@
   --spacing-tab-y: 0.25rem;
   --spacing-dot: 0.21875rem;
 
+  /* Sidebar */
+  --width-tree-guide: 1.0625rem;
+  --spacing-sidebar-brand: 3.125rem;
+
+  /* Tabs */
+  --width-tab-min: 5.5rem;
+  --width-tab-min-md: 6.25rem;
+
+  /* Header */
+  --width-logo-mobile-max: 4.5rem;
+  --width-logo-mobile-max-sm: 5rem;
+  --width-header-user: 6.4375rem;
+
+  /* Timeline */
+  --spacing-timeline-indent: 1.3125rem;
+  --spacing-timeline-line-top: 0.5625rem;
+  --spacing-timeline-dot-top: 0.625rem;
+  --spacing-timeline-dot-x: 0.4375rem;
+  --spacing-timeline-dot-offset: 0.125rem;
+  --spacing-timeline-connector-top: 1.875rem;
+
+  /* Scrollbar */
+  --size-scrollbar: 0.375rem;
+
+  /* Z-index */
+  --z-index-step: 1;
+  --z-index-step-behind: -1;
+
   /* Layout */
   --width-contextual: 598px;
   --width-sidebar: 266px;

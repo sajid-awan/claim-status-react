@@ -19,7 +19,7 @@ function statusFor(
 }
 
 function StepCircle({ status }: { status: WorkflowStepStatus }) {
-  const baseClass = "relative z-[1] flex h-5 w-5 shrink-0 items-center justify-center rounded-full";
+  const baseClass = "relative z-step flex size-5 shrink-0 items-center justify-center rounded-full";
 
   if (status === "completed") {
     return (
@@ -54,7 +54,7 @@ function StepTrack({
       {showLineBefore ? (
         <span
           aria-hidden
-          className={`absolute right-1/2 top-1/2 z-[-1] h-1 w-1/2 -translate-y-1/2 ${
+          className={`absolute right-1/2 top-1/2 -z-step-behind h-1 w-1/2 -translate-y-1/2 ${
             lineBeforeOrange ? "bg-brand-500" : "bg-step-inactive"
           }`}
         />
@@ -62,7 +62,7 @@ function StepTrack({
       {showLineAfter ? (
         <span
           aria-hidden
-          className={`absolute left-1/2 top-1/2 z-[-1] h-1 w-1/2 -translate-y-1/2 ${
+          className={`absolute left-1/2 top-1/2 -z-step-behind h-1 w-1/2 -translate-y-1/2 ${
             lineAfterOrange ? "bg-brand-500" : "bg-step-inactive"
           }`}
         />

@@ -84,7 +84,7 @@ function TreeGuide({ isLast }: { isLast: boolean }) {
       src={isLast ? "/assets/icons/tree-l.svg" : "/assets/icons/tree-full.svg"}
       alt=""
       aria-hidden
-      className="block h-nav w-[17px] shrink-0"
+      className="block h-nav w-tree-guide shrink-0"
     />
   );
 }
@@ -190,16 +190,16 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
 
       <nav
         aria-label="Application navigation"
-        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white ${appScrollClassName} transition-[width,transform] duration-200 ease-in-out xl:static xl:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-border-hairline bg-white ${appScrollClassName} transition-sidebar xl:static xl:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         } xl:block ${
           isCollapsed
-            ? "xl:w-[72px] xl:bg-none"
-            : "w-sidebar bg-[url('/assets/img.png')] bg-size-[length:var(--width-sidebar)_100%] bg-left-top bg-no-repeat xl:w-sidebar"
+            ? "xl:w-sidebar-collapsed xl:bg-none"
+            : "w-sidebar bg-sidebar-pattern xl:w-sidebar"
         }`}
       >
         <div
-          className={`relative flex flex-col py-2.5 ${showExpanded ? "gap-[50px] px-3" : "items-center gap-6 px-2"}`}
+          className={`relative flex flex-col py-2.5 ${showExpanded ? "gap-sidebar-brand px-3" : "items-center gap-6 px-2"}`}
         >
           <div
             className={`flex w-full items-center ${showExpanded ? "h-10 justify-between" : "flex-col gap-2"}`}
@@ -220,7 +220,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
               aria-expanded={!isCollapsed}
               className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-body bg-surface-body p-tab-x xl:flex"
             >
-              <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-[17px] w-[18px]" />
+              <img src="/assets/icons/sidebar-toggle.svg" alt="" className="h-toggle-icon w-toggle-icon" />
             </button>
           </div>
 

@@ -21,7 +21,7 @@ export function AppHeader({ onOpenSidebar }: AppHeaderProps) {
         <img
           src="/assets/savi-logo.svg"
           alt="SAVi Technology"
-          className="h-7 max-w-[4.5rem] shrink object-contain object-left sm:h-8 sm:max-w-[5rem]"
+          className="h-7 max-w-logo-mobile shrink object-contain object-left sm:h-8 sm:max-w-logo-mobile-sm"
         />
       </div>
 
@@ -40,7 +40,7 @@ export function AppHeader({ onOpenSidebar }: AppHeaderProps) {
         >
           <Bell className={headerIconClass} size={18} weight="regular" />
         </button>
-        <div className="hidden min-w-0 flex-col gap-[0.4375rem] sm:flex md:w-[6.4375rem]">
+        <div className="hidden min-w-0 flex-col gap-chip-y sm:flex md:w-header-user">
           <p className="truncate text-base leading-4 text-ink">Hassan, Sajid</p>
           <p className="truncate text-body-sm leading-compact text-ink/40">User</p>
         </div>

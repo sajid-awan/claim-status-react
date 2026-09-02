@@ -30,7 +30,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       />
 
       <div
-        className={`order-3 hidden min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-[var(--width-contextual)] lg:flex-none lg:overflow-hidden lg:px-0 ${
+        className={`order-3 hidden min-w-0 max-lg:px-4 md:flex md:flex-col lg:order-1 lg:h-full lg:min-h-0 lg:w-contextual lg:flex-none lg:overflow-hidden lg:px-0 ${
           isContextualOpen ? "flex max-md:absolute max-md:inset-0 max-md:z-40 max-md:flex-col max-md:bg-surface-white" : ""
         }`}
       >

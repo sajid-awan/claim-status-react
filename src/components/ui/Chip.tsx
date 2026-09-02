@@ -24,7 +24,7 @@ export interface ChipProps {
 
 const sizeClasses: Record<ChipSize, string> = {
   sm: "gap-1 px-2.5 py-1 text-xs",
-  md: "min-h-7 gap-1 px-[var(--spacing-chip-x)] py-[var(--spacing-chip-y)] text-body-sm leading-snug",
+  md: "min-h-7 gap-1 px-chip-x py-chip-y text-body-sm leading-snug",
 };
 
 const radiusClasses: Record<ChipRadius, string> = {

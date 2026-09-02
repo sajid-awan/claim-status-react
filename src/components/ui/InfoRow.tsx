@@ -15,7 +15,7 @@ export function InfoRow({
 
   return (
     <div
-      className={`min-h-[var(--height-row-sm)] py-2 ${
+      className={`min-h-row-sm py-2 ${
         isWide ? "grid grid-cols-12 gap-x-5" : "flex items-start"
       } ${isLast ? "" : "border-b border-border-subtle"}`}
     >
