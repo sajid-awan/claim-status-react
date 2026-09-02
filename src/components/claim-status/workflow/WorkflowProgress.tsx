@@ -74,7 +74,7 @@ function StepCircle({ status }: { status: WorkflowStepStatus }) {
 
 export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgressProps) {
   return (
-    <ol className="flex shrink-0 px-1 py-4 sm:px-2 sm:py-6">
+    <ol className="flex shrink-0 px-1 py-4 max-lg:px-1 sm:px-2 sm:py-6 lg:px-0 lg:pr-3">
       {workflowSteps.map((step, index) => {
         const status = statusFor(step.id, currentStep, completedSteps);
         const isFirst = index === 0;

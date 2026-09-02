@@ -11,7 +11,7 @@ export function ClaimTimeline({ activities }: ClaimTimelineProps) {
   }
 
   return (
-    <ul className="px-2 py-3 sm:pr-3 sm:py-4">
+    <ul className="py-3 sm:py-4">
       {activities.map((activity) => (
         <ClaimActivityItem key={activity.id} activity={activity} />
       ))}

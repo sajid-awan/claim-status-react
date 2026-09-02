@@ -27,7 +27,7 @@ export function Tabs<T extends string>({ items, activeId, onChange, className = 
       }}
       pt={{
         root: {
-          className: `inline-flex h-10 max-w-full items-center overflow-x-auto rounded-lg border border-[rgba(35,31,32,0.03)] bg-[rgba(35,31,32,0.02)] px-[9px] py-[5px] thin-scroll ${className}`,
+          className: `inline-flex h-10 max-w-full items-center overflow-x-auto rounded-lg border border-[rgba(35,31,32,0.03)] bg-[rgba(35,31,32,0.02)] px-[9px] py-[5px] app-scroll ${className}`,
         },
         button: ({ context }: { context: { selected: boolean } }) => ({
           className: `flex h-[30px] min-w-[5.5rem] shrink-0 cursor-pointer items-center justify-center rounded-md border-0 px-2.5 text-sm leading-[14px] transition-colors sm:min-w-[100px] sm:px-3 ${

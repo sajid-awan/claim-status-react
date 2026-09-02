@@ -12,12 +12,14 @@ interface PreClaimStatusProps {
 
 export function PreClaimStatus({ claim, onNext }: PreClaimStatusProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col max-lg:flex-none">
-      <div className="min-h-0 flex-1 overflow-y-auto py-4 thin-scroll max-lg:flex-none max-lg:overflow-visible lg:overflow-y-auto">
-        <InfoTimeline>
-          <ClaimLevelInfo rows={getClaimLevelInfoRows(claim)} />
-          <PatientLevelInfo rows={getPatientLevelInfoRows(claim)} />
-        </InfoTimeline>
+    <div className="workflow-step-shell">
+      <div className="workflow-step-scroll py-4">
+        <div className="workflow-step-content">
+          <InfoTimeline>
+            <ClaimLevelInfo rows={getClaimLevelInfoRows(claim)} />
+            <PatientLevelInfo rows={getPatientLevelInfoRows(claim)} />
+          </InfoTimeline>
+        </div>
       </div>
       <PreClaimStatusFooter onNext={onNext} />
     </div>

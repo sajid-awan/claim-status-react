@@ -30,10 +30,10 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col max-lg:flex-none">
+    <div className="workflow-step-shell">
       <Toast ref={toastRef} />
-      <div className="flex min-h-0 flex-1 items-center justify-center overflow-y-auto thin-scroll max-lg:flex-none max-lg:overflow-visible lg:overflow-y-auto">
-        <div className="flex w-full max-w-[420px] flex-col items-center px-5 py-8 text-center">
+      <div className="workflow-step-scroll flex items-center justify-center">
+        <div className="workflow-step-content flex w-full max-w-[420px] flex-col items-center px-5 py-8 text-center">
           <img src="/assets/claim.svg" alt="" className="mb-6 h-20 w-20" aria-hidden />
 
           <h3 className="text-xl font-semibold leading-tight text-ink">Claim is Not On File</h3>

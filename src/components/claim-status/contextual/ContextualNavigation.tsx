@@ -59,7 +59,7 @@ export function ContextualNavigation({ activeContext, onChange }: ContextualNavi
     <>
       <nav
         aria-label="Claim contextual sections"
-        className="flex shrink-0 items-center gap-1 overflow-x-auto border-b border-surface-gray-200 px-2 py-1.5 thin-scroll md:hidden"
+        className="flex shrink-0 items-center gap-1 overflow-x-auto border-b border-surface-gray-200 px-2 py-1.5 app-scroll md:hidden"
       >
         <NavButtons
           activeContext={activeContext}

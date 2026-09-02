@@ -189,7 +189,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
 
       <nav
         aria-label="Application navigation"
-        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-black/[0.04] bg-white thin-scroll transition-[width,transform] duration-200 ease-in-out xl:static xl:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 h-full shrink-0 overflow-y-auto border-r border-black/[0.04] bg-white app-scroll transition-[width,transform] duration-200 ease-in-out xl:static xl:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         } xl:block ${
           isCollapsed

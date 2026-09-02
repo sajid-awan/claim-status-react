@@ -8,7 +8,7 @@ interface WorkflowHeaderProps {
 
 export function WorkflowHeader({ title, onBack, onClose }: WorkflowHeaderProps) {
   return (
-    <header className="flex h-11 shrink-0 items-center justify-between gap-2 border-b border-[#D5D7DA] px-2 py-2 pr-3 max-lg:px-0 lg:pr-5">
+    <header className="flex h-11 shrink-0 items-center justify-between gap-2 border-b border-[#D5D7DA] px-2 py-2 pr-3 max-lg:px-2 lg:px-0 lg:pr-3">
       <div className="flex min-w-0 items-center gap-2 sm:gap-3">
         <button
           type="button"

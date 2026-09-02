@@ -48,7 +48,7 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       </div>
 
       <div
-        className="order-4 mx-5 hidden w-px shrink-0 self-stretch bg-surface-gray-200 lg:order-2 lg:block"
+        className="order-4 mr-5 ml-3 hidden w-px shrink-0 self-stretch bg-surface-gray-200 lg:order-2 lg:block"
         aria-hidden
       />
     </div>

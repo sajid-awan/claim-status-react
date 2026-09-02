@@ -86,33 +86,86 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.thin-scroll {
+.app-scroll,
+.workflow-step-scroll,
+.contextual-panel-scroll {
   scrollbar-width: thin;
   scrollbar-color: #d4d6db transparent;
-  scrollbar-gutter: stable;
-  padding-inline: 4px;
 }
 
-.thin-scroll::-webkit-scrollbar {
+.app-scroll::-webkit-scrollbar,
+.workflow-step-scroll::-webkit-scrollbar,
+.contextual-panel-scroll::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-.thin-scroll::-webkit-scrollbar-track {
+.app-scroll::-webkit-scrollbar-track,
+.workflow-step-scroll::-webkit-scrollbar-track,
+.contextual-panel-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.thin-scroll::-webkit-scrollbar-thumb {
+.app-scroll::-webkit-scrollbar-thumb,
+.workflow-step-scroll::-webkit-scrollbar-thumb,
+.contextual-panel-scroll::-webkit-scrollbar-thumb {
   background-color: #d4d6db;
   border: 0 solid transparent;
   border-radius: 999px;
   background-clip: padding-box;
 }
 
-.thin-scroll::-webkit-scrollbar-thumb:hover,
-.thin-scroll::-webkit-scrollbar-thumb:active {
+.app-scroll::-webkit-scrollbar-thumb:hover,
+.app-scroll::-webkit-scrollbar-thumb:active,
+.workflow-step-scroll::-webkit-scrollbar-thumb:hover,
+.workflow-step-scroll::-webkit-scrollbar-thumb:active,
+.contextual-panel-scroll::-webkit-scrollbar-thumb:hover,
+.contextual-panel-scroll::-webkit-scrollbar-thumb:active {
   background-color: #b7bac2;
   border: 0 solid transparent;
+}
+
+.workflow-step-shell {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 0%;
+  flex-direction: column;
+}
+
+.workflow-step-scroll,
+.contextual-panel-scroll {
+  min-height: 0;
+  flex: 1 1 0%;
+}
+
+@media (min-width: 1024px) {
+  .workflow-step-shell {
+    overflow: hidden;
+  }
+
+  .workflow-step-scroll,
+  .contextual-panel-scroll {
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-right: 12px;
+  }
+
+  .workflow-step-content,
+  .contextual-panel-content {
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 1023px) {
+  .workflow-step-shell {
+    flex: none;
+  }
+
+  .workflow-step-scroll,
+  .contextual-panel-scroll {
+    flex: none;
+    overflow: visible;
+  }
 }
 
 .gather-field {

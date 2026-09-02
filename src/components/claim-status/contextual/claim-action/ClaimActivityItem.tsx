@@ -46,14 +46,12 @@ export function ClaimActivityItem({ activity }: ClaimActivityItemProps) {
 
   return (
     <li className={`${timelineItemClass} pb-6`}>
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-          <div className="flex min-w-0 flex-wrap items-center gap-x-[3.5px] gap-y-1">
-            <span className="text-sm font-medium leading-[14px] text-ink">{activity.user}</span>
-            <span className="size-1 shrink-0 rounded-full bg-ink-subtle" aria-hidden="true" />
-            <span className="text-xs font-normal leading-3 text-ink-subtle">{activity.timestamp}</span>
-          </div>
-          <ActivityBadge source={activity.source} />
+      <div className="flex items-start justify-between gap-2 md:items-center">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-[3.5px] gap-y-1">
+          <span className="text-sm font-medium leading-[14px] text-ink">{activity.user}</span>
+          <span className="size-1 shrink-0 rounded-full bg-ink-subtle" aria-hidden="true" />
+          <span className="text-xs font-normal leading-3 text-ink-subtle">{activity.timestamp}</span>
+          <ActivityBadge source={activity.source} className="basis-full md:ml-2.5 md:basis-auto" />
         </div>
         <button
           type="button"
@@ -64,7 +62,7 @@ export function ClaimActivityItem({ activity }: ClaimActivityItemProps) {
         </button>
       </div>
 
-      <p className="mt-2 text-xs font-normal leading-[18px] text-ink-subtle">Updated Status From:</p>
+      <p className="mt-2 text-xs font-normal leading-[18px] text-ink-subtle md:mt-[3.5px]">Updated Status From:</p>
 
       <div className="flex flex-col">
         {activity.claimStatusChange && (

@@ -13,19 +13,21 @@ export function Verify({ data, onNext }: VerifyProps) {
   const rows = getVerifyRows(data);
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col max-lg:flex-none">
-      <div className="min-h-0 flex-1 overflow-y-auto thin-scroll max-lg:flex-none max-lg:overflow-visible lg:overflow-y-auto">
-        <InfoCard>
-          {rows.map((row, index) => (
-            <InfoRow
-              key={row.label}
-              label={row.label}
-              value={row.value}
-              columnLayout="wide"
-              isLast={index === rows.length - 1}
-            />
-          ))}
-        </InfoCard>
+    <div className="workflow-step-shell">
+      <div className="workflow-step-scroll">
+        <div className="workflow-step-content">
+          <InfoCard>
+            {rows.map((row, index) => (
+              <InfoRow
+                key={row.label}
+                label={row.label}
+                value={row.value}
+                columnLayout="wide"
+                isLast={index === rows.length - 1}
+              />
+            ))}
+          </InfoCard>
+        </div>
       </div>
       <VerifyFooter onNext={onNext} />
     </div>

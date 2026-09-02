@@ -13,8 +13,10 @@ export function ContextualContent({ quickTab }: ContextualContentProps) {
   }
 
   return (
-    <div className="min-h-0 flex-1 max-lg:flex-none max-lg:overflow-visible lg:overflow-y-auto lg:thin-scroll">
-      <ClaimTimeline activities={mockClaimActivities} />
+    <div className="contextual-panel-scroll min-h-0 flex-1 max-lg:flex-none max-lg:overflow-visible">
+      <div className="contextual-panel-content">
+        <ClaimTimeline activities={mockClaimActivities} />
+      </div>
     </div>
   );
 }
