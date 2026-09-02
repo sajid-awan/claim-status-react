@@ -1,0 +1,46 @@
+import { WorkflowHeader } from "@/components/claim-status/workflow/WorkflowHeader";
+import { WorkflowProgress } from "@/components/claim-status/workflow/WorkflowProgress";
+import { WorkflowContent } from "@/components/claim-status/workflow/WorkflowContent";
+import type { Claim } from "@/types/claim";
+import type { GatherInfoFormData } from "@/types/gatherInfo";
+import type { WorkflowStepId } from "@/types/workflow";
+
+interface WorkflowPanelProps {
+  claim: Claim;
+  currentStep: WorkflowStepId;
+  completedSteps: Set<WorkflowStepId>;
+  gatherInfoData: GatherInfoFormData;
+  onGatherInfoChange: (data: GatherInfoFormData) => void;
+  onNext: () => void;
+  onBack: () => void;
+  onClose?: () => void;
+}
+
+export function WorkflowPanel({
+  claim,
+  currentStep,
+  completedSteps,
+  gatherInfoData,
+  onGatherInfoChange,
+  onNext,
+  onBack,
+  onClose,
+}: WorkflowPanelProps) {
+  return (
+    <section
+      aria-label="Claim status workflow"
+      className="flex h-full w-full flex-col max-lg:h-auto max-lg:overflow-visible lg:h-full lg:overflow-hidden"
+    >
+      <WorkflowHeader title="Claim Status" onBack={onBack} onClose={onClose} />
+      <WorkflowProgress currentStep={currentStep} completedSteps={completedSteps} />
+      <WorkflowContent
+        claim={claim}
+        currentStep={currentStep}
+        gatherInfoData={gatherInfoData}
+        onGatherInfoChange={onGatherInfoChange}
+        onNext={onNext}
+        onClose={onClose}
+      />
+    </section>
+  );
+}
