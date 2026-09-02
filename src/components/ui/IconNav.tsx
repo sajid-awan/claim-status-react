@@ -70,12 +70,12 @@ export function IconNav<T extends string>({
         <IconNavList
           {...props}
           buttonSize={mobileButtonSize}
-          listClassName={`app-scroll icon-nav--horizontal md:hidden`}
+          listClassName="app-scroll icon-nav--horizontal lg:hidden"
         />
         <IconNavList
           {...props}
           buttonSize={buttonSize}
-          listClassName="icon-nav--vertical hidden md:flex"
+          listClassName="icon-nav--vertical hidden lg:flex"
         />
       </>
     );

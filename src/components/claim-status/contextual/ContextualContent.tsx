@@ -41,9 +41,11 @@ export function ContextualContent({ activeContext }: ContextualContentProps) {
       : null;
 
   return (
-    <ContextualPanelScroll>
-      <ContextualPanelContent>{content}</ContextualPanelContent>
-    </ContextualPanelScroll>
+    <div className="contextual-panel__content">
+      <ContextualPanelScroll>
+        <ContextualPanelContent>{content}</ContextualPanelContent>
+      </ContextualPanelScroll>
+    </div>
   );
 }
 

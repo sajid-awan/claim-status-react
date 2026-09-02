@@ -191,9 +191,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
         aria-label="Application navigation"
         className={`app-scroll app-sidebar ${
           mobileOpen ? "app-sidebar--open" : "app-sidebar--closed-mobile"
-        } xl:block ${
-          isCollapsed ? "app-sidebar--collapsed" : "app-sidebar--expanded"
-        }`.trim()}
+        } ${isCollapsed ? "app-sidebar--collapsed" : "app-sidebar--expanded"}`.trim()}
       >
         <div
           className={`app-sidebar__inner ${

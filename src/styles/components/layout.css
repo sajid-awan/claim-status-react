@@ -42,7 +42,8 @@
     }
 
     .panel-scroll {
-      @apply min-h-0 flex-1 overflow-y-auto overflow-x-hidden lg:box-border lg:pr-4;
+      @apply min-h-0 flex-1 overflow-y-auto overflow-x-hidden lg:pr-3;
+      -webkit-overflow-scrolling: touch;
     }
 
     .workflow-step-shell {
@@ -50,7 +51,7 @@
     }
 
     .workflow-step-scroll {
-      @apply min-h-0 flex-1 max-lg:flex-none max-lg:overflow-y-auto lg:box-border lg:overflow-y-auto lg:px-4;
+      @apply min-h-0 flex-1 overflow-x-hidden max-lg:flex-none lg:overflow-y-auto lg:px-4;
     }
 
     .workflow-step-content {
@@ -66,7 +67,7 @@
     }
 
     .icon-nav--vertical {
-      @apply flex w-12 shrink-0 flex-col items-center gap-2 self-stretch px-1 py-1;
+      @apply flex w-12 shrink-0 flex-col items-center gap-2 self-stretch border-r border-surface-gray-200 bg-white px-1 py-3;
     }
 
     .app-header {
@@ -94,7 +95,7 @@
     }
 
     .app-header__leading {
-      @apply flex min-w-0 items-center gap-2 xl:hidden;
+      @apply flex min-w-0 items-center gap-2 lg:hidden;
     }
 
     .app-header__actions {

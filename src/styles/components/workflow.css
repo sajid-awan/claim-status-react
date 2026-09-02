@@ -58,7 +58,7 @@
     }
 
     .workflow-header {
-      @apply px-4;
+      @apply shrink-0 px-4;
     }
 
     .workflow-header__bar {
@@ -66,7 +66,7 @@
     }
 
     .workflow-footer {
-      @apply px-4;
+      @apply shrink-0 px-4;
     }
 
     .workflow-footer__bar {

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { SidebarSimple, X } from "@/components/icons";
 
 interface ClaimStatusLayoutProps {
@@ -8,6 +8,11 @@ interface ClaimStatusLayoutProps {
 
 export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutProps) {
   const [isContextualOpen, setIsContextualOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("overflow-hidden", isContextualOpen);
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isContextualOpen]);
 
   return (
     <div className="claim-status-layout">
@@ -19,10 +24,6 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       >
         <SidebarSimple size={16} weight="regular" />
       </button>
-
-      <div className="claim-status-layout__workflow">{workflow}</div>
-
-      <div className="claim-status-layout__divider-h" aria-hidden />
 
       <div
         className={`claim-status-layout__contextual ${
@@ -41,6 +42,10 @@ export function ClaimStatusLayout({ contextual, workflow }: ClaimStatusLayoutPro
       </div>
 
       <div className="claim-status-layout__divider-v" aria-hidden />
+
+      <div className="claim-status-layout__workflow">{workflow}</div>
+
+      <div className="claim-status-layout__divider-h" aria-hidden />
     </div>
   );
 }
