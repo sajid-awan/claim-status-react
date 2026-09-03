@@ -1,0 +1,187 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: "en-US"
+
+early_access: false
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  review_details: true
+  poem: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/.next/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/*.lock"
+    - "src/**"
+    - "components/**"
+    - "styles/**"
+    - "app/**"
+    - "pages/**"
+
+  path_instructions:
+
+    # React / Next.js components
+    - path: "**/*.{tsx,jsx,ts,js}"
+      instructions: |
+        Review this React/Next.js code with a strong focus on maintainability,
+        scalability, component architecture, readability, and separation of concerns.
+
+        Requirements:
+        - Prefer reusable components over duplicated markup.
+        - Avoid unnecessarily large components.
+        - Keep component responsibilities focused.
+        - Avoid excessive className strings.
+        - Avoid unnecessary Tailwind utility classes when styling belongs in SCSS.
+        - Avoid arbitrary Tailwind values unless the value is genuinely exceptional.
+        - Avoid hardcoded colors, spacing, typography, dimensions, and other design values.
+        - Prefer semantic design tokens and reusable CSS/SCSS classes.
+        - Identify duplicated UI patterns that should become reusable components.
+        - Check React state and event handling for unnecessary complexity.
+        - Check for unnecessary re-renders and avoid premature optimization.
+        - Follow appropriate Next.js patterns for Server and Client Components.
+        - Flag browser-only APIs used incorrectly in Server Components.
+        - Check accessibility of interactive elements, forms, buttons, inputs, tabs,
+          upload areas, and keyboard interactions.
+
+    # SCSS / CSS
+    - path: "**/*.{scss,css}"
+      instructions: |
+        Review styling architecture carefully.
+
+        Requirements:
+        - Prefer reusable classes and semantic design tokens.
+        - Avoid duplicated CSS values.
+        - Avoid hardcoded colors when a design token should exist.
+        - Avoid duplicated typography values.
+        - Avoid duplicated spacing and dimension values.
+        - Prefer CSS variables for the application's design system.
+        - Keep responsive styles organized and predictable.
+        - Avoid unnecessary !important.
+        - Ensure component styles do not unintentionally leak into unrelated components.
+        - Identify repeated styles that should become reusable classes, mixins, or variables.
+        - Maintain a clear styling hierarchy.
+
+    # Design tokens
+    - path: "**/*.{scss,css}"
+      instructions: |
+        Pay special attention to design tokens.
+
+        Flag:
+        - Repeated raw color values.
+        - Repeated font sizes.
+        - Repeated line heights.
+        - Repeated spacing values.
+        - Repeated border radii.
+        - Repeated shadows.
+        - Repeated component dimensions.
+
+        Prefer semantic tokens such as:
+        --color-text-primary
+        --color-text-muted
+        --color-text-subtle
+        --color-border-primary
+        --color-border-secondary
+        --color-border-tertiary
+        --color-background-primary
+        --color-background-subtle
+        --font-size-body
+        --font-size-label
+        --line-height-body
+        --spacing-sm
+        --spacing-md
+
+        Do not create tokens for genuinely unique one-off values unless they
+        represent a meaningful design-system concept.
+
+    # Tailwind usage
+    - path: "**/*.{tsx,jsx}"
+      instructions: |
+        Review Tailwind usage strictly.
+
+        The project uses Tailwind primarily for minor contextual or one-off
+        styling adjustments.
+
+        Flag:
+        - Excessively long className strings.
+        - Repeated Tailwind utility combinations.
+        - Repeated arbitrary values such as text-[14px], leading-[17px],
+          px-[9px], gap-[50px], w-[266px], etc.
+        - Hardcoded Tailwind colors such as text-[#...], bg-[#...],
+          border-[#...].
+        - Repeated gray-* utilities where semantic design tokens should be used.
+        - Styling that would be clearer and more maintainable as an SCSS class.
+
+        Do not flag every Tailwind utility individually. Focus on meaningful
+        repetition, architectural problems, and maintainability issues.
+
+    # PrimeReact
+    - path: "**/*.{tsx,jsx,scss,css}"
+      instructions: |
+        When reviewing PrimeReact components:
+
+        - Prefer dedicated PrimeReact overrides in primereact-override.scss.
+        - Avoid repeatedly using !important to solve PrimeReact conflicts.
+        - Check whether an override belongs in the global PrimeReact override layer.
+        - Keep PrimeReact-specific styling separate from application component styling.
+        - Avoid fragile selectors that depend on deeply nested DOM structures.
+
+    # Responsive UI
+    - path: "**/*.{tsx,jsx,scss,css}"
+      instructions: |
+        Review responsive behavior.
+
+        Check for:
+        - Fixed widths that can break smaller screens.
+        - Fixed heights that can cause clipping.
+        - Horizontal overflow.
+        - Incorrect flex/grid behavior.
+        - Text clipping.
+        - Buttons becoming unusable at small widths.
+        - Tabs overflowing their container.
+        - Incorrect scroll-container ownership.
+        - Desktop-only assumptions.
+
+        Pay particular attention to layouts that need to work around
+        320px, 375px, 390px, 414px, tablet, and desktop widths.
+
+    # Forms and interactions
+    - path: "**/*.{tsx,jsx}"
+      instructions: |
+        Review forms and interactive UI carefully.
+
+        Pay particular attention to:
+        - File upload interactions.
+        - Click handlers.
+        - Event propagation.
+        - Form state.
+        - Loading states.
+        - Error states.
+        - Input accessibility.
+        - Keyboard accessibility.
+        - Unexpected component unmounting or state resets.
+        - Interactions that can cause layout shifts or UI breakage.
+
+    # Tests
+    - path: "**/*.{test,spec}.{ts,tsx,js,jsx}"
+      instructions: |
+        Review tests for meaningful coverage of:
+        - User interactions.
+        - Form behavior.
+        - Upload behavior.
+        - Responsive-sensitive logic where applicable.
+        - Edge cases.
+        - Error states.
+        - Component state transitions.
+
+chat:
+  auto_reply: true
