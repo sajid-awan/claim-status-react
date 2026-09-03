@@ -1,4 +1,4 @@
-import { CheckCircle, ClockCountdown, HourglassHigh } from "@/components/icons";
+import { ClockCountdown, HourglassHigh, SealCheck } from "@/components/icons";
 
 import { StatusTransitionRow } from "@/components/claim-status/contextual/claim-action/StatusTransitionRow";
 import type { ClaimStatusValue, StatusChangeData } from "@/types/claim";
@@ -16,7 +16,7 @@ function statusIcon(status: ClaimStatusValue, active = false) {
     case "In Progress":
       return <ClockCountdown size={16} weight="regular" className={className} aria-hidden="true" />;
     case "Completed":
-      return <CheckCircle size={16} weight="fill" className={className} aria-hidden="true" />;
+      return <SealCheck size={16} weight="fill" className={className} aria-hidden="true" />;
     default:
       return undefined;
   }

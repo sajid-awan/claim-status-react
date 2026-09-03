@@ -26,11 +26,11 @@ export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityIte
 
   if (!visible) {
     return (
-      <TimelineItem variant="activity" className="pb-4" isLast={isLast}>
+      <TimelineItem variant="activity" className="activity-item--collapsed" isLast={isLast}>
         <div className="activity-item__hidden">
           <span>Activity hidden</span>
           <button type="button" onClick={() => setVisible(true)} className="activity-item__action">
-            <Eye size={18} weight="regular" className="shrink-0" /> Show
+            <Eye size={18} weight="regular" className="activity-item__action-icon" /> Show
           </button>
         </div>
       </TimelineItem>
@@ -47,7 +47,7 @@ export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityIte
           <ActivityBadge source={activity.source} className="activity-item__badge" />
         </div>
         <button type="button" onClick={() => setVisible(false)} className="activity-item__action">
-          <EyeSlash size={18} weight="regular" className="shrink-0" /> Hide
+          <EyeSlash size={18} weight="regular" className="activity-item__action-icon" /> Hide
         </button>
       </div>
 
@@ -75,8 +75,8 @@ export function ClaimActivityItem({ activity, isLast = false }: ClaimActivityIte
           <DetailRow label="New Status" value={activity.statusChange.to} />
           <DetailRow label="Old Follow-up Date" value={activity.detail.oldFollowUpDate} />
           <DetailRow label="Follow-up Date" value={activity.detail.followUpDate} />
-          <div className="mt-2">
-            <Calendar size={16} weight="regular" className="text-brand-500" aria-hidden />
+          <div className="activity-item__calendar">
+            <Calendar size={16} weight="regular" aria-hidden />
           </div>
         </div>
       )}

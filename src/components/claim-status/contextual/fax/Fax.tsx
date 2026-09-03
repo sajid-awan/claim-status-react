@@ -32,7 +32,7 @@ export function Fax() {
           <ContextualNote>{faxSummary.coverNote}</ContextualNote>
         </div>
 
-        <SecondaryButton icon={<Printer size={18} />} iconPosition="left" className="btn--self-start">
+        <SecondaryButton icon={<Printer size={20} />} iconPosition="left" className="btn--self-start">
           Resend Fax
         </SecondaryButton>
       </div>

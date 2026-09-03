@@ -13,7 +13,7 @@
     }
 
     .timeline-item--info {
-      @apply relative pb-2.5 last:pb-0;
+      @apply relative mb-3 pb-2.5 last:mb-0 last:pb-0;
     }
 
     .timeline-item--info-dot {

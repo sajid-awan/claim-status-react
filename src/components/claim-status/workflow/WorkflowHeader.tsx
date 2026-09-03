@@ -23,7 +23,7 @@ export function WorkflowHeader({ title, onBack, onClose, onOpenContext }: Workfl
             </button>
           ) : null}
           <button type="button" aria-label="Go back" onClick={onBack} className="workflow-header__icon-btn">
-            <ArrowLeft size={24} weight="regular" className="workflow-header__icon" />
+            <ArrowLeft size={20} weight="regular" className="workflow-header__icon" />
           </button>
           <h2 className="workflow-header__title">{title}</h2>
         </div>
@@ -33,7 +33,7 @@ export function WorkflowHeader({ title, onBack, onClose, onOpenContext }: Workfl
           onClick={onClose}
           className="workflow-header__icon-btn"
         >
-          <X size={24} weight="regular" className="workflow-header__icon" />
+          <X size={20} weight="regular" className="workflow-header__icon" />
         </button>
       </div>
     </header>

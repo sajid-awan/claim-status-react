@@ -14,7 +14,7 @@ interface WorkflowFooterProps {
 export function WorkflowFooter({
   onNext,
   nextLabel = "Next",
-  nextIcon = <ArrowRight size={18} weight="bold" />,
+  nextIcon = <ArrowRight size={20} weight="bold" />,
   nextIconPosition = "left",
   nextDisabled,
 }: WorkflowFooterProps) {

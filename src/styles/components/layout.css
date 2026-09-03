@@ -57,6 +57,10 @@
       overscroll-behavior: contain;
     }
 
+    .workflow-step-scroll--padded {
+      @apply py-4;
+    }
+
     .workflow-step-content {
       @apply box-border;
     }

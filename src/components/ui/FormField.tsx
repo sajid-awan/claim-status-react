@@ -34,7 +34,7 @@ interface QuestionFieldProps {
 export function QuestionField({ label, required, children, className = "" }: QuestionFieldProps) {
   return (
     <div className={className}>
-      <p className="form-field__label mb-2">
+      <p className="form-field__label form-field__label--spaced">
         {label}
         {required ? <span className="form-field__required">*</span> : null}
       </p>

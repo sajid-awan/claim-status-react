@@ -14,7 +14,7 @@ interface PreClaimStatusProps {
 export function PreClaimStatus({ claim, onNext }: PreClaimStatusProps) {
   return (
     <WorkflowStepShell>
-      <WorkflowStepScroll className="py-4">
+      <WorkflowStepScroll className="workflow-step-scroll--padded">
         <WorkflowStepContent>
           <Timeline variant="info">
             <ClaimLevelInfo rows={getClaimLevelInfoRows(claim)} />

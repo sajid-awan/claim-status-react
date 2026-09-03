@@ -2,7 +2,7 @@
   .claim-status-app {
     /* Buttons */
     .btn {
-      @apply inline-flex h-button cursor-pointer items-center justify-center gap-2.5 rounded-lg border px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed;
+      @apply inline-flex h-button cursor-pointer items-center justify-center gap-2 rounded-lg border px-4 text-sm font-medium leading-compact transition-colors disabled:cursor-not-allowed;
     }
 
     .btn--primary {
@@ -18,11 +18,15 @@
     }
 
     .btn--icon-left {
-      @apply justify-start pl-3;
+      @apply justify-start gap-2.5 pl-3 pr-4;
     }
 
     .btn__icon {
-      @apply flex size-5 shrink-0 items-center justify-center;
+      @apply flex size-6 shrink-0 items-center justify-center;
+    }
+
+    .btn__icon > svg {
+      @apply size-5;
     }
 
     /* Icon buttons */
@@ -99,12 +103,17 @@
       @apply inline-flex w-fit max-w-full items-center overflow-visible whitespace-nowrap;
     }
 
+    .chip__label {
+      overflow: visible;
+      line-height: inherit;
+    }
+
     .chip--sm {
-      @apply gap-1 px-2.5 py-1 text-xs;
+      @apply gap-1 px-2.5 py-1 text-xs leading-compact;
     }
 
     .chip--md {
-      @apply min-h-7 gap-1 px-chip-x py-chip-y text-body-sm leading-snug;
+      @apply gap-1 px-chip-x py-1.5 text-body-sm leading-body;
     }
 
     .chip--radius-md {
@@ -163,7 +172,7 @@
     }
 
     .tabs__button {
-      @apply flex h-row-sm min-w-0 shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-md border-0 bg-transparent px-2 text-sm font-normal leading-compact text-ink-muted transition-colors hover:bg-brand-500 hover:text-white sm:min-w-tab-min sm:px-2.5 md:min-w-tab-min-md md:px-3;
+      @apply flex h-row-sm min-w-0 shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-md border-0 bg-transparent px-2 text-sm font-normal leading-snug text-ink-muted transition-colors hover:bg-brand-500 hover:text-white sm:min-w-tab-min sm:px-2.5 md:min-w-tab-min-md md:px-3;
     }
 
     .tabs__button--active {
@@ -173,6 +182,10 @@
     /* Form fields */
     .form-field__header {
       @apply mb-2 flex items-center gap-2;
+    }
+
+    .form-field__label--spaced {
+      @apply mb-2;
     }
 
     .form-field__header--action {

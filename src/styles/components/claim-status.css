@@ -93,12 +93,21 @@
       @apply mb-2 inline-flex min-w-0 shrink-0 self-start max-lg:w-full max-lg:max-w-full;
 
       .tabs {
-        @apply inline-flex w-auto max-lg:w-full max-lg:max-w-full;
+        @apply inline-flex max-w-full w-auto overflow-x-auto overflow-y-hidden max-lg:w-full;
+        scrollbar-width: none;
+      }
+
+      .tabs::-webkit-scrollbar {
+        display: none;
       }
     }
 
     .contextual-panel__content {
       @apply flex min-h-0 min-w-0 flex-1 basis-0 flex-col overflow-hidden;
+    }
+
+    .contextual-panel__content > .panel-scroll {
+      @apply min-h-0 flex-1;
     }
 
     .workflow-panel {

@@ -58,7 +58,7 @@ export function Chip({
   return (
     <span className={`chip ${sizeClass[size]} ${radiusClass[radius]} ${toneModifier} ${className}`.trim()}>
       {icon}
-      <span>{label}</span>
+      <span className="chip__label">{label}</span>
     </span>
   );
 }

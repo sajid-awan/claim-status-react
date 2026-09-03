@@ -12,7 +12,7 @@ export function AdditionalDetailFooter({ onSave, saving }: AdditionalDetailFoote
     <WorkflowFooter
       onNext={onSave}
       nextLabel={saving ? "Saving…" : "Save & Close"}
-      nextIcon={saving ? <CircleNotch size={15} className="animate-spin" /> : <Check size={15} weight="bold" />}
+      nextIcon={saving ? <CircleNotch size={20} className="animate-spin" /> : <Check size={20} weight="bold" />}
       nextIconPosition="left"
       nextDisabled={saving}
     />

@@ -46,6 +46,7 @@ export {
   PhoneIncoming,
   PhoneOutgoing,
   Printer,
+  SealCheck,
   ShieldCheck,
   SidebarSimple,
   SlidersHorizontal,

@@ -25,7 +25,7 @@ function StepCircle({ status }: { status: WorkflowStepStatus }) {
   if (status === "completed") {
     return (
       <span className={`workflow-step__circle workflow-step__circle--completed`} aria-hidden="true">
-        <Check size={14} weight="bold" className="text-white" />
+        <Check size={12} weight="bold" className="workflow-step__check" />
       </span>
     );
   }

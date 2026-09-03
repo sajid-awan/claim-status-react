@@ -21,7 +21,7 @@ export function Documents() {
               <ContextualCard>
                 <div className="contextual-card-row--start">
                   <FileText size={16} className="doc-icon" />
-                  <div className="min-w-0">
+                  <div className="contextual-card-body">
                     <ContextualCardTitle>{doc.name}</ContextualCardTitle>
                     <ContextualCardMeta>
                       {doc.size} &middot; Uploaded {doc.uploadedOn} by {doc.uploadedBy}

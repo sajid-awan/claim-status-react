@@ -14,7 +14,7 @@ const activitySourceConfig: Record<
   ActivitySource,
   { tone: ChipTone; icon: Icon; iconClassName?: string }
 > = {
-  User: { tone: "green", icon: UserCircleDashed, iconClassName: "text-success" },
+  User: { tone: "green", icon: UserCircleDashed, iconClassName: "activity-item__badge-icon--success" },
   "Host Sync": { tone: "blue", icon: CloudCheck },
   System: { tone: "gray", icon: ArrowsClockwise },
 };
@@ -25,7 +25,8 @@ export function ActivityBadge({
   radius = "full",
   className = "",
 }: ActivityBadgeProps) {
-  const { tone, icon: IconComponent, iconClassName = "" } = activitySourceConfig[source];
+  const { tone, icon: IconComponent, iconClassName = "activity-item__badge-icon" } =
+    activitySourceConfig[source];
 
   return (
     <Chip
@@ -33,14 +34,8 @@ export function ActivityBadge({
       tone={tone}
       size={size}
       radius={radius}
-      className={`shrink-0 ${className}`.trim()}
-      icon={
-        <IconComponent
-          size={16}
-          weight="regular"
-          className={`shrink-0 ${iconClassName}`.trim()}
-        />
-      }
+      className={className}
+      icon={<IconComponent size={16} weight="regular" className={iconClassName} />}
     />
   );
 }

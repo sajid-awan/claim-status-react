@@ -46,7 +46,11 @@
     }
 
     .workflow-step__label {
-      @apply mt-2 w-full px-0.5 text-center text-xs font-normal leading-4 sm:mt-3 sm:text-body-sm sm:leading-tight;
+      @apply mt-2 w-full px-0.5 text-center text-xs font-normal leading-tight sm:mt-3 sm:text-body-sm;
+    }
+
+    .workflow-step__check {
+      @apply text-white;
     }
 
     .workflow-step__label--active {
@@ -82,11 +86,11 @@
     }
 
     .workflow-header__icon-btn {
-      @apply flex size-6 shrink-0 items-center justify-center text-ink-muted hover:text-ink;
+      @apply flex size-5 shrink-0 items-center justify-center text-ink hover:text-ink-muted;
     }
 
     .workflow-header__icon {
-      @apply size-6 shrink-0;
+      @apply size-5 shrink-0;
     }
 
     .workflow-header__title {
