@@ -17,6 +17,7 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
   const toastRef = useRef<Toast>(null);
 
   function handleSave() {
+    if (!followUpDate) return;
     setSaving(true);
     window.setTimeout(() => {
       setSaving(false);
@@ -43,8 +44,10 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
           </p>
 
           <div className="empty-state__form">
-            <FormField label="Next Follow Up Date?" required>
+            <FormField label="Next Follow Up Date?" required htmlFor="next-follow-up-date">
               <DatePicker
+                inputId="next-follow-up-date"
+                required
                 value={followUpDate}
                 onChange={(e) => setFollowUpDate(e.value ?? null)}
                 showIcon
@@ -61,7 +64,7 @@ export function AdditionalDetail({ onClose }: AdditionalDetailProps) {
           </div>
         </WorkflowStepContent>
       </WorkflowStepScroll>
-      <AdditionalDetailFooter onSave={handleSave} saving={saving} />
+      <AdditionalDetailFooter onSave={handleSave} saving={saving} disabled={!followUpDate} />
     </WorkflowStepShell>
   );
 }

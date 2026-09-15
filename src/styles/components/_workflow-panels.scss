@@ -1,0 +1,218 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .contextual-panel {
+      display: flex;
+      min-height: 0;
+      width: 100%;
+      min-width: 0;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      @include mixins.respond-above(lg) {
+        height: 100%;
+        flex-direction: row;
+      }
+
+      &__body {
+        display: flex;
+        min-height: 0;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        overflow: hidden;
+        padding-inline: calc(var(--spacing) * 2);
+        padding-block: calc(var(--spacing) * 2);
+        @include mixins.respond-above(lg) {
+          padding-block: calc(var(--spacing) * 3);
+          padding-right: var(--spacing);
+          padding-left: calc(var(--spacing) * 3);
+        }
+      }
+
+      &__tabs {
+        margin-bottom: calc(var(--spacing) * 2);
+        display: inline-flex;
+        min-width: 0;
+        flex-shrink: 0;
+        align-self: flex-start;
+        @include mixins.respond-below(lg) {
+          width: 100%;
+          max-width: 100%;
+        }
+        .tabs {
+          display: inline-flex;
+          width: auto;
+          max-width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          @include mixins.respond-below(lg) {
+            width: 100%;
+          }
+          scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      &__content {
+        display: flex;
+        min-height: 0;
+        min-width: 0;
+        flex: 1;
+        flex-basis: 0;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      &__content > .panel-scroll {
+        min-height: 0;
+        flex: 1;
+      }
+    }
+
+    .workflow-panel {
+      display: flex;
+      min-height: 0;
+      width: 100%;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      @include mixins.respond-below(lg) {
+        min-height: 0;
+      }
+      @include mixins.respond-above(lg) {
+        min-height: 0;
+      }
+    }
+
+    .section-title {
+      margin-bottom: calc(var(--spacing) * 2.5);
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing) * 2);
+
+      &--flush {
+        margin-bottom: 0;
+      }
+
+      &__dot {
+        height: calc(var(--spacing) * 1.5);
+        width: calc(var(--spacing) * 1.5);
+        border-radius: 9999px;
+        background-color: var(--color-brand-500);
+      }
+
+      &__text {
+        font-size: var(--text-sm);
+        line-height: var(--text-sm--line-height);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-brand-500);
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: calc(var(--spacing) * 4);
+    }
+
+    @include mixins.respond-above(sm) {
+      .form-grid {
+        &--2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: calc(var(--spacing) * 5);
+        }
+      }
+    }
+
+    @include mixins.respond-above(xl) {
+      .form-grid {
+        &--address {
+          gap: calc(var(--spacing) * 5);
+        }
+      }
+    }
+
+    @include mixins.respond-above(sm) {
+      .form-grid {
+        &--address {
+          grid-template-columns: 2fr 1.5fr 1.5fr;
+        }
+      }
+    }
+
+    .form-field {
+      &__action {
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-compact);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-brand-500);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-brand-600);
+          }
+        }
+      }
+    }
+
+    .status-transition {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: var(--spacing-dot);
+      row-gap: calc(var(--spacing) * 1.5);
+
+      &__separator {
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-body);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink-subtle);
+      }
+    }
+
+    .status-icon {
+      &--active {
+        flex-shrink: 0;
+        color: var(--color-brand-500);
+      }
+
+      &--idle {
+        flex-shrink: 0;
+        color: var(--color-ink);
+      }
+    }
+
+    .status-dot {
+      &--from {
+        width: calc(var(--spacing) * 2);
+        height: calc(var(--spacing) * 2);
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background-color: var(--color-ink);
+      }
+
+      &--to {
+        width: calc(var(--spacing) * 2);
+        height: calc(var(--spacing) * 2);
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background-color: var(--color-brand-500);
+      }
+    }
+
+    .workflow-content {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-basis: 0;
+      flex-direction: column;
+      overflow: hidden;
+      @include mixins.respond-below(lg) {
+        min-height: 0;
+      }
+    }
+  }
+}

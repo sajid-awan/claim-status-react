@@ -62,7 +62,7 @@ export function Radio({
         disabled={disabled}
         value={value}
         onChange={(event) => onChange?.(event.target.value)}
-        className="peer sr-only"
+        className="radio__native-input visually-hidden"
         {...rest}
       />
       <span

@@ -1,0 +1,182 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .radio {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+
+      &__circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        border-style: solid;
+        border-width: 1px;
+        background-color: var(--color-surface-white);
+        @include mixins.interactive-transition;
+      }
+
+      &__circle--sm {
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+      }
+
+      &__circle--md {
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+      }
+
+      &__circle--lg {
+        width: calc(var(--spacing) * 6);
+        height: calc(var(--spacing) * 6);
+      }
+
+      &__circle--primary {
+        border-color: var(--color-border-tertiary);
+        &:is(:where(.radio__native-input):checked ~ *) {
+          border-width: 2px;
+          border-color: var(--color-brand-500);
+        }
+        &:is(:where(.radio__native-input):focus-visible ~ *) {
+          @include mixins.control-focus-ring(var(--color-brand-200));
+        }
+      }
+
+      &__circle--secondary {
+        border-color: var(--color-border-secondary);
+        &:is(:where(.radio__native-input):checked ~ *) {
+          border-width: 2px;
+          border-color: var(--color-ink-muted);
+        }
+        &:is(:where(.radio__native-input):focus-visible ~ *) {
+          @include mixins.control-focus-ring(var(--color-surface-gray-200));
+        }
+      }
+
+      &__circle--success {
+        border-color: var(--color-border-tertiary);
+        &:is(:where(.radio__native-input):checked ~ *) {
+          border-width: 2px;
+          border-color: var(--color-success);
+        }
+        &:is(:where(.radio__native-input):focus-visible ~ *) {
+          @include mixins.control-focus-ring(var(--color-success-light));
+        }
+      }
+
+      &__dot {
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        border-radius: 9999px;
+        opacity: 0;
+        transition-property: opacity;
+        transition-timing-function: var(--default-transition-timing-function);
+        transition-duration: var(--default-transition-duration);
+        &:is(:where(.radio__native-input):checked ~ *) {
+          opacity: 1;
+        }
+      }
+
+      &__dot--sm {
+        width: calc(var(--spacing) * 1.5);
+        height: calc(var(--spacing) * 1.5);
+      }
+
+      &__dot--md {
+        width: calc(var(--spacing) * 2);
+        height: calc(var(--spacing) * 2);
+      }
+
+      &__dot--lg {
+        width: calc(var(--spacing) * 2.5);
+        height: calc(var(--spacing) * 2.5);
+      }
+
+      &__dot--primary {
+        background-color: var(--color-brand-500);
+      }
+
+      &__dot--secondary {
+        background-color: var(--color-ink-muted);
+      }
+
+      &__dot--success {
+        background-color: var(--color-success);
+      }
+    }
+
+    .radio-field {
+      display: inline-flex;
+      cursor: pointer;
+      align-items: center;
+
+      &--sm {
+        gap: calc(var(--spacing) * 1.5);
+      }
+
+      &--md {
+        gap: calc(var(--spacing) * 2);
+      }
+
+      &--lg {
+        gap: calc(var(--spacing) * 2.5);
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+        opacity: 50%;
+      }
+
+      &__label {
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink);
+      }
+
+      &__label--sm {
+        font-size: var(--text-xs);
+        line-height: calc(var(--spacing) * 4);
+      }
+
+      &__label--md {
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-compact);
+      }
+
+      &__label--lg {
+        font-size: var(--text-body-md);
+        line-height: var(--leading-body);
+      }
+    }
+
+    .radio-group {
+      display: flex;
+
+      &--horizontal {
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      &--vertical {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &--gap-sm {
+        gap: calc(var(--spacing) * 3);
+      }
+
+      &--gap-md {
+        gap: calc(var(--spacing) * 5);
+      }
+
+      &--gap-lg {
+        gap: calc(var(--spacing) * 6);
+      }
+    }
+  }
+}

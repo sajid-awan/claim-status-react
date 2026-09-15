@@ -1,0 +1,88 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .timeline {
+      &--info {
+        position: relative;
+        padding-left: var(--spacing-timeline-indent);
+      }
+
+      &--info-line {
+        position: absolute;
+        top: var(--spacing-timeline-line-top);
+        bottom: 0;
+        left: var(--spacing);
+        width: 1px;
+        background-color: var(--color-brand-500);
+      }
+
+      &--activity {
+        padding-block: calc(var(--spacing) * 3);
+        @include mixins.respond-above(sm) {
+          padding-block: calc(var(--spacing) * 4);
+        }
+      }
+    }
+
+    .timeline-item {
+      &--info {
+        position: relative;
+        margin-bottom: calc(var(--spacing) * 3);
+        padding-bottom: calc(var(--spacing) * 2.5);
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      &--info-dot {
+        position: absolute;
+        top: var(--spacing);
+        left: calc(var(--spacing-timeline-indent) * -1);
+        z-index: var(--z-index-step);
+        width: calc(var(--spacing) * 2.5);
+        height: calc(var(--spacing) * 2.5);
+        border-radius: 9999px;
+        background-color: var(--color-brand-500);
+      }
+
+      &--info-title {
+        margin-bottom: calc(var(--spacing) * 2);
+        font-size: var(--text-base);
+        line-height: var(--leading-snug);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-brand-500);
+      }
+
+      &--activity {
+        position: relative;
+        padding-bottom: calc(var(--spacing) * 6);
+        padding-left: calc(var(--spacing) * 6);
+        @include mixins.respond-above(sm) {
+          padding-left: calc(var(--spacing) * 8);
+        }
+      }
+
+      &--activity-dot {
+        position: absolute;
+        top: var(--spacing-timeline-dot-top);
+        left: var(--spacing-timeline-dot-offset);
+        width: calc(var(--spacing) * 2.5);
+        height: calc(var(--spacing) * 2.5);
+        border-radius: 9999px;
+        background-color: var(--color-border-primary);
+      }
+
+      &--activity-connector {
+        position: absolute;
+        top: var(--spacing-timeline-connector-top);
+        bottom: 0;
+        left: var(--spacing-timeline-dot-x);
+        width: 1px;
+        background-color: var(--color-border-primary);
+      }
+    }
+  }
+
+}

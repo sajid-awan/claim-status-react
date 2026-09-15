@@ -1,0 +1,16 @@
+@layer components {
+  .claim-status-app {
+    .question-field {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .form-field {
+      &__action-brand {
+        font-weight: 600;
+      }
+    }
+  }
+}

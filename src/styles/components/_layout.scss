@@ -1,0 +1,257 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .app-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-scrollbar) transparent;
+
+      &::-webkit-scrollbar {
+        width: var(--size-scrollbar);
+        height: var(--size-scrollbar);
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 9999px;
+        background-color: var(--color-scrollbar);
+      }
+
+      &::-webkit-scrollbar-thumb:hover, &::-webkit-scrollbar-thumb:active {
+        background-color: var(--color-scrollbar-hover);
+      }
+    }
+
+    .bg-sidebar-pattern {
+      background-image: url("/assets/img.png");
+      background-size: var(--width-sidebar) 100%;
+      background-position: left top;
+      background-repeat: no-repeat;
+    }
+
+    .grid-cols-gather-address {
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+    }
+
+    .transition-sidebar {
+      transition-property: width, transform;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+    }
+
+    .panel-scroll {
+      min-height: 0;
+      flex: 1;
+      flex-basis: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      @include mixins.respond-above(lg) {
+        padding-right: calc(var(--spacing) * 3);
+      }
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+
+    .workflow-step-shell {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      @include mixins.respond-below(lg) {
+        min-height: 0;
+      }
+      @include mixins.respond-above(lg) {
+        overflow: hidden;
+      }
+    }
+
+    .workflow-step-scroll {
+      min-height: 0;
+      flex: 1;
+      flex-basis: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-inline: calc(var(--spacing) * 4);
+      @include mixins.respond-below(lg) {
+        padding-inline: calc(var(--spacing) * 3);
+      }
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+
+      &--padded {
+        padding-block: calc(var(--spacing) * 4);
+      }
+
+      &--gather {
+        padding-bottom: 1.25rem;
+      }
+    }
+
+    .workflow-step-content {
+      box-sizing: border-box;
+    }
+
+    .panel-content {
+      box-sizing: border-box;
+    }
+
+    .icon-nav {
+      &--horizontal {
+        display: flex;
+        width: 100%;
+        flex-shrink: 0;
+        align-items: center;
+        gap: var(--spacing);
+        overflow-x: auto;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: var(--color-surface-gray-200);
+        padding-inline: calc(var(--spacing) * 2);
+        padding-block: calc(var(--spacing) * 2);
+        -webkit-overflow-scrolling: touch;
+      }
+
+      &--mobile {
+        @include mixins.respond-above(lg) {
+          display: none;
+        }
+      }
+
+      &--vertical {
+        display: none;
+        width: calc(var(--spacing) * 12);
+        flex-shrink: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+        align-self: stretch;
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-color: var(--color-surface-gray-200);
+        background-color: var(--color-surface-white);
+        padding-inline: var(--spacing);
+        padding-block: calc(var(--spacing) * 3);
+        @include mixins.respond-above(lg) {
+          display: flex;
+        }
+      }
+    }
+
+    .app-header {
+      display: flex;
+      height: var(--height-header);
+      width: 100%;
+      min-width: 0;
+      flex-shrink: 0;
+      align-items: center;
+      gap: calc(var(--spacing) * 2);
+      overflow: hidden;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-color: var(--color-border-hairline);
+      background-color: var(--color-surface-white);
+      padding-inline: calc(var(--spacing) * 3);
+      @include mixins.respond-above(sm) {
+        gap: calc(var(--spacing) * 3);
+        padding-inline: calc(var(--spacing) * 5);
+      }
+
+      &__logo {
+        height: calc(var(--spacing) * 7);
+        max-width: var(--max-width-logo-mobile);
+        flex-shrink: 1;
+        object-fit: contain;
+        object-position: left;
+        @include mixins.respond-above(sm) {
+          height: calc(var(--spacing) * 8);
+          max-width: var(--max-width-logo-mobile-sm);
+        }
+      }
+
+      &__user-block {
+        display: none;
+        min-width: 0;
+        flex-direction: column;
+        gap: var(--spacing-chip-y);
+        @include mixins.respond-above(sm) {
+          display: flex;
+        }
+        @include mixins.respond-above(md) {
+          width: var(--width-header-user);
+        }
+      }
+
+      &__user-name {
+        @include mixins.truncate-text;
+        font-size: var(--text-base);
+        line-height: calc(var(--spacing) * 4);
+        color: var(--color-ink);
+      }
+
+      &__user-role {
+        @include mixins.truncate-text;
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-compact);
+        color: var(--color-ink-subtle);
+      }
+
+      &__avatar {
+        display: flex;
+        height: calc(var(--spacing) * 9);
+        width: calc(var(--spacing) * 9);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+        background-color: var(--color-brand-500);
+        font-size: var(--text-body-sm);
+        line-height: calc(var(--spacing) * 6);
+        color: var(--color-surface-white);
+        @include mixins.respond-above(sm) {
+          height: calc(var(--spacing) * 10);
+          width: calc(var(--spacing) * 10);
+          font-size: var(--text-base);
+          line-height: var(--text-base--line-height);
+        }
+      }
+
+      &__leading {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+        @include mixins.respond-above(xl) {
+          display: none;
+        }
+      }
+
+      &__actions {
+        margin-left: auto;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+        @include mixins.respond-above(sm) {
+          gap: calc(var(--spacing) * 3);
+        }
+        @include mixins.respond-above(md) {
+          gap: calc(var(--spacing) * 5);
+        }
+      }
+
+      &__toggle-icon {
+        height: var(--height-toggle-icon);
+        width: var(--width-toggle-icon);
+      }
+
+      &__action-icon {
+        color: var(--color-ink);
+      }
+    }
+  }
+
+}

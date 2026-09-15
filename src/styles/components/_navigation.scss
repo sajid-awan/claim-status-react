@@ -1,0 +1,271 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .app-sidebar {
+      position: fixed;
+      inset-block: 0;
+      left: 0;
+      z-index: 50;
+      height: 100%;
+      flex-shrink: 0;
+      overflow-y: auto;
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-color: var(--color-border-hairline);
+      background-color: var(--color-surface-white);
+      @include mixins.respond-above(xl) {
+        position: static;
+        translate: 0 0;
+      }
+      transition-property: width, transform;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+
+      &--open {
+        translate: 0 0;
+      }
+
+      &--closed-mobile {
+        translate: -100% 0;
+        @include mixins.respond-above(xl) {
+          translate: 0 0;
+        }
+      }
+    }
+
+    @include mixins.respond-above(xl) {
+      .app-sidebar {
+        &--collapsed {
+          width: var(--width-sidebar-collapsed);
+          background-image: none;
+        }
+      }
+    }
+
+    .app-sidebar {
+      &--expanded {
+        width: var(--width-sidebar);
+        @include mixins.respond-above(xl) {
+          width: var(--width-sidebar);
+        }
+        background-image: url("/assets/img.png");
+        background-size: var(--width-sidebar) 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+      }
+
+      &__inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-block: calc(var(--spacing) * 2.5);
+      }
+
+      &__inner--expanded {
+        gap: var(--spacing-sidebar-brand);
+        padding-inline: calc(var(--spacing) * 3);
+      }
+
+      &__inner--collapsed {
+        align-items: center;
+        gap: calc(var(--spacing) * 6);
+        padding-inline: calc(var(--spacing) * 2);
+      }
+
+      &__brand-row {
+        display: flex;
+        width: 100%;
+        align-items: center;
+      }
+
+      &__brand-row--expanded {
+        height: calc(var(--spacing) * 10);
+        justify-content: space-between;
+      }
+
+      &__brand-row--collapsed {
+        flex-direction: column;
+        gap: calc(var(--spacing) * 2);
+      }
+
+      &__logo--expanded {
+        height: calc(var(--spacing) * 10);
+        width: calc(var(--spacing) * 20);
+        object-fit: contain;
+        object-position: left;
+      }
+
+      &__logo--collapsed {
+        height: calc(var(--spacing) * 8);
+        width: calc(var(--spacing) * 7);
+        object-fit: contain;
+      }
+
+      &__toggle {
+        display: none;
+        height: calc(var(--spacing) * 9);
+        width: calc(var(--spacing) * 9);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-surface-body);
+        background-color: var(--color-surface-body);
+        padding: var(--spacing-tab-x);
+        @include mixins.respond-above(xl) {
+          display: flex;
+        }
+      }
+
+      &__toggle-icon {
+        height: var(--height-toggle-icon);
+        width: var(--width-toggle-icon);
+      }
+
+      &__list {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      &__list--expanded {
+        gap: calc(var(--spacing) * 3);
+      }
+
+      &__list--collapsed {
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+      }
+
+      &__item-btn {
+        display: flex;
+        height: var(--height-nav);
+        width: 100%;
+        cursor: pointer;
+        align-items: center;
+        border-radius: var(--radius-lg);
+        font-size: var(--text-sm);
+        line-height: var(--leading-nav);
+        font-weight: var(--font-weight-medium);
+        @include mixins.interactive-transition;
+      }
+
+      &__item-btn--expanded {
+        gap: calc(var(--spacing) * 2.5);
+        padding: calc(var(--spacing) * 2);
+        text-align: left;
+      }
+
+      &__item-btn--collapsed {
+        justify-content: center;
+        padding-inline: 0;
+      }
+
+      &__item-btn--active {
+        color: var(--color-brand-500);
+      }
+
+      &__item-btn--idle {
+        color: var(--color-ink-muted);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-ink);
+          }
+        }
+      }
+
+      &__subtree {
+        display: flex;
+        flex-direction: column;
+        padding-left: calc(var(--spacing) * 2);
+      }
+
+      &__item--collapsed {
+        width: 100%;
+      }
+
+      &__item-icon {
+        flex-shrink: 0;
+      }
+
+      &__label {
+        @include mixins.truncate-text;
+      }
+
+      &__label--grow {
+        flex: 1;
+      }
+
+      &__subtree-item {
+        display: flex;
+        height: var(--height-nav);
+        align-items: center;
+      }
+
+      &__tree-guide {
+        display: block;
+        height: var(--height-nav);
+        width: var(--width-tree-guide);
+        flex-shrink: 0;
+      }
+
+      &__leaf-btn {
+        display: flex;
+        height: var(--height-nav);
+        min-width: 0;
+        flex: 1;
+        cursor: pointer;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-radius: 0.25rem;
+        padding-inline: calc(var(--spacing) * 2);
+        text-align: left;
+        font-size: var(--text-sm);
+        line-height: var(--leading-nav);
+        font-weight: var(--font-weight-medium);
+        @include mixins.interactive-transition;
+      }
+
+      &__leaf-btn--active {
+        color: var(--color-brand-500);
+      }
+
+      &__leaf-btn--idle {
+        color: var(--color-ink-muted);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-ink);
+          }
+        }
+      }
+
+      &__overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background-color: var(--color-overlay);
+        @include mixins.respond-above(xl) {
+          display: none;
+        }
+      }
+    }
+
+    .nav-chevron {
+      margin-left: auto;
+      flex-shrink: 0;
+      transition-property: transform, translate, scale, rotate;
+      transition-timing-function: var(--default-transition-timing-function);
+      transition-duration: 200ms;
+
+      &--expanded {
+        rotate: 180deg;
+      }
+    }
+  }
+
+}

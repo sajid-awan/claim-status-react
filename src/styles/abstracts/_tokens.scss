@@ -1,6 +1,6 @@
-/* Design tokens — Tailwind @theme must live in the CSS entry graph. */
+/* Shared design tokens used by the application and PrimeReact overrides. */
 
-@theme static {
+:root {
   /* Brand */
   --color-brand-50: #fff4e8;
   --color-brand-100: #fff4e8;
@@ -35,6 +35,11 @@
   --color-border-hairline: rgba(0, 0, 0, 0.04);
 
   /* Semantic */
+  --color-on-brand: #ffffff;
+  --color-danger: #f43f5e;
+  --color-danger-strong: #e11d48;
+  --color-danger-subtle: #fff1f2;
+  --color-overlay: rgb(0 0 0 / 40%);
   --color-success: #2db084;
   --color-success-light: #effaf5;
   --color-link: #2463eb;
@@ -48,9 +53,19 @@
   --color-tab-track-bg: rgba(35, 31, 32, 0.02);
 
   /* Typography sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
   --text-body-sm: 0.875rem;
   --text-body-md: 0.9375rem;
   --text-title-sm: 1.25rem;
+
+  /* Typography weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
 
   /* Line heights */
   --leading-compact: 1rem;
@@ -58,8 +73,15 @@
   --leading-tight: 1.0625rem;
   --leading-body: 1.3125rem;
   --leading-nav: 1.40625rem;
+  --leading-normal: 1.5;
+  --text-xs--line-height: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl--line-height: 1.75rem;
 
   /* Spacing tokens */
+  --spacing: 0.25rem;
   --spacing-chip-x: 0.5625rem;
   --spacing-chip-y: 0.4375rem;
   --spacing-tab-x: 0.5625rem;
@@ -116,16 +138,21 @@
   --height-toggle-icon: 1.0625rem;
   --radius-card: 1.125rem;
   --radius-panel: 0.75rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 
   /* Shadow */
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
+  /* Motion */
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
   --primary-color: var(--color-brand-500);
-  --primary-color-text: #ffffff;
+  --primary-color-text: var(--color-on-brand);
   --primary-50: var(--color-brand-50);
   --primary-100: var(--color-brand-100);
   --primary-200: var(--color-brand-200);

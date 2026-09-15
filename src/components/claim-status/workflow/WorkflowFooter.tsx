@@ -9,6 +9,7 @@ interface WorkflowFooterProps {
   nextIcon?: ReactNode;
   nextIconPosition?: "left" | "right";
   nextDisabled?: boolean;
+  nextType?: "button" | "submit";
 }
 
 export function WorkflowFooter({
@@ -17,13 +18,15 @@ export function WorkflowFooter({
   nextIcon = <ArrowRight size={20} weight="bold" />,
   nextIconPosition = "left",
   nextDisabled,
+  nextType = "button",
 }: WorkflowFooterProps) {
   return (
     <footer className="workflow-footer">
       <div className="workflow-footer__bar">
-        {onNext ? (
+        {onNext || nextType === "submit" ? (
           <PrimaryButton
-            onClick={onNext}
+            type={nextType}
+            onClick={nextType === "button" ? onNext : undefined}
             disabled={nextDisabled}
             icon={nextIcon}
             iconPosition={nextIconPosition}

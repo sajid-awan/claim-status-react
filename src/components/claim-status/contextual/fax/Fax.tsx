@@ -16,7 +16,7 @@ export function Fax() {
       <div className="contextual-section">
         <div>
           <div className="contextual-section__header">
-            <SectionTitle title="Fax Details" className="mb-0" />
+            <SectionTitle title="Fax Details" className="section-title--flush" />
             <StatusBadge label={faxSummary.status} tone={toneForStatus(faxSummary.status)} />
           </div>
           <InfoCard>

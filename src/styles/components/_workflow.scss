@@ -1,0 +1,244 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .workflow-progress {
+      display: flex;
+      flex-shrink: 0;
+      padding-inline: calc(var(--spacing) * 4);
+      padding-block: calc(var(--spacing) * 4);
+      @include mixins.respond-below(lg) {
+        padding-inline: calc(var(--spacing) * 3);
+      }
+      @include mixins.respond-above(sm) {
+        padding-block: calc(var(--spacing) * 6);
+      }
+      @include mixins.respond-above(lg) {
+        padding-right: calc(var(--spacing) * 3);
+      }
+    }
+
+    .workflow-step {
+      display: flex;
+      min-width: 0;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+
+      &__track {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        height: calc(var(--spacing) * 5);
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__circle {
+        position: relative;
+        z-index: var(--z-index-step);
+        display: flex;
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+      }
+
+      &__circle--completed, &__circle--active {
+        background-color: var(--color-brand-500);
+      }
+
+      &__circle--pending {
+        background-color: var(--color-step-inactive);
+      }
+
+      &__connector {
+        position: absolute;
+        top: 50%;
+        height: var(--spacing);
+        width: 50%;
+        translate: 0 -50%;
+      }
+
+      &__connector--before {
+        right: 50%;
+        z-index: calc(var(--z-index-step-behind) * -1);
+      }
+
+      &__connector--after {
+        left: 50%;
+        z-index: calc(var(--z-index-step-behind) * -1);
+      }
+
+      &__connector--active {
+        background-color: var(--color-brand-500);
+      }
+
+      &__connector--inactive {
+        background-color: var(--color-step-inactive);
+      }
+
+      &__label {
+        margin-top: calc(var(--spacing) * 2);
+        width: 100%;
+        padding-inline: calc(var(--spacing) * 0.5);
+        text-align: center;
+        font-size: var(--text-xs);
+        line-height: var(--leading-tight);
+        font-weight: var(--font-weight-normal);
+        @include mixins.respond-above(sm) {
+          margin-top: calc(var(--spacing) * 3);
+          font-size: var(--text-body-sm);
+        }
+      }
+
+      &__check {
+        color: var(--color-surface-white);
+      }
+
+      &__label--active {
+        color: var(--color-brand-500);
+      }
+
+      &__label--idle {
+        color: var(--color-ink);
+      }
+    }
+
+    .workflow-header {
+      flex-shrink: 0;
+      padding-inline: calc(var(--spacing) * 4);
+      @include mixins.respond-below(lg) {
+        padding-inline: calc(var(--spacing) * 3);
+      }
+
+      &__bar {
+        display: flex;
+        height: calc(var(--spacing) * 11);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: calc(var(--spacing) * 2);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: var(--color-border-tertiary);
+        padding-block: calc(var(--spacing) * 2);
+        @include mixins.respond-below(lg) {
+          padding-inline: 0;
+        }
+        @include mixins.respond-above(lg) {
+          padding-inline: 0;
+          padding-right: calc(var(--spacing) * 3);
+        }
+      }
+
+      &__context-btn {
+        display: flex;
+        height: calc(var(--spacing) * 8);
+        width: calc(var(--spacing) * 8);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-surface-gray-200);
+        background-color: var(--color-surface-white);
+        color: var(--color-ink-muted);
+        @include mixins.respond-above(lg) {
+          display: none;
+        }
+      }
+    }
+
+    .workflow-footer {
+      flex-shrink: 0;
+      padding-inline: calc(var(--spacing) * 4);
+      @include mixins.respond-below(lg) {
+        padding-inline: calc(var(--spacing) * 3);
+      }
+
+      &__bar {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-color: var(--color-surface-gray-200);
+        background-color: var(--color-surface-white);
+        padding-block: calc(var(--spacing) * 3);
+        @include mixins.respond-below(lg) {
+          padding-inline: 0;
+        }
+        @include mixins.respond-above(sm) {
+          padding-block: calc(var(--spacing) * 3.5);
+        }
+        @include mixins.respond-above(lg) {
+          padding-inline: 0;
+          padding-block: calc(var(--spacing) * 3.5);
+          padding-right: calc(var(--spacing) * 3);
+        }
+      }
+    }
+
+    .workflow-header {
+      &__leading {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+        @include mixins.respond-above(sm) {
+          gap: calc(var(--spacing) * 3);
+        }
+      }
+
+      &__icon-btn {
+        display: flex;
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-ink);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-ink-muted);
+          }
+        }
+      }
+
+      &__icon {
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+        flex-shrink: 0;
+      }
+
+      &__title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: var(--text-base);
+        line-height: calc(var(--spacing) * 6);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-ink);
+        @include mixins.respond-above(sm) {
+          font-size: var(--text-lg);
+          line-height: var(--text-lg--line-height);
+          line-height: calc(var(--spacing) * 6);
+        }
+        @include mixins.respond-above(lg) {
+          font-size: var(--text-title-sm);
+        }
+      }
+    }
+
+    :where(& .workflow-step-content--spaced > :not(:last-child)) {
+      margin-block-start: 0;
+      margin-block-end: calc(var(--spacing) * 6);
+    }
+  }
+}

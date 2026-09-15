@@ -15,7 +15,7 @@ export function Submission() {
       <div className="contextual-section">
         <div>
           <div className="contextual-section__header">
-            <SectionTitle title="Submission Summary" className="mb-0" />
+            <SectionTitle title="Submission Summary" className="section-title--flush" />
             <StatusBadge label={submissionSummary.status} tone={toneForStatus(submissionSummary.status)} />
           </div>
           <InfoCard>

@@ -41,7 +41,12 @@ export function ContextualContent({ activeContext }: ContextualContentProps) {
       : null;
 
   return (
-    <div className="contextual-panel__content">
+    <div
+      id={`context-panel-${activeContext}`}
+      role="tabpanel"
+      aria-labelledby={isQuickTabContext(activeContext) ? `context-tab-${activeContext}` : undefined}
+      className="contextual-panel__content"
+    >
       <ContextualPanelScroll>
         <ContextualPanelContent>{content}</ContextualPanelContent>
       </ContextualPanelScroll>

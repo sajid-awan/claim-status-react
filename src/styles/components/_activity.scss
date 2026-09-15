@@ -1,0 +1,181 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .activity-item {
+      &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: calc(var(--spacing) * 2);
+      }
+
+      &__meta {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: var(--spacing-dot);
+        row-gap: calc(var(--spacing) * 1.5);
+      }
+
+      &__user {
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-compact);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-ink);
+      }
+
+      &__dot {
+        width: var(--spacing);
+        height: var(--spacing);
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background-color: var(--color-ink-subtle);
+      }
+
+      &__timestamp {
+        font-size: var(--text-xs);
+        line-height: var(--leading-compact);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink-subtle);
+      }
+
+      &__badge {
+        flex-shrink: 0;
+        flex-basis: 100%;
+        @include mixins.respond-above(md) {
+          margin-left: calc(var(--spacing) * 2.5);
+          flex-basis: auto;
+        }
+      }
+
+      &__badge-icon {
+        flex-shrink: 0;
+      }
+
+      &__badge-icon--success {
+        flex-shrink: 0;
+        color: var(--color-success);
+      }
+
+      &__action {
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: var(--spacing);
+        font-size: var(--text-body-md);
+        line-height: var(--leading-tight);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-brand-500);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-brand-600);
+          }
+        }
+      }
+
+      &__action-icon {
+        flex-shrink: 0;
+      }
+
+      &__section-label {
+        margin-top: calc(var(--spacing) * 2);
+        font-size: var(--text-xs);
+        line-height: var(--leading-tight);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink-subtle);
+      }
+
+      &__status-block {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__status-row {
+        padding-top: var(--spacing-dot);
+      }
+
+      &__detail-card {
+        margin-top: calc(var(--spacing) * 2.5);
+        border-radius: var(--radius-xl);
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-border-subtle);
+        background-color: var(--color-surface-white);
+        padding: calc(var(--spacing) * 3.5);
+      }
+
+      &__calendar {
+        margin-top: calc(var(--spacing) * 2);
+        color: var(--color-brand-500);
+      }
+
+      &--collapsed {
+        padding-bottom: calc(var(--spacing) * 4);
+      }
+    }
+
+    .activity-detail-row {
+      margin-bottom: calc(var(--spacing) * 2);
+      display: flex;
+      min-height: var(--min-height-row-sm);
+      flex-direction: column;
+      gap: calc(var(--spacing) * 0.5);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-color: var(--color-border-subtle);
+      padding-block: var(--spacing);
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom-style: solid;
+        border-bottom-width: 0;
+      }
+      @include mixins.respond-above(sm) {
+        height: var(--height-row-sm);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: calc(var(--spacing) * 4);
+        padding-block: 0;
+      }
+
+      &__label {
+        flex-shrink: 0;
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-body);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink-subtle);
+      }
+
+      &__value {
+        min-width: 0;
+        font-size: var(--text-body-sm);
+        line-height: var(--leading-body);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-ink);
+        @include mixins.respond-above(sm) {
+          text-align: right;
+        }
+      }
+    }
+
+    .activity-item {
+      &__hidden {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: var(--radius-md);
+        border-width: 1px;
+        border-style: dashed;
+        border-color: var(--color-surface-gray-200);
+        padding-inline: calc(var(--spacing) * 3);
+        padding-block: calc(var(--spacing) * 2);
+        font-size: var(--text-body-sm);
+        color: var(--color-ink-muted);
+      }
+    }
+  }
+
+}

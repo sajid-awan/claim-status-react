@@ -42,6 +42,7 @@ export function IconButton({
     <button
       type="button"
       aria-label={label}
+      aria-pressed={active}
       title={label}
       className={`icon-btn ${sizeClass[size]} ${radiusClass[radius]} ${active ? "icon-btn--active" : "icon-btn--idle"} ${className}`.trim()}
       {...rest}

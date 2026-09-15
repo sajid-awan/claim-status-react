@@ -1,0 +1,76 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .tabs {
+      display: flex;
+      height: calc(var(--spacing) * 10);
+      width: 100%;
+      min-width: 0;
+      align-items: center;
+      gap: calc(var(--spacing) * 0.5);
+      overflow-x: auto;
+      overflow-y: hidden;
+      border-radius: var(--radius-lg);
+      border-style: solid;
+      border-width: 1px;
+      border-color: var(--color-tab-track-border);
+      background-color: var(--color-tab-track-bg);
+      padding-inline: var(--spacing-tab-x);
+      padding-block: var(--spacing-tab-y);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &__button {
+        display: flex;
+        height: var(--height-row-sm);
+        min-width: 0;
+        flex-shrink: 0;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-md);
+        border-style: solid;
+        border-width: 0;
+        background-color: transparent;
+        padding-inline: calc(var(--spacing) * 2);
+        font-size: var(--text-sm);
+        line-height: var(--leading-snug);
+        font-weight: var(--font-weight-normal);
+        white-space: nowrap;
+        color: var(--color-ink-muted);
+        @include mixins.interactive-transition;
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-brand-500);
+            color: var(--color-surface-white);
+          }
+        }
+        @include mixins.respond-above(sm) {
+          min-width: var(--min-width-tab-min);
+          padding-inline: calc(var(--spacing) * 2.5);
+        }
+        @include mixins.respond-above(md) {
+          min-width: var(--min-width-tab-min-md);
+          padding-inline: calc(var(--spacing) * 3);
+        }
+      }
+
+      &__button--active {
+        background-color: var(--color-brand-500);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-surface-white);
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-brand-600);
+            color: var(--color-surface-white);
+          }
+        }
+      }
+    }
+  }
+}

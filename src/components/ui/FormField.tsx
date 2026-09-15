@@ -15,7 +15,11 @@ export function FormField({ label, required, children, action, htmlFor, classNam
       <div className={`form-field__header ${action ? "form-field__header--action" : ""}`.trim()}>
         <label htmlFor={htmlFor} className="form-field__label">
           {label}
-          {required ? <span className="form-field__required">*</span> : null}
+          {required ? (
+            <span className="form-field__required" aria-hidden="true">
+              *
+            </span>
+          ) : null}
         </label>
         {action}
       </div>
@@ -33,12 +37,16 @@ interface QuestionFieldProps {
 
 export function QuestionField({ label, required, children, className = "" }: QuestionFieldProps) {
   return (
-    <div className={className}>
-      <p className="form-field__label form-field__label--spaced">
+    <fieldset className={`question-field ${className}`.trim()}>
+      <legend className="form-field__label form-field__label--spaced">
         {label}
-        {required ? <span className="form-field__required">*</span> : null}
-      </p>
+        {required ? (
+          <span className="form-field__required" aria-hidden="true">
+            *
+          </span>
+        ) : null}
+      </legend>
       {children}
-    </div>
+    </fieldset>
   );
 }

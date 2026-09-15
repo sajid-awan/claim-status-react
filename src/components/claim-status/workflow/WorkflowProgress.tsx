@@ -71,7 +71,7 @@ function StepTrack({
 
 export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgressProps) {
   return (
-    <ol className="workflow-progress">
+    <ol className="workflow-progress" aria-label="Claim status progress">
       {workflowSteps.map((step, index) => {
         const status = statusFor(step.id, currentStep, completedSteps);
         const isFirst = index === 0;
@@ -82,7 +82,12 @@ export function WorkflowProgress({ currentStep, completedSteps }: WorkflowProgre
         const lineAfterOrange = !isLast && isCompleted;
 
         return (
-          <li key={step.id} className="workflow-step">
+          <li
+            key={step.id}
+            className="workflow-step"
+            aria-current={status === "active" ? "step" : undefined}
+            data-status={status}
+          >
             <StepTrack
               status={status}
               showLineBefore={!isFirst}

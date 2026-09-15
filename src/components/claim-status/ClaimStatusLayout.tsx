@@ -15,8 +15,8 @@ export function ClaimStatusLayout({
   onContextualOpenChange,
 }: ClaimStatusLayoutProps) {
   useEffect(() => {
-    document.body.classList.toggle("overflow-hidden", isContextualOpen);
-    return () => document.body.classList.remove("overflow-hidden");
+    document.body.classList.toggle("claim-status-modal-open", isContextualOpen);
+    return () => document.body.classList.remove("claim-status-modal-open");
   }, [isContextualOpen]);
 
   return (

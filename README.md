@@ -205,6 +205,9 @@ src/
 │   │           │
 │   │           ├── gather-info/
 │   │           │   ├── GatherInfo.tsx
+│   │           │   ├── GatherInfoIdentityFields.tsx
+│   │           │   ├── GatherInfoFaxFields.tsx
+│   │           │   ├── GatherInfoAttachments.tsx
 │   │           │   └── GatherInfoFooter.tsx
 │   │           │
 │   │           ├── verify/
@@ -257,20 +260,29 @@ src/
 │   └── workflow.ts
 │
 ├── styles/
-│   ├── main.css                 # Tailwind entry (@theme, tokens, base, components)
-│   ├── main.scss                # PrimeReact override sidecar
-│   ├── abstracts/tokens.css     # Design tokens (@theme static + :root bridge)
-│   ├── base/global.css          # Base resets only
-│   ├── components/              # CSS-first semantic classes (@layer components)
-│   │   ├── index.css
-│   │   ├── ui.css               # btn, chip, tabs, form-field, radio, breadcrumb
-│   │   ├── cards.css            # contextual-card, info-card, info-row
-│   │   ├── layout.css           # app-scroll, app-header, icon-nav, shells
-│   │   ├── navigation.css       # app-sidebar
-│   │   ├── workflow.css         # workflow progress, header/footer
-│   │   ├── timeline.css
-│   │   ├── activity.css
-│   │   └── claim-status.css     # page/layout shells
+│   ├── main.scss                # Single SCSS entry point
+│   ├── abstracts/               # Design tokens and reusable SCSS mixins
+│   ├── base/_global.scss        # Reset and accessibility helpers
+│   ├── components/              # Component-owned BEM partials
+│   │   ├── _index.scss
+│   │   ├── _ui-foundation.scss  # Shared field foundations
+│   │   ├── _buttons.scss        # Buttons and icon buttons
+│   │   ├── _chips.scss
+│   │   ├── _tabs.scss
+│   │   ├── _forms.scss
+│   │   ├── _uploads.scss
+│   │   ├── _radio.scss
+│   │   ├── _breadcrumb.scss
+│   │   ├── _cards.scss          # contextual-card, info-card, info-row
+│   │   ├── _layout.scss         # app-scroll, app-header, icon-nav, shells
+│   │   ├── _navigation.scss     # app-sidebar
+│   │   ├── _workflow.scss       # workflow progress, header/footer
+│   │   ├── _timeline.scss
+│   │   ├── _activity.scss
+│   │   ├── _app-shell.scss
+│   │   ├── _claim-layout.scss
+│   │   ├── _workflow-panels.scss
+│   │   └── _contextual-details.scss
 │   └── primereact-override.scss
 │
 └── main.tsx
@@ -285,10 +297,12 @@ src/
 | **React 19**          | UI framework                      |
 | **TypeScript**        | Type safety                       |
 | **Vite**              | Development server and build tool |
-| **Tailwind CSS v4**   | Token utilities via `@apply` in component CSS |
+| **Sass/SCSS**         | Component styling, tokens, mixins and responsive rules |
 | **PrimeReact 10.9.2** | UI components                     |
 | **Phosphor Icons**    | Interface icons                   |
 | **Oxlint**            | Linting                           |
+| **Vitest**            | Unit and integration tests        |
+| **Testing Library**   | Accessible component testing      |
 | **Vercel**            | Deployment                        |
 
 ---
@@ -319,7 +333,7 @@ PrimeReact components are wrapped or customized where necessary to maintain the 
 
 ### Custom Components
 
-Domain-specific UI uses semantic CSS classes scoped under `.claim-status-app`. Shared UI primitives live in `src/components/ui/` and reference classes from `src/styles/components/`.
+Domain-specific UI uses semantic BEM classes scoped under `.claim-status-app`. Shared UI primitives live in `src/components/ui/` and reference SCSS partials from `src/styles/components/`.
 
 **Shared UI primitives**
 
@@ -339,9 +353,9 @@ This avoids making the application look like a default PrimeReact application.
 
 ## Design Tokens
 
-Design tokens live in [`src/styles/abstracts/tokens.css`](src/styles/abstracts/tokens.css) and are imported through the Tailwind entry [`src/styles/main.css`](src/styles/main.css). Semantic component styles live in [`src/styles/components/`](src/styles/components/) and use `@layer components` with `@apply` for token-backed utilities. PrimeReact overrides are in [`src/styles/primereact-override.scss`](src/styles/primereact-override.scss).
+Design tokens live in [`src/styles/abstracts/_tokens.scss`](src/styles/abstracts/_tokens.scss) and are imported through [`src/styles/main.scss`](src/styles/main.scss). Semantic component styles live in [`src/styles/components/`](src/styles/components/), shared Sass mixins live in [`src/styles/abstracts/_mixins.scss`](src/styles/abstracts/_mixins.scss), and PrimeReact-specific selectors remain isolated in [`src/styles/primereact-override.scss`](src/styles/primereact-override.scss).
 
-**Styling architecture:** CSS/SCSS-first — components reference BEM-style classes (e.g. `btn`, `app-sidebar__item-btn`, `activity-item__header`); Tailwind is used inside the stylesheet layer via `@apply`, not inline in TSX.
+**Styling architecture:** SCSS-first — components reference focused BEM-style classes such as `btn`, `app-sidebar__item-btn`, and `activity-item__header`. Reusable visual values come from semantic CSS custom properties; responsive and interaction rules remain inside their owning SCSS partial.
 
 | Token | CSS variable | Usage |
 | ----- | ------------ | ----- |
@@ -353,8 +367,6 @@ Design tokens live in [`src/styles/abstracts/tokens.css`](src/styles/abstracts/t
 | Card Radius | `--radius-card` (18px) | Cards and information panels |
 | Nav Row Height | `--height-nav` (34px) | Sidebar navigation rows |
 | Contextual Width | `--width-contextual` (598px) | Contextual panel width at `lg+` |
-
-Tailwind utilities such as `text-ink-muted`, `bg-brand-500`, `h-nav`, and `rounded-card` map to these tokens via `@theme static`.
 
 The PrimeReact CSS variables in `:root` are bridged to the application design tokens where required.
 
@@ -378,7 +390,7 @@ The contextual and workflow panels are displayed side by side.
 
 ### Tablet (`md`–`lg`)
 
-Panels stack vertically — workflow on top, contextual below — with page-level scrolling.
+The workflow remains full width. Contextual details open in a dedicated overlay so both panels retain independent scrolling.
 
 ### Mobile
 
@@ -468,6 +480,8 @@ http://localhost:5173
 | `npm run build`   | Create production build       |
 | `npm run preview` | Preview production build      |
 | `npm run lint`    | Run Oxlint                    |
+| `npm test`        | Run the automated test suite  |
+| `npm run test:watch` | Run tests in watch mode    |
 
 ---
 
@@ -548,6 +562,7 @@ npm run preview
 * [ ] No React key warnings.
 * [ ] No console errors.
 * [ ] `npm run lint` passes.
+* [ ] `npm test` passes.
 * [ ] `npm run build` passes.
 * [ ] Production preview works.
 * [ ] Desktop layout has no unwanted page-level scrolling.

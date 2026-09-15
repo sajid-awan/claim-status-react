@@ -1,0 +1,130 @@
+@use "../abstracts/mixins" as mixins;
+
+@layer components {
+  .claim-status-app {
+    .breadcrumb {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      overflow: hidden;
+
+      &__mobile {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include mixins.respond-above(sm) {
+          display: none;
+        }
+      }
+
+      &__list {
+        min-width: 0;
+        list-style-type: none;
+        align-items: center;
+        gap: var(--spacing);
+        overflow: hidden;
+        padding: 0;
+      }
+
+      &__list--visible {
+        display: flex;
+      }
+
+      &__list--responsive {
+        display: none;
+        @include mixins.respond-above(sm) {
+          display: flex;
+        }
+      }
+
+      &__item {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: var(--spacing);
+      }
+
+      &__label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: var(--leading-tight);
+        font-weight: var(--font-weight-medium);
+      }
+
+      &__label--sm {
+        font-size: var(--text-xs);
+        line-height: var(--text-xs--line-height);
+      }
+
+      &__label--md {
+        font-size: var(--text-sm);
+        line-height: var(--text-sm--line-height);
+      }
+
+      &__separator {
+        flex-shrink: 0;
+        color: var(--color-ink-subtle);
+      }
+
+      &__separator--sm {
+        width: calc(var(--spacing) * 3);
+        height: calc(var(--spacing) * 3);
+      }
+
+      &__separator--md {
+        width: calc(var(--spacing) * 3.5);
+        height: calc(var(--spacing) * 3.5);
+      }
+
+      &__link {
+        cursor: pointer;
+        border-style: solid;
+        border-width: 0;
+        background-color: transparent;
+        padding: 0;
+        text-align: left;
+        @include mixins.interactive-transition;
+      }
+
+      &--brand .breadcrumb__label--active {
+        color: var(--color-brand-500);
+      }
+
+      &--brand .breadcrumb__label--inactive {
+        color: var(--color-ink-subtle);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-ink);
+          }
+        }
+      }
+
+      &--brand .breadcrumb__mobile {
+        color: var(--color-brand-500);
+      }
+
+      &--neutral .breadcrumb__label--active {
+        color: var(--color-ink);
+      }
+
+      &--neutral .breadcrumb__label--inactive {
+        color: var(--color-ink-muted);
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-ink);
+          }
+        }
+      }
+
+      &--neutral .breadcrumb__mobile {
+        color: var(--color-ink);
+      }
+
+      &__mobile--hidden {
+        display: none;
+      }
+    }
+  }
+}

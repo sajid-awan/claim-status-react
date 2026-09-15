@@ -62,7 +62,7 @@ export function Breadcrumb({
 
   const mobileClassName =
     collapse === "none"
-      ? "hidden"
+      ? "breadcrumb__mobile--hidden"
       : `breadcrumb__mobile breadcrumb__label ${labelSizeClass}`.trim();
 
   return (
